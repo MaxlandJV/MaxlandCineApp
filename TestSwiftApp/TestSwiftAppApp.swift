@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TestSwiftAppApp: App {
+    let filmPreview: Film = Film(filmName: "Contact", startDate: Date.now, sinopsis: "Se detectan señales de una civilización extraterrestre desconocida", boxOfficeReceipts: 168_000_000)
+    let filmsPreview: Films = Films()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TextSwiftList(film: filmPreview, films: filmsPreview)
         }
     }
 }

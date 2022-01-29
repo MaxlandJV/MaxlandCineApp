@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A21FDFF27A5AB4800D115A6 /* TextSwiftList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FDFE27A5AB4800D115A6 /* TextSwiftList.swift */; };
+		8A21FE0127A5AB9F00D115A6 /* FilmModelDAta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FE0027A5AB9F00D115A6 /* FilmModelDAta.swift */; };
 		8A46CAD127A54BBC000DC7C4 /* TestSwiftAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A46CAD027A54BBC000DC7C4 /* TestSwiftAppApp.swift */; };
 		8A46CAD327A54BBC000DC7C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A46CAD227A54BBC000DC7C4 /* ContentView.swift */; };
 		8A46CAD527A54BBD000DC7C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A21FDFE27A5AB4800D115A6 /* TextSwiftList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSwiftList.swift; sourceTree = "<group>"; };
+		8A21FE0027A5AB9F00D115A6 /* FilmModelDAta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmModelDAta.swift; sourceTree = "<group>"; };
 		8A46CACD27A54BBC000DC7C4 /* TestSwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A46CAD027A54BBC000DC7C4 /* TestSwiftAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwiftAppApp.swift; sourceTree = "<group>"; };
 		8A46CAD227A54BBC000DC7C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			children = (
 				8A46CAD027A54BBC000DC7C4 /* TestSwiftAppApp.swift */,
 				8A46CAD227A54BBC000DC7C4 /* ContentView.swift */,
+				8A21FDFE27A5AB4800D115A6 /* TextSwiftList.swift */,
+				8A21FE0027A5AB9F00D115A6 /* FilmModelDAta.swift */,
 				8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */,
 				8A46CAD627A54BBD000DC7C4 /* Preview Content */,
 			);
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A21FDFF27A5AB4800D115A6 /* TextSwiftList.swift in Sources */,
+				8A21FE0127A5AB9F00D115A6 /* FilmModelDAta.swift in Sources */,
 				8A46CAD327A54BBC000DC7C4 /* ContentView.swift in Sources */,
 				8A46CAD127A54BBC000DC7C4 /* TestSwiftAppApp.swift in Sources */,
 			);
@@ -266,9 +274,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestSwiftApp/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -283,6 +292,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.maxland.TestSwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -294,9 +304,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestSwiftApp/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -311,6 +322,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.maxland.TestSwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
