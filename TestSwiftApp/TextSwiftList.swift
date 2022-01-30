@@ -37,17 +37,24 @@ struct TextSwiftList: View {
                 Label("Guardar", systemImage: "doc.fill.badge.plus")
                     .padding()
             }.buttonStyle(.bordered)
-            List {
-                ForEach(films.filmsList, id: \.self) { filmItem in
-                    HStack {
-                        Image(systemName: "film").font(.title)
-                        VStack(alignment: .leading) {
-                            Text(filmItem.filmName).fontWeight(.bold)
-                            Text(filmItem.startDate, style: .date).font(.subheadline)
-                        }
-                        Spacer()
-                        Text(String(filmItem.score))
+            List(films.filmsList, id: \.id) { filmItem in
+                HStack {
+                    Image(systemName: "film").font(.title)
+                    VStack(alignment: .leading) {
+                        Text(filmItem.filmName).fontWeight(.bold)
+                        Text(filmItem.startDate, style: .date).font(.subheadline)
                     }
+                    Spacer()
+                    Text(String(filmItem.score))
+                }
+                .swipeActions(edge: .leading) {
+                    Button {
+                        films.deleteFilm(id: filmItem.id)
+                    } label: {
+                        Label("Eliminar", systemImage: "trash.fill")
+                    }
+                    .tint(.red)
+
                 }
             }
         }

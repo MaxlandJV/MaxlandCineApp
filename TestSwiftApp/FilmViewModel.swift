@@ -1,21 +1,12 @@
 //
-//  FilmModelData.swift
+//  FilmViewModel.swift
 //  TestSwiftApp
 //
-//  Created by Jordi Villaró on 29/1/22.
+//  Created by Jordi Villaró on 30/1/22.
 //
 
 import Foundation
 
-// MARK: Model
-struct Film: Hashable, Codable {
-    let filmName: String
-    let startDate: Date
-    let sinopsis: String
-    let score: Int
-}
-
-// MARK: ViewModel
 final class Films: ObservableObject {
     @Published var filmsList: [Film] = []
     
@@ -27,7 +18,6 @@ final class Films: ObservableObject {
         let film = Film(filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
         
         filmsList.insert(film, at: 0)
-        
         encodeAndSaveAllFilms()
     }
     
@@ -44,5 +34,12 @@ final class Films: ObservableObject {
             }
         }
         return []
+    }
+    
+    func deleteFilm(id: String) {
+        filmsList.removeAll { film in
+            film.id == id
+        }
+        encodeAndSaveAllFilms()
     }
 }
