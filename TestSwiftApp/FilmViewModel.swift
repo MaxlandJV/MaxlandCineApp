@@ -18,6 +18,7 @@ final class Films: ObservableObject {
         let film = Film(filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
         
         filmsList.insert(film, at: 0)
+        //filmsList.append(film)
         encodeAndSaveAllFilms()
     }
     

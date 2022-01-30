@@ -37,12 +37,12 @@ struct TextSwiftList: View {
                 Label("Guardar", systemImage: "doc.fill.badge.plus")
                     .padding()
             }.buttonStyle(.bordered)
-            List(films.filmsList, id: \.id) { filmItem in
+            List(films.filmsList) { filmItem in
                 HStack {
                     Image(systemName: "film").font(.title)
                     VStack(alignment: .leading) {
-                        Text(filmItem.filmName).fontWeight(.bold)
-                        Text(filmItem.startDate, style: .date).font(.subheadline)
+                        Text(filmItem.filmName).font(.caption).bold()
+                        Text(filmItem.startDate, style: .date).font(.caption2).foregroundColor(.gray)
                     }
                     Spacer()
                     Text(String(filmItem.score))
