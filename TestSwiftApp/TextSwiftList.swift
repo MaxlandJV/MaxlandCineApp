@@ -9,30 +9,46 @@ import SwiftUI
 
 struct TextSwiftList: View {
     
-    @State var film: Film
-    @State var films: Films
+    @State var filmName = ""
+    @State var startDate = Date.now
+    @State var sinopsis = ""
+    @State var score = 0
+    @StateObject var films = Films()
     
     var body: some View {
         VStack {
             Form {
-                TextField("Nombre de la película", text: $film.filmName)
-                DatePicker("Fecha de estreno",selection: $film.startDate)
-                TextEditor(text: $film.sinopsis)
-                TextField("Recaudación total", text: Binding(
-                    get: { String(film.boxOfficeReceipts) },
-                    set: { film.boxOfficeReceipts = Double($0) ?? 0 }
+                TextField("Nombre de la película", text: $filmName)
+                DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
+                TextEditor(text: $sinopsis)
+                TextField("Puntuación", text: Binding(
+                    get: { score == 0 ? "" : String(score) },
+                    set: { score = Int($0) ?? 0 }
                 ))
             }
-            List {
-                ForEach(films.filmsList, id: \.self) { filmItem in
-                    Label(filmItem.filmName, systemImage: "film")
-                }
-            }
+            .frame(height: 250)
             Button {
-                films.filmsList.append(film)
-                print(film)
+                films.saveFilm(filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
+                filmName = ""
+                startDate = Date.now
+                sinopsis = ""
+                score = 0
             } label: {
                 Label("Guardar", systemImage: "doc.fill.badge.plus")
+                    .padding()
+            }.buttonStyle(.bordered)
+            List {
+                ForEach(films.filmsList, id: \.self) { filmItem in
+                    HStack {
+                        Image(systemName: "film").font(.title)
+                        VStack(alignment: .leading) {
+                            Text(filmItem.filmName).fontWeight(.bold)
+                            Text(filmItem.startDate, style: .date).font(.subheadline)
+                        }
+                        Spacer()
+                        Text(String(filmItem.score))
+                    }
+                }
             }
         }
     }
@@ -40,9 +56,6 @@ struct TextSwiftList: View {
 
 struct TextSwiftList_Previews: PreviewProvider {
     static var previews: some View {
-        let filmPreview: Film = Film(filmName: "Contact", startDate: Date.now, sinopsis: "Se detectan señales de una civilización extraterrestre desconocida", boxOfficeReceipts: 168_000_000)
-        let filmsPreview: Films = Films()
-        
-        TextSwiftList(film: filmPreview, films: filmsPreview)
+        TextSwiftList()
     }
 }
