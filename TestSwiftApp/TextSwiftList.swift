@@ -10,7 +10,7 @@ import SwiftUI
 struct TextSwiftList: View {
     
     @State var filmName = ""
-    @State var startDate = Date.now
+    @State var startDate = Date()
     @State var sinopsis = ""
     @State var score = 0
     @StateObject var films = Films()
@@ -18,15 +18,15 @@ struct TextSwiftList: View {
     var body: some View {
         VStack {
             Form {
-                TextField("Nombre de la película", text: $filmName)
-                DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
-                TextEditor(text: $sinopsis)
-                TextField("Puntuación", text: Binding(
-                    get: { score == 0 ? "" : String(score) },
-                    set: { score = Int($0) ?? 0 }
-                ))
+                Section(header: Text("Película")) {
+                    TextField("Nombre de la película", text: $filmName)
+                    DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
+                    Stepper("Puntuación: \(score)", value: $score, in: 0...5)
+                }
+                Section(header: Text("Sinopsis")) {
+                    TextEditor(text: $sinopsis)
+                }
             }
-            .frame(height: 250)
             Button {
                 films.saveFilm(filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
                 filmName = ""

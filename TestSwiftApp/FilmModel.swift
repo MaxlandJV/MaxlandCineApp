@@ -14,7 +14,7 @@ struct Film: Codable {
     var sinopsis: String
     var score: Int
     
-    init(filmName: String, startDate: Date = Date.now, sinopsis: String = "", score: Int = 0) {
+    init(filmName: String, startDate: Date = Date(), sinopsis: String = "", score: Int = 0) {
         self.id = UUID().uuidString
         self.filmName = filmName
         self.startDate = startDate
