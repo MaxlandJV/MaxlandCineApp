@@ -8,13 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var films = Films()
+    
     var body: some View {
-        VStack {
-            Text("Hola Maxland!")
-                .padding()
-            Button("Boton") {
-                print("Estoy pulsado el botón")
+        NavigationView {
+            List(films.filmsList) { filmItem in
+                HStack {
+                    Image(systemName: "film").font(.title)
+                    VStack(alignment: .leading) {
+                        Text(filmItem.filmName).font(.caption).bold()
+                        Text(filmItem.startDate, style: .date).font(.caption2).foregroundColor(.gray)
+                    }
+                    Spacer()
+                    Text(String(filmItem.score))
+                }
+                .swipeActions(edge: .leading) {
+                    Button {
+                        films.deleteFilm(id: filmItem.id)
+                    } label: {
+                        Label("Eliminar", systemImage: "trash.fill")
+                    }
+                    .tint(.red)
+                }
             }
+            .listStyle(PlainListStyle())
+            .navigationTitle(Text("Películas"))
+            .navigationBarItems(trailing: Button(action: {
+                
+            }, label: {
+                Text("Añadir película")
+            }))
         }
     }
 }
