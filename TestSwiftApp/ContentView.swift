@@ -17,10 +17,17 @@ struct ContentView: View {
                     Image(systemName: "film").font(.title)
                     VStack(alignment: .leading) {
                         Text(filmItem.filmName).font(.caption).bold()
-                        Text(filmItem.startDate, style: .date).font(.caption2).foregroundColor(.gray)
+                        HStack {
+                            Text(filmItem.startDate, style: .date).font(.caption2).foregroundColor(.gray)
+                            Spacer()
+                            ForEach(1...5, id: \.self) { number in
+                                Image(systemName: "star.fill")
+                                    .font(.caption2)
+                                    .foregroundColor(number > filmItem.score ? Color(.systemGray6) : .yellow)
+                                    .padding(.trailing, -8)
+                            }
+                        }
                     }
-                    Spacer()
-                    Text(String(filmItem.score))
                 }
                 .swipeActions(edge: .leading) {
                     Button {
