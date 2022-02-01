@@ -37,26 +37,6 @@ struct TextSwiftList: View {
                 Label("Guardar", systemImage: "doc.fill.badge.plus")
                     .padding()
             }.buttonStyle(.bordered)
-            List(films.filmsList) { filmItem in
-                HStack {
-                    Image(systemName: "film").font(.title)
-                    VStack(alignment: .leading) {
-                        Text(filmItem.filmName).font(.caption).bold()
-                        Text(filmItem.startDate, style: .date).font(.caption2).foregroundColor(.gray)
-                    }
-                    Spacer()
-                    Text(String(filmItem.score))
-                }
-                .swipeActions(edge: .leading) {
-                    Button {
-                        films.deleteFilm(id: filmItem.id)
-                    } label: {
-                        Label("Eliminar", systemImage: "trash.fill")
-                    }
-                    .tint(.red)
-
-                }
-            }
         }
     }
 }

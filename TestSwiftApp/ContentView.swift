@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var films = Films()
+    @State var isPresented: Bool = false
     
     var body: some View {
         NavigationView {
@@ -40,11 +41,16 @@ struct ContentView: View {
             }
             .listStyle(PlainListStyle())
             .navigationTitle(Text("Películas"))
-            .navigationBarItems(trailing: Button(action: {
-                
-            }, label: {
+            .navigationBarItems(trailing: Button {
+                isPresented = true
+            } label: {
                 Text("Añadir película")
-            }))
+            })
+            .sheet(isPresented: $isPresented, onDismiss: {
+                isPresented = false
+            }, content: {
+                TextSwiftList()
+            })
         }
     }
 }
