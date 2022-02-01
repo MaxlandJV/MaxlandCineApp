@@ -9,7 +9,7 @@ import Foundation
 
 struct Film: Codable, Identifiable {
     let id: String
-    let filmName: String
+    var filmName: String
     var startDate: Date
     var sinopsis: String
     var score: Int

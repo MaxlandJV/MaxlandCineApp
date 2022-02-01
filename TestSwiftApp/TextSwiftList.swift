@@ -14,6 +14,7 @@ struct TextSwiftList: View {
     @State var sinopsis = ""
     @State var score = 0
     @StateObject var films: Films
+    var update: Bool
     
     var body: some View {
         VStack {
@@ -25,19 +26,27 @@ struct TextSwiftList: View {
                 }
                 Section(header: Text("Sinopsis")) {
                     TextEditor(text: $sinopsis)
+                        .frame(height: 100)
                 }
             }
-            Button {
-                films.saveFilm(filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
-                filmName = ""
-                startDate = Date.now
-                sinopsis = ""
-                score = 0
-                dismiss()
-            } label: {
-                Label("Guardar", systemImage: "doc.fill.badge.plus")
-                    .padding()
-            }.buttonStyle(.bordered)
+            if !update {
+                Button {
+                    films.saveFilm(filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
+                    dismiss()
+                } label: {
+                    Label("Guardar", systemImage: "doc.fill.badge.plus")
+                        .padding()
+                }.buttonStyle(.bordered)
+            }
+            else {
+                Button {
+                    //films.updateFilm(film: <#T##Binding<Film>#>, filmName: <#T##String#>, startDate: <#T##Date#>, sinopsis: <#T##String#>, score: <#T##Int#>)
+                    dismiss()
+                } label: {
+                    Label("Actualizar", systemImage: "doc.fill.badge.plus")
+                        .padding()
+                }.buttonStyle(.bordered)
+            }
         }
     }
 }
@@ -45,6 +54,6 @@ struct TextSwiftList: View {
 struct TextSwiftList_Previews: PreviewProvider {
     static var previews: some View {
         let films = Films()
-        TextSwiftList(films: films)
+        TextSwiftList(films: films, update: false)
     }
 }

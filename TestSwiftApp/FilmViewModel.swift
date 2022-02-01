@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class Films: ObservableObject {
     @Published var filmsList: [Film] = []
@@ -41,6 +42,14 @@ final class Films: ObservableObject {
         filmsList.removeAll { film in
             film.id == id
         }
+        encodeAndSaveAllFilms()
+    }
+    
+    func updateFilm(film: Binding<Film>, filmName: String, startDate: Date, sinopsis: String, score: Int) {
+        film.wrappedValue.filmName = filmName
+        film.wrappedValue.startDate = startDate
+        film.wrappedValue.sinopsis = sinopsis
+        film.wrappedValue.score = score
         encodeAndSaveAllFilms()
     }
 }
