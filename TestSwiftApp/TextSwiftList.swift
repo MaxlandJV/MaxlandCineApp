@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TextSwiftList: View {
-    
+    @Environment(\.dismiss) var dismiss
     @State var filmName = ""
     @State var startDate = Date()
     @State var sinopsis = ""
     @State var score = 0
-    @StateObject var films = Films()
+    @StateObject var films: Films
     
     var body: some View {
         VStack {
@@ -33,6 +33,7 @@ struct TextSwiftList: View {
                 startDate = Date.now
                 sinopsis = ""
                 score = 0
+                dismiss()
             } label: {
                 Label("Guardar", systemImage: "doc.fill.badge.plus")
                     .padding()
@@ -43,6 +44,7 @@ struct TextSwiftList: View {
 
 struct TextSwiftList_Previews: PreviewProvider {
     static var previews: some View {
-        TextSwiftList()
+        let films = Films()
+        TextSwiftList(films: films)
     }
 }

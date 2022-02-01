@@ -49,7 +49,7 @@ struct ContentView: View {
             .sheet(isPresented: $isPresented, onDismiss: {
                 isPresented = false
             }, content: {
-                TextSwiftList()
+                TextSwiftList(films: films)
             })
         }
     }
