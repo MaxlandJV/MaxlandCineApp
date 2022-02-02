@@ -13,6 +13,7 @@ struct TextSwiftList: View {
     @State var startDate = Date()
     @State var sinopsis = ""
     @State var score = 0
+    @State var film: Film
     @StateObject var films: Films
     var update: Bool
     
@@ -40,7 +41,7 @@ struct TextSwiftList: View {
             }
             else {
                 Button {
-                    //films.updateFilm(film: <#T##Binding<Film>#>, filmName: <#T##String#>, startDate: <#T##Date#>, sinopsis: <#T##String#>, score: <#T##Int#>)
+                    films.updateFilm(film: $film, filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
                     dismiss()
                 } label: {
                     Label("Actualizar", systemImage: "doc.fill.badge.plus")
@@ -48,12 +49,19 @@ struct TextSwiftList: View {
                 }.buttonStyle(.bordered)
             }
         }
+        .onAppear{
+            filmName = film.filmName
+            startDate = film.startDate
+            sinopsis = film.sinopsis
+            score = film.score
+        }
     }
 }
 
 struct TextSwiftList_Previews: PreviewProvider {
     static var previews: some View {
         let films = Films()
-        TextSwiftList(films: films, update: false)
+        let film = Film(filmName: "", startDate: Date(), sinopsis: "", score: 0)
+        TextSwiftList(film: film, films: films, update: false)
     }
 }

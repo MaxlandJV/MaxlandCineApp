@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(films.filmsList) { filmItem in
-                NavigationLink(destination: TextSwiftList(films: films, update: true)) {
+                NavigationLink(destination: TextSwiftList(film: filmItem, films: films, update: true)) {
                     HStack {
                         Image(systemName: "film").font(.title)
                         VStack(alignment: .leading) {
@@ -53,7 +53,8 @@ struct ContentView: View {
             .sheet(isPresented: $isPresented, onDismiss: {
                 isPresented = false
             }, content: {
-                TextSwiftList(films: films, update: false)
+                let film = Film(filmName: "", startDate: Date(), sinopsis: "", score: 0)
+                TextSwiftList(film: film, films: films, update: false)
             })
         }
     }
