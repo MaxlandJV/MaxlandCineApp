@@ -45,11 +45,13 @@ final class Films: ObservableObject {
         encodeAndSaveAllFilms()
     }
     
-    func updateFilm(film: Binding<Film>, filmName: String, startDate: Date, sinopsis: String, score: Int) {
-        film.wrappedValue.filmName = filmName
-        film.wrappedValue.startDate = startDate
-        film.wrappedValue.sinopsis = sinopsis
-        film.wrappedValue.score = score
-        encodeAndSaveAllFilms()
+    func updateFilm(filmId: String, filmName: String, startDate: Date, sinopsis: String, score: Int) {
+        if let index = filmsList.index(where: {$0.id == filmId}) {
+            filmsList[index].filmName = filmName
+            filmsList[index].startDate = startDate
+            filmsList[index].sinopsis = sinopsis
+            filmsList[index].score = score
+            encodeAndSaveAllFilms()
+        }        
     }
 }

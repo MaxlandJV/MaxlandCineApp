@@ -41,7 +41,7 @@ struct TextSwiftList: View {
             }
             else {
                 Button {
-                    films.updateFilm(film: $film, filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
+                    films.updateFilm(filmId: film.id, filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
                     dismiss()
                 } label: {
                     Label("Actualizar", systemImage: "doc.fill.badge.plus")
