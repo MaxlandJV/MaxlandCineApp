@@ -14,13 +14,16 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(films.filmsList) { filmItem in
-                HStack {
-                    Image(systemName: "film").font(.title)
-                    VStack(alignment: .leading) {
-                        Text(filmItem.filmName).font(.caption).bold()
-                        HStack {
+                NavigationLink(destination: TextSwiftList(films: films, update: true)) {
+                    HStack {
+                        Image(systemName: "film").font(.title)
+                        VStack(alignment: .leading) {
+                            Text(filmItem.filmName).font(.caption).bold()
                             Text(filmItem.startDate, style: .date).font(.caption2).foregroundColor(.gray)
-                            Spacer()
+                        }
+                        .padding(.leading, 3)
+                        Spacer()
+                        HStack {
                             ForEach(1...5, id: \.self) { number in
                                 Image(systemName: "star.fill")
                                     .font(.caption2)
@@ -28,6 +31,7 @@ struct ContentView: View {
                                     .padding(.trailing, -8)
                             }
                         }
+                        .padding(.trailing, 10)
                     }
                 }
                 .swipeActions(edge: .leading) {
