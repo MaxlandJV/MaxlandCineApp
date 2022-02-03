@@ -18,6 +18,7 @@ final class MoviesViewModel: ObservableObject {
     func saveMovie(movieName: String, startDate: Date, sinopsis: String, score: Int) {
         let movie = MovieModel(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
         
+        // Utilizar insert para añadir al principio. Utilizar append para añadir al final
         movieList.insert(movie, at: 0)
         //movieList.append(movie)
         encodeAndSaveAllMovies()
