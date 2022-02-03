@@ -1,5 +1,5 @@
 //
-//  TextSwiftList.swift
+//  MovieView.swift
 //  TestSwiftApp
 //
 //  Created by Jordi Villaró on 29/1/22.
@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-struct TextSwiftList: View {
+struct MovieView: View {
     @Environment(\.dismiss) var dismiss
-    @State var filmName = ""
+    @State var movieName = ""
     @State var startDate = Date()
     @State var sinopsis = ""
     @State var score = 0
-    @State var film: Film
-    @StateObject var films: Films
+    @State var movie: MovieModel
+    @StateObject var movies: MoviesViewModel
     var update: Bool
     
     var body: some View {
         VStack {
             Form {
                 Section(header: Text("Película")) {
-                    TextField("Nombre de la película", text: $filmName)
+                    TextField("Nombre de la película", text: $movieName)
                     DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
                     Stepper("Puntuación: \(score)", value: $score, in: 0...5)
                 }
@@ -32,7 +32,7 @@ struct TextSwiftList: View {
             }
             if !update {
                 Button {
-                    films.saveFilm(filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
+                    movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
                     dismiss()
                 } label: {
                     Label("Guardar", systemImage: "doc.fill.badge.plus")
@@ -41,7 +41,7 @@ struct TextSwiftList: View {
             }
             else {
                 Button {
-                    films.updateFilm(filmId: film.id, filmName: filmName, startDate: startDate, sinopsis: sinopsis, score: score)
+                    movies.updateMovie(movieId: movie.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
                     dismiss()
                 } label: {
                     Label("Actualizar", systemImage: "doc.fill.badge.plus")
@@ -50,18 +50,18 @@ struct TextSwiftList: View {
             }
         }
         .onAppear{
-            filmName = film.filmName
-            startDate = film.startDate
-            sinopsis = film.sinopsis
-            score = film.score
+            movieName = movie.movieName
+            startDate = movie.startDate
+            sinopsis = movie.sinopsis
+            score = movie.score
         }
     }
 }
 
-struct TextSwiftList_Previews: PreviewProvider {
+struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        let films = Films()
-        let film = Film(filmName: "", startDate: Date(), sinopsis: "", score: 0)
-        TextSwiftList(film: film, films: films, update: false)
+        let movies = MoviesViewModel()
+        let movie = MovieModel(movieName: "", startDate: Date(), sinopsis: "", score: 0)
+        MovieView(movie: movie, movies: movies, update: false)
     }
 }
