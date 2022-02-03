@@ -19,7 +19,8 @@ struct MovieView: View {
     
     var body: some View {
         VStack {
-            Form {
+            // Cambiar Form por List para poder aplicar estilos al formulario con .listStyle
+            List {
                 Section(header: Text("Película")) {
                     TextField("Nombre de la película", text: $movieName)
                     DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
@@ -27,9 +28,10 @@ struct MovieView: View {
                 }
                 Section(header: Text("Sinopsis")) {
                     TextEditor(text: $sinopsis)
-                        .frame(height: 100)
+                        .frame(height: 200)
                 }
             }
+            .listStyle(.grouped)
             if !update {
                 Button {
                     movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
@@ -49,6 +51,7 @@ struct MovieView: View {
                 }.buttonStyle(.bordered)
             }
         }
+        .navigationTitle(movie.movieName)
         .onAppear{
             movieName = movie.movieName
             startDate = movie.startDate
