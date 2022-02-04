@@ -14,6 +14,7 @@
 		8A46CAD827A54BBD000DC7C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A46CAD727A54BBD000DC7C4 /* Preview Assets.xcassets */; };
 		8A611CDC27A6ACD200114E69 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A611CDB27A6ACD200114E69 /* MovieModel.swift */; };
 		8A611CDE27A6ACDE00114E69 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A611CDD27A6ACDE00114E69 /* MovieViewModel.swift */; };
+		8A65046127ACFD9B00D556E0 /* MovieListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65046027ACFD9B00D556E0 /* MovieListRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		8A46CAD727A54BBD000DC7C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A611CDB27A6ACD200114E69 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		8A611CDD27A6ACDE00114E69 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		8A65046027ACFD9B00D556E0 /* MovieListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				8A46CAD027A54BBC000DC7C4 /* TestSwiftAppApp.swift */,
 				8A46CAD227A54BBC000DC7C4 /* MovieListView.swift */,
+				8A65046027ACFD9B00D556E0 /* MovieListRowView.swift */,
 				8A21FDFE27A5AB4800D115A6 /* MovieView.swift */,
 				8A611CDB27A6ACD200114E69 /* MovieModel.swift */,
 				8A611CDD27A6ACDE00114E69 /* MovieViewModel.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				8A611CDE27A6ACDE00114E69 /* MovieViewModel.swift in Sources */,
 				8A21FDFF27A5AB4800D115A6 /* MovieView.swift in Sources */,
+				8A65046127ACFD9B00D556E0 /* MovieListRowView.swift in Sources */,
 				8A611CDC27A6ACD200114E69 /* MovieModel.swift in Sources */,
 				8A46CAD327A54BBC000DC7C4 /* MovieListView.swift in Sources */,
 				8A46CAD127A54BBC000DC7C4 /* TestSwiftAppApp.swift in Sources */,
