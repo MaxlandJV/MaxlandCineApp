@@ -19,15 +19,14 @@ struct MovieListRowView: View {
             }
             .padding(.leading, 3)
             Spacer()
-            HStack {
+            HStack(spacing: 0) {
                 ForEach(1...5, id: \.self) { number in
                     Image(systemName: "star.fill")
                         .font(.caption2)
                         .foregroundColor(number > movie.score ? Color(.systemGray6) : .yellow)
-                        .padding(.trailing, -8)
+                        //.padding(.trailing, -8)
                 }
             }
-            .padding(.trailing, 10)
         }
     }
 }

@@ -22,7 +22,7 @@ struct MovieView: View {
             // Cambiar Form por List para poder aplicar estilos al formulario con .listStyle
             List {
                 Section(header: Text("Película")) {
-                    TextField("Nombre de la película", text: $movieName)
+                    if !update { TextField("Nombre de la película", text: $movieName) }
                     DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
                     Stepper("Puntuación: \(score)", value: $score, in: 0...5)
                 }
