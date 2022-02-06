@@ -19,19 +19,36 @@ struct MovieView: View {
     
     var body: some View {
         VStack {
-            // Cambiar Form por List para poder aplicar estilos al formulario con .listStyle
-            List {
-                Section(header: Text("Película")) {
-                    if !update { TextField("Nombre de la película", text: $movieName) }
-                    DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
-                    Stepper("Puntuación: \(score)", value: $score, in: 0...5)
-                }
-                Section(header: Text("Sinopsis")) {
-                    TextEditor(text: $sinopsis)
-                        .frame(height: 200)
+            if !update {
+                TextField("Nombre de la película", text: $movieName)
+                    .padding(10)
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(10)
+            }
+            else {
+                HStack {
+                    Text(movie.movieName)
+                        .font(.headline)
+                    Spacer()
                 }
             }
-            .listStyle(.grouped)
+            DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
+            Stepper("Puntuación: \(score)", value: $score, in: 0...5)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
+            Spacer()
+            HStack() {
+                Text("Sinopsis")
+                    .font(.headline)
+                Spacer()
+            }
+            TextEditor(text: $sinopsis)
+                .frame(height: 350)
+                .colorMultiply(Color(UIColor.systemGray6))
+                .cornerRadius(10)
+            Spacer()
             if !update {
                 Button {
                     movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
@@ -50,8 +67,10 @@ struct MovieView: View {
                         .padding()
                 }.buttonStyle(.bordered)
             }
+            Spacer()
         }
-        .navigationTitle(movie.movieName)
+        .padding()
+        .navigationTitle("Película")
         .onAppear{
             movieName = movie.movieName
             startDate = movie.startDate
