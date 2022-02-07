@@ -14,23 +14,25 @@ struct MovieView: View {
     @State var sinopsis = ""
     @State var score = 0
     @State var movie: MovieModel
+    @State var showingAlert = false
     @StateObject var movies: MoviesViewModel
     var update: Bool
     
     var body: some View {
         VStack {
             if !update {
+                HStack {
+                    Text("Nueva película")
+                        .padding(.top, 10)
+                        .padding(.bottom, 10)
+                        .font(.title2)
+                    Spacer()
+                }
                 TextField("Nombre de la película", text: $movieName)
                     .padding(10)
                     .background(Color(UIColor.systemGray6))
                     .cornerRadius(10)
-            }
-            else {
-                HStack {
-                    Text(movie.movieName)
-                        .font(.headline)
-                    Spacer()
-                }
+                    .disableAutocorrection(true)
             }
             DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
                 .padding(.top, 10)
@@ -51,12 +53,19 @@ struct MovieView: View {
             Spacer()
             if !update {
                 Button {
-                    movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
-                    dismiss()
+                    if (movieName.isEmpty) {
+                        showingAlert = true
+                    }
+                    else {
+                        movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
+                        dismiss()
+                    }
                 } label: {
                     Label("Guardar", systemImage: "doc.fill.badge.plus")
                         .padding()
-                }.buttonStyle(.bordered)
+                }
+                .buttonStyle(.bordered)
+                .alert("El nombre de la película es un dato obligatorio.", isPresented: $showingAlert) {}
             }
             else {
                 Button {
@@ -65,12 +74,13 @@ struct MovieView: View {
                 } label: {
                     Label("Actualizar", systemImage: "doc.fill.badge.plus")
                         .padding()
-                }.buttonStyle(.bordered)
+                }
+                .buttonStyle(.bordered)
             }
             Spacer()
         }
         .padding()
-        .navigationTitle("Película")
+        .navigationBarTitle(movie.movieName, displayMode: .inline)
         .onAppear{
             movieName = movie.movieName
             startDate = movie.startDate
