@@ -13,7 +13,7 @@ struct MovieView: View {
     @State var startDate = Date()
     @State var sinopsis = ""
     @State var score = 0
-    @State var movie: MovieModel
+    @State var movie: MovieModel?
     @State var showingAlert = false
     @StateObject var movies: MoviesViewModel
     var update: Bool
@@ -69,7 +69,7 @@ struct MovieView: View {
             }
             else {
                 Button {
-                    movies.updateMovie(movieId: movie.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
+                    movies.updateMovie(movieId: movie!.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
                     dismiss()
                 } label: {
                     Label("Actualizar", systemImage: "doc.fill.badge.plus")
@@ -80,12 +80,14 @@ struct MovieView: View {
             Spacer()
         }
         .padding()
-        .navigationBarTitle(movie.movieName, displayMode: .inline)
-        .onAppear{
-            movieName = movie.movieName
-            startDate = movie.startDate
-            sinopsis = movie.sinopsis
-            score = movie.score
+        .navigationBarTitle(movie != nil ? movie!.movieName : "", displayMode: .inline)
+        .onAppear {
+            if movie != nil {
+                movieName = movie!.movieName
+                startDate = movie!.startDate
+                sinopsis = movie!.sinopsis
+                score = movie!.score
+            }
         }
     }
 }
@@ -93,7 +95,6 @@ struct MovieView: View {
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
         let movies = MoviesViewModel()
-        let movie = MovieModel(movieName: "", startDate: Date(), sinopsis: "", score: 0)
-        MovieView(movie: movie, movies: movies, update: false)
+        MovieView(movie: nil, movies: movies, update: false)
     }
 }

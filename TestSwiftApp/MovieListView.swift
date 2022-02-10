@@ -36,8 +36,7 @@ struct MovieListView: View {
             .sheet(isPresented: $isPresented, onDismiss: {
                 isPresented = false
             }, content: {
-                let film = MovieModel(movieName: "", startDate: Date(), sinopsis: "", score: 0)
-                MovieView(movie: film, movies: movies, update: false)
+                MovieView(movie: nil, movies: movies, update: false)
             })
         }
     }
