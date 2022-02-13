@@ -21,12 +21,14 @@ struct MovieListRowView: View {
                             Image(systemName: "star.fill")
                                 .font(.caption2)
                                 .foregroundColor(number > movie.score ? Color(.systemGray6) : .yellow)
-                                //.padding(.trailing, -8)
                         }
                     }
                     Text("-")
-                        .font(.caption2).foregroundColor(.gray)
-                    Text(movie.startDate, style: .date).font(.caption2).foregroundColor(.gray)
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                    Text(movie.startDate, style: .date)
+                        .font(.caption2)
+                        .foregroundColor(.gray)
                 }
             }
         }

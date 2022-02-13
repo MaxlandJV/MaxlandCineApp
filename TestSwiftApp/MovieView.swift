@@ -23,8 +23,7 @@ struct MovieView: View {
             if !update {
                 HStack {
                     Text("Nueva película")
-                        .padding(.top, 10)
-                        .padding(.bottom, 10)
+                        .padding(.vertical, 10)
                         .font(.title2)
                     Spacer()
                 }
@@ -35,11 +34,9 @@ struct MovieView: View {
                     .disableAutocorrection(true)
             }
             DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
-                .padding(.top, 10)
-                .padding(.bottom, 10)
+                .padding(.vertical, 10)
             Stepper("Puntuación: \(score)", value: $score, in: 0...5)
-                .padding(.top, 10)
-                .padding(.bottom, 10)
+                .padding(.vertical, 10)
             Spacer()
             HStack() {
                 Text("Sinopsis")
