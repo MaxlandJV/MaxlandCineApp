@@ -44,7 +44,7 @@ struct MovieView: View {
                 Spacer()
             }
             TextEditor(text: $sinopsis)
-                .frame(height: 350)
+                .frame(height: .infinity)
                 .colorMultiply(Color(UIColor.systemGray6))
                 .cornerRadius(10)
             Spacer()
@@ -93,5 +93,6 @@ struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
         let movies = MoviesViewModel()
         MovieView(movie: nil, movies: movies, update: false)
+            
     }
 }
