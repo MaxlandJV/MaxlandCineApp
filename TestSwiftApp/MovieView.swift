@@ -28,24 +28,24 @@ struct MovieView: View {
                     Spacer()
                 }
                 TextField("Nombre de la película", text: $movieName)
-                    .padding(10)
+                    .padding()
                     .background(Color(UIColor.systemGray6))
                     .cornerRadius(10)
                     .disableAutocorrection(true)
             }
             DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
-                .padding(.vertical, 10)
+                .padding(.vertical)
             Stepper("Puntuación: \(score)", value: $score, in: 0...5)
-                .padding(.vertical, 10)
+                .padding(.vertical)
             Spacer()
             HStack() {
-                Text("Sinopsis")
+                Text("Sinopsis:")
                     .font(.headline)
                 Spacer()
             }
             TextEditor(text: $sinopsis)
-                .frame(height: .infinity)
-                .colorMultiply(Color(UIColor.systemGray6))
+                .frame(maxHeight: .infinity)
+                .colorMultiply(.white)
                 .cornerRadius(10)
             Spacer()
             if !update {
@@ -59,7 +59,8 @@ struct MovieView: View {
                     }
                 } label: {
                     Label("Guardar", systemImage: "doc.fill.badge.plus")
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)
                 }
                 .buttonStyle(.bordered)
                 .alert("El nombre de la película es un dato obligatorio.", isPresented: $showingAlert) {}
@@ -69,8 +70,9 @@ struct MovieView: View {
                     movies.updateMovie(movieId: movie!.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
                     dismiss()
                 } label: {
-                    Label("Actualizar", systemImage: "doc.fill.badge.plus")
-                        .padding()
+                    Label("Actualizar", systemImage: "doc.badge.gearshape.fill")
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)
                 }
                 .buttonStyle(.bordered)
             }
