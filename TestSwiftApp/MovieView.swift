@@ -94,7 +94,6 @@ struct MovieView: View {
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
         let movies = MoviesViewModel()
-        MovieView(movie: nil, movies: movies, update: false)
-            
+        MovieView(movies: movies, update: false)
     }
 }

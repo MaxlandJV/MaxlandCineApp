@@ -37,7 +37,6 @@ struct MovieListRowView: View {
 
 struct MovieListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        let movie = MovieModel(movieName: "Nombre de la película bastante largo para que quepa", startDate: Date(), sinopsis: "", score: 5)
-        MovieListRowView(movie: movie)
+        MovieListRowView(movie: MovieModel(movieName: "Nombre de la película bastante largo para que quepa", startDate: Date(), sinopsis: "", score: 5))
     }
 }
