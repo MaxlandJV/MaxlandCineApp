@@ -49,31 +49,20 @@ struct MovieView: View {
                 .cornerRadius(10)
             Spacer()
             if !update {
-                Button {
-                    if (movieName.isEmpty) {
-                        showingAlert = true
-                    }
-                    else {
-                        movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
-                        dismiss()
-                    }
-                } label: {
+                Button(action: newMovie, label: {
                     Label("Guardar", systemImage: "doc.fill.badge.plus")
                         .padding(.horizontal)
                         .padding(.vertical, 5)
-                }
+                })
                 .buttonStyle(.bordered)
                 .alert("El nombre de la película es un dato obligatorio.", isPresented: $showingAlert) {}
             }
             else {
-                Button {
-                    movies.updateMovie(movieId: movie!.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
-                    dismiss()
-                } label: {
+                Button(action: updateMovie, label: {
                     Label("Actualizar", systemImage: "doc.badge.gearshape.fill")
                         .padding(.horizontal)
                         .padding(.vertical, 5)
-                }
+                })
                 .buttonStyle(.bordered)
             }
             Spacer()
@@ -88,6 +77,23 @@ struct MovieView: View {
                 score = movie!.score
             }
         }
+    }
+    
+    // MARK: Crear nueva película
+    func newMovie() {
+        if (movieName.isEmpty) {
+            showingAlert = true
+        }
+        else {
+            movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
+            dismiss()
+        }
+    }
+    
+    // MARK: Actualizar una película existente
+    func updateMovie() {
+        movies.updateMovie(movieId: movie!.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
+        dismiss()
     }
 }
 
