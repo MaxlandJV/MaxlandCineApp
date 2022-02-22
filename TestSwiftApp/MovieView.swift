@@ -49,13 +49,22 @@ struct MovieView: View {
                 .cornerRadius(10)
             Spacer()
             if !update {
-                Button(action: newMovie, label: {
-                    Label("Guardar", systemImage: "doc.fill.badge.plus")
-                        .padding(.horizontal)
-                        .padding(.vertical, 5)
-                })
-                .buttonStyle(.bordered)
-                .alert("El nombre de la película es un dato obligatorio.", isPresented: $showingAlert) {}
+                HStack {
+                    Button(action: newMovie, label: {
+                        Label("Guardar", systemImage: "doc.fill.badge.plus")
+                            .padding(.horizontal)
+                            .padding(.vertical, 5)
+                    })
+                        .buttonStyle(.bordered)
+                        .alert("El nombre de la película es un dato obligatorio.", isPresented: $showingAlert) {}
+                    
+                    Button(action: { dismiss() }) {
+                        Label("Cancelar", systemImage: "xmark")
+                            .padding(.horizontal)
+                            .padding(.vertical, 5)
+                    }
+                    .buttonStyle(.bordered)
+                }
             }
             else {
                 Button(action: updateMovie, label: {
@@ -63,7 +72,7 @@ struct MovieView: View {
                         .padding(.horizontal)
                         .padding(.vertical, 5)
                 })
-                .buttonStyle(.bordered)
+                    .buttonStyle(.bordered)
             }
             Spacer()
         }
@@ -83,8 +92,7 @@ struct MovieView: View {
     func newMovie() {
         if (movieName.isEmpty) {
             showingAlert = true
-        }
-        else {
+        } else {
             movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
             dismiss()
         }
