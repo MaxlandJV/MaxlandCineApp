@@ -29,15 +29,13 @@ struct MovieListView: View {
             .listStyle(PlainListStyle())
             .navigationTitle(Text("Películas"))
             .navigationBarItems(trailing: Button {
-                isPresented = true
+                isPresented.toggle()
             } label: {
                 Text("Añadir película")
             })
-            .sheet(isPresented: $isPresented, onDismiss: {
-                isPresented = false
-            }, content: {
+            .sheet(isPresented: $isPresented) {
                 MovieView(movies: movies, update: false)
-            })
+            }
         }
     }
 }
