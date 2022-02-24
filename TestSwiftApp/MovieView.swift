@@ -44,10 +44,10 @@ struct MovieView: View {
                 Spacer()
             }
             TextEditor(text: $sinopsis)
-                .frame(maxHeight: .infinity)
-                .colorMultiply(.white)
+                //.frame(maxHeight: .infinity) // No es necesario porque el TextEditor por defecto ocupa todo el espacio disponible
+                .colorMultiply(Color(UIColor.systemGray6)) // .background no funciona en TextEditor. Hay que utilizar .colorMultiply
                 .cornerRadius(10)
-            Spacer()
+            //Spacer() // No es necesario porque el TextEditor por defecto ocupa todo el espacio disponible
             if !update {
                 HStack {
                     Button(action: newMovie, label: {
