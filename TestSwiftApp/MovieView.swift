@@ -45,7 +45,7 @@ struct MovieView: View {
             }
             TextEditor(text: $sinopsis)
                 //.frame(maxHeight: .infinity) // No es necesario porque el TextEditor por defecto ocupa todo el espacio disponible
-                .colorMultiply(Color(UIColor.systemGray6)) // .background no funciona en TextEditor. Hay que utilizar .colorMultiply
+                .colorMultiply(.white) // .background no funciona en TextEditor. Hay que utilizar .colorMultiply, además en .white para que funcione en el modo oscuro
                 .cornerRadius(10)
             //Spacer() // No es necesario porque el TextEditor por defecto ocupa todo el espacio disponible
             if !update {
