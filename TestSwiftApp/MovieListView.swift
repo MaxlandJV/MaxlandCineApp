@@ -31,7 +31,7 @@ struct MovieListView: View {
             .navigationBarItems(trailing: Button {
                 isPresented.toggle()
             } label: {
-                Text("Añadir película")
+                Image(systemName: "plus.circle")
             })
             .sheet(isPresented: $isPresented) {
                 MovieView(movies: movies, update: false)
