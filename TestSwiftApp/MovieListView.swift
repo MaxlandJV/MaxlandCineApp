@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieListView: View {
-    @StateObject var movies = MoviesViewModel()
+    @StateObject var movies = MoviesViewModel() // En las inicializaciones mejor @StateObject
     @State var isPresented: Bool = false
     
     var body: some View {
