@@ -44,10 +44,8 @@ struct MovieView: View {
                 Spacer()
             }
             TextEditor(text: $sinopsis)
-                //.frame(maxHeight: .infinity) // No es necesario porque el TextEditor por defecto ocupa todo el espacio disponible
-                .colorMultiply(.white) // .background no funciona en TextEditor. Hay que utilizar .colorMultiply, además en .white para que funcione en el modo oscuro
+                .colorMultiply(.white)
                 .cornerRadius(10)
-            //Spacer() // No es necesario porque el TextEditor por defecto ocupa todo el espacio disponible
             if !update {
                 HStack {
                     Button(action: newMovie, label: {
@@ -79,11 +77,11 @@ struct MovieView: View {
         .padding()
         .navigationBarTitle(movie != nil ? movie!.movieName : "", displayMode: .inline)
         .onAppear {
-            if movie != nil {
-                movieName = movie!.movieName
-                startDate = movie!.startDate
-                sinopsis = movie!.sinopsis
-                score = movie!.score
+            if let updatedMovie = movie {
+                movieName = updatedMovie.movieName
+                startDate = updatedMovie.startDate
+                sinopsis = updatedMovie.sinopsis
+                score = updatedMovie.score
             }
         }
     }
@@ -100,7 +98,9 @@ struct MovieView: View {
     
     // MARK: Actualizar una película existente
     func updateMovie() {
-        movies.updateMovie(movieId: movie!.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
+        if let updatedMovie = movie {
+            movies.updateMovie(movieId: updatedMovie.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
+        }
         dismiss()
     }
 }
