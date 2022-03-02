@@ -15,7 +15,7 @@ struct MovieView: View {
     @State var score = 0
     @State var movie: MovieModel?
     @State var showingAlert = false
-    @ObservedObject var movies: MoviesViewModel // Cuando se pasa como parámetro desde otra vista mejor @ObservedObject
+    @ObservedObject var movies: MoviesViewModel
     var update: Bool
     
     var body: some View {
@@ -75,7 +75,7 @@ struct MovieView: View {
             Spacer()
         }
         .padding()
-        .navigationBarTitle(movie != nil ? movie!.movieName : "", displayMode: .inline)
+        .navigationBarTitle(movie?.movieName ?? "", displayMode: .inline)
         .onAppear {
             if let updatedMovie = movie {
                 movieName = updatedMovie.movieName
