@@ -12,31 +12,35 @@ struct MovieListView: View {
     @State var isPresented: Bool = false
     
     var body: some View {
-        NavigationView {
-            List(movies.movieList) { movieItem in
-                NavigationLink(destination: MovieView(movie: movieItem, movies: movies, update: true)) {
-                    MovieListRowView(movie: movieItem)
-                }
-                .swipeActions(edge: .leading) {
-                    Button {
-                        movies.deleteMovie(id: movieItem.id)
-                    } label: {
-                        Label("Eliminar", systemImage: "trash.fill")
+        ZStack {
+            LinearGradient(colors: [Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing)
+            NavigationView {
+                List(movies.movieList) { movieItem in
+                    NavigationLink(destination: MovieView(movie: movieItem, movies: movies, update: true)) {
+                        MovieListRowView(movie: movieItem)
                     }
-                    .tint(.red)
+                    .swipeActions(edge: .leading) {
+                        Button {
+                            movies.deleteMovie(id: movieItem.id)
+                        } label: {
+                            Label("Eliminar", systemImage: "trash.fill")
+                        }
+                        .tint(.red)
+                    }
                 }
-            }
-            .listStyle(PlainListStyle())
-            .navigationTitle(Text("Películas"))
-            .navigationBarItems(trailing: Button {
-                isPresented.toggle()
-            } label: {
-                Image(systemName: "plus.circle")
-            })
-            .sheet(isPresented: $isPresented) {
-                MovieView(movies: movies, update: false)
+                .listStyle(PlainListStyle())
+                .navigationTitle(Text("Películas"))
+                .navigationBarItems(trailing: Button {
+                    isPresented.toggle()
+                } label: {
+                    Image(systemName: "plus.circle")
+                })
+                .sheet(isPresented: $isPresented) {
+                    MovieView(movies: movies, update: false)
+                }
             }
         }
+        .ignoresSafeArea()
     }
 }
 
