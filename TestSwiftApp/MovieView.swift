@@ -51,15 +51,13 @@ struct MovieView: View {
                     Button(action: newMovie, label: {
                         Label("Guardar", systemImage: "doc.fill.badge.plus")
                             .padding(.horizontal)
-                            .padding(.vertical, 5)
                     })
-                        .buttonStyle(.bordered)
+                        .buttonStyle(.borderedProminent)
                         .alert("El nombre de la película es un dato obligatorio.", isPresented: $showingAlert) {}
                     
                     Button(action: { dismiss() }) {
                         Label("Cancelar", systemImage: "xmark")
                             .padding(.horizontal)
-                            .padding(.vertical, 5)
                     }
                     .buttonStyle(.bordered)
                 }
@@ -68,9 +66,8 @@ struct MovieView: View {
                 Button(action: updateMovie, label: {
                     Label("Actualizar", systemImage: "doc.badge.gearshape.fill")
                         .padding(.horizontal)
-                        .padding(.vertical, 5)
                 })
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.borderedProminent)
             }
             Spacer()
         }
