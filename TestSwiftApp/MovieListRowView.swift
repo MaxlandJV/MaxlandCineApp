@@ -28,7 +28,7 @@ struct MovieListRowView: View {
                         .foregroundColor(.gray)
                     Text(movie.startDate, style: .date)
                         .font(.caption2)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.black)
                 }
             }
         }

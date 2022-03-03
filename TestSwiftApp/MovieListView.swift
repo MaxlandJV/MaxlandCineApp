@@ -10,15 +10,10 @@ import SwiftUI
 struct MovieListView: View {
     @StateObject var movies = MoviesViewModel()
     @State var isPresented: Bool = false
-    
-    init() {
-        UITableView.appearance().backgroundColor = UIColor.clear
-        UITableViewCell.appearance().backgroundColor = .clear
-    }
-    
+       
     var body: some View {
         NavigationView {
-            LinearGradient(colors: [Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(colors: [Color(#colorLiteral(red: 0.4905710816, green: 0.8656919599, blue: 1, alpha: 1)), Color(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
                 .overlay(
                     List(movies.movieList) { movieItem in
@@ -33,17 +28,18 @@ struct MovieListView: View {
                             }
                             .tint(.red)
                         }
+                        .listRowBackground(Color.white.opacity(0))
                     }
-                        .listStyle(PlainListStyle())
-                        .navigationTitle(Text("Películas"))
-                        .navigationBarItems(trailing: Button {
-                            isPresented.toggle()
-                        } label: {
-                            Image(systemName: "plus.circle")
-                        })
-                        .sheet(isPresented: $isPresented) {
-                            MovieView(movies: movies, update: false)
-                        }
+                    .listStyle(PlainListStyle())
+                    .navigationTitle(Text("Películas"))
+                    .navigationBarItems(trailing: Button {
+                        isPresented.toggle()
+                    } label: {
+                        Image(systemName: "plus.circle")
+                    })
+                    .sheet(isPresented: $isPresented) {
+                        MovieView(movies: movies, update: false)
+                    }
                 )
         }
     }
