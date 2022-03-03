@@ -9,13 +9,18 @@ import SwiftUI
 
 struct MovieView: View {
     @Environment(\.dismiss) var dismiss
+    
+    @FocusState var movieNameInfocus: Bool // @FocusState no se tiene que inicializar, solamente definir
+    
     @State var movieName = ""
     @State var startDate = Date()
     @State var sinopsis = ""
     @State var score = 0
     @State var movie: MovieModel?
     @State var showingAlert = false
+    
     @ObservedObject var movies: MoviesViewModel
+    
     var update: Bool
     
     var body: some View {
@@ -28,6 +33,7 @@ struct MovieView: View {
                     Spacer()
                 }
                 TextField("Nombre de la película", text: $movieName)
+                    .focused($movieNameInfocus)
                     .padding()
                     .background(Color(UIColor.systemGray6))
                     .cornerRadius(10)
@@ -79,6 +85,14 @@ struct MovieView: View {
                 startDate = updatedMovie.startDate
                 sinopsis = updatedMovie.sinopsis
                 score = updatedMovie.score
+            } else {
+                // Poner el foco en el campo del nombre de la película
+                // Si se cambia el valor de "movieNameInFocus" no funciona
+                // Hay que hacerlo desde algún disparador como un botón
+                // o en este caso desde un evento asíncrono
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    movieNameInfocus = true
+                }
             }
         }
     }
