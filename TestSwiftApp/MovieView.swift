@@ -24,7 +24,7 @@ struct MovieView: View {
     var update: Bool
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             if !update {
                 HStack {
                     Text("Nueva película")
@@ -41,10 +41,25 @@ struct MovieView: View {
             }
             DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
                 .padding(.vertical)
-            Stepper("Puntuación: \(score)", value: $score, in: 0...5)
-                .padding(.vertical)
+            
+            //            HStack {
+            //                Stepper("Puntuación: \(score)", value: $score, in: 0...5)
+            //                    .padding(.vertical)
+            HStack {
+                Text("Puntuación:")
+                Spacer()
+                ForEach(1...5, id: \.self) { number in
+                    Image(systemName: "star.fill")
+                        //.font(.caption)
+                        .foregroundColor(number > score ? Color(.systemGray6) : .yellow)
+                        .onTapGesture {
+                            score = number
+                        }
+                }
+            }
+            //           }
             Spacer()
-            HStack() {
+            HStack {
                 Text("Sinopsis:")
                     .font(.headline)
                 Spacer()
