@@ -39,12 +39,13 @@ struct MovieView: View {
                     .cornerRadius(10)
                     .disableAutocorrection(true)
             }
+            Divider()
+            
             DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
                 .padding(.vertical)
             
-            //            HStack {
-            //                Stepper("Puntuación: \(score)", value: $score, in: 0...5)
-            //                    .padding(.vertical)
+            Divider()
+            
             HStack {
                 Text("Puntuación:")
                 Spacer()
@@ -57,8 +58,9 @@ struct MovieView: View {
                         }
                 }
             }
-            //           }
-            Spacer()
+            
+            Divider()
+            
             HStack {
                 Text("Sinopsis:")
                     .font(.headline)
@@ -67,6 +69,9 @@ struct MovieView: View {
             TextEditor(text: $sinopsis)
                 .colorMultiply(.white)
                 .cornerRadius(10)
+            
+            Divider()
+            
             if !update {
                 HStack {
                     Button(action: newMovie, label: {
@@ -90,7 +95,6 @@ struct MovieView: View {
                 })
                     .buttonStyle(.borderedProminent)
             }
-            Spacer()
         }
         .padding()
         .navigationBarTitle(movie?.movieName ?? "", displayMode: .inline)
