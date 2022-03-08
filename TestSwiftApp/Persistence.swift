@@ -13,8 +13,9 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            // Init test data ...
+        for x in 0..<10 {
+            let newMovie = Movie(context: viewContext)
+            newMovie.movieName = "Película \(x)"
         }
         do {
             try viewContext.save()
@@ -30,7 +31,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "<< Data Model filename without extension >>")
+        container = NSPersistentContainer(name: "MovieDataModel")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

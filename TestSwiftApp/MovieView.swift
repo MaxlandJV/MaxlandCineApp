@@ -51,7 +51,6 @@ struct MovieView: View {
                 Spacer()
                 ForEach(1...5, id: \.self) { number in
                     Image(systemName: "star.fill")
-                        //.font(.caption)
                         .foregroundColor(number > score ? Color(.systemGray6) : .yellow)
                         .onTapGesture {
                             score = number
