@@ -53,7 +53,7 @@ class MovieViewModel: ObservableObject {
         movie.sinopsis = sinopsis
         saveData()
     }
-    
+       
     func saveData() {
         do {
             try dataModel.viewContext.save()
