@@ -10,7 +10,7 @@ import SwiftUI
 struct MovieView: View {
     @Environment(\.dismiss) var dismiss
     
-    @FocusState var movieNameInfocus: Bool // @FocusState no se tiene que inicializar, solamente definir
+    @FocusState var movieNameInfocus: Bool
     
     @State var movieName = ""
     @State var showDate = Date()
