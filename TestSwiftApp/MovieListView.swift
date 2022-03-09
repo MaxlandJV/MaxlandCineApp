@@ -18,30 +18,7 @@ struct MovieListView: View {
                 .overlay(
                     List(movieViewModel.movieList) { movie in
                         NavigationLink(destination: MovieView(movie: movie, update: true)) {
-                            //VStack {
-                            //MovieListRowView(movie: movie)
-                            HStack {
-                                Image(systemName: "film").font(.title)
-                                VStack(alignment: .leading) {
-                                    Text(movie.movieName ?? "").font(.subheadline).bold()
-                                    HStack {
-                                        HStack(spacing: 0) {
-                                            ForEach(1...5, id: \.self) { number in
-                                                Image(systemName: "star.fill")
-                                                    .font(.caption2)
-                                                    .foregroundColor(number > movie.score ? Color(.systemGray6) : .yellow)
-                                            }
-                                        }
-                                        Text("-")
-                                            .font(.caption2)
-                                            .foregroundColor(.gray)
-                                        Text(movie.showDate ?? Date(), style: .date)
-                                            .font(.caption2)
-                                            .foregroundColor(Color.black)
-                                    }
-                                }
-                            }
-                            //}
+                            MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score)
                         }
                         .swipeActions(edge: .leading) {
                             Button {
