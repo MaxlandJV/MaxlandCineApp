@@ -1,5 +1,5 @@
 //
-//  MovieCoreDataViewModel.swift
+//  MovieViewModel.swift
 //  TestSwiftApp
 //
 //  Created by Jordi Villaró on 9/3/22.
@@ -7,7 +7,7 @@
 
 import CoreData
 
-class MovieCoreDataViewModel: ObservableObject {
+class MovieViewModel: ObservableObject {
     let dataModel: NSPersistentContainer
     @Published var movieList: [Movie] = []
     
@@ -40,8 +40,17 @@ class MovieCoreDataViewModel: ObservableObject {
         saveData()
     }
     
-    func deleteMovie(indexSet: IndexSet) {
-        
+    func deleteMovie(movie: Movie) {
+        dataModel.viewContext.delete(movie)
+        saveData()
+    }
+    
+    func updateMovie(movie: Movie, movieName: String, showDate: Date, sinopsis: String, score: Int16) {
+        movie.movieName = movieName
+        movie.showDate = showDate
+        movie.score = score
+        movie.sinopsis = sinopsis
+        saveData()
     }
     
     func saveData() {

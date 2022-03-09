@@ -16,10 +16,10 @@ struct MovieView: View {
     @State var showDate = Date()
     @State var sinopsis = ""
     @State var score: Int16 = 0
-    @State var movie: MovieModel?
+    @State var movie: Movie?
     @State var showingAlert = false
     
-    @ObservedObject var movieViewModel: MovieCoreDataViewModel
+    @ObservedObject var movieViewModel: MovieViewModel
     
     var update: Bool
     
@@ -99,9 +99,9 @@ struct MovieView: View {
         .navigationBarTitle(movie?.movieName ?? "", displayMode: .inline)
         .onAppear {
             if let updatedMovie = movie {
-                movieName = updatedMovie.movieName
-                showDate = updatedMovie.showDate
-                sinopsis = updatedMovie.sinopsis
+                movieName = updatedMovie.movieName ?? ""
+                showDate = updatedMovie.showDate ?? Date()
+                sinopsis = updatedMovie.sinopsis ?? ""
                 score = updatedMovie.score
             } else {
                 // Poner el foco en el campo del nombre de la película
@@ -127,16 +127,16 @@ struct MovieView: View {
     
     // MARK: Actualizar una película existente
     func updateMovie() {
-//        if let updatedMovie = movie {
-//            movies.updateMovie(movieId: updatedMovie.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
-//        }
+        if let updatedMovie = movie {
+            movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score)
+        }
         dismiss()
     }
 }
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        let movies = MovieCoreDataViewModel()
+        let movies = MovieViewModel()
         MovieView(movieViewModel: movies, update: false)
     }
 }

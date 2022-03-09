@@ -7,18 +7,9 @@
 
 import Foundation
 
-struct MovieModel: Codable, Identifiable {
-    let id: String
+struct MovieModel {
     var movieName: String
-    var startDate: Date
+    var showDate: Date
     var sinopsis: String
-    var score: Int
-    
-    init(movieName: String, startDate: Date = Date(), sinopsis: String = "", score: Int = 0) {
-        self.id = UUID().uuidString
-        self.movieName = movieName
-        self.startDate = startDate
-        self.sinopsis = sinopsis
-        self.score = score
-    }
+    var score: Int16
 }

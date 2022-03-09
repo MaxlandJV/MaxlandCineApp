@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct MovieListView: View {
-    @StateObject var movieViewModel = MovieCoreDataViewModel()
+    @StateObject var movieViewModel = MovieViewModel()
     @State var isPresented: Bool = false
        
     var body: some View {
@@ -18,13 +18,12 @@ struct MovieListView: View {
                 .ignoresSafeArea()
                 .overlay(
                     List(movieViewModel.movieList) { movie in
-//                            NavigationLink(destination: MovieView(movie: movieItem, movies: movies, update: true)) {
+                            NavigationLink(destination: MovieView(movie: movie, movieViewModel: movieViewModel, update: true)) {
                             MovieListRowView(movie: movie)
-//                        }
+                        }
                         .swipeActions(edge: .leading) {
                             Button {
-                                //movieViewModel.deleteMovie(indexSet: movie.indices)
-                                //movies.deleteMovie(id: movieItem.id)
+                                movieViewModel.deleteMovie(movie: movie)
                             } label: {
                                 Label("Eliminar", systemImage: "trash.fill")
                             }
