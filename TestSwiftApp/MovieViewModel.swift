@@ -9,6 +9,7 @@ import CoreData
 
 class MovieViewModel: ObservableObject {
     let dataModel: NSPersistentContainer
+    
     @Published var movieList: [Movie] = []
     
     init() {

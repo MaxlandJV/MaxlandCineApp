@@ -19,7 +19,7 @@ struct MovieView: View {
     @State var movie: Movie?
     @State var showingAlert = false
     
-    @ObservedObject var movieViewModel: MovieViewModel
+    @EnvironmentObject var movieViewModel: MovieViewModel
     
     var update: Bool
     
@@ -136,7 +136,6 @@ struct MovieView: View {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        let movies = MovieViewModel()
-        MovieView(movieViewModel: movies, update: false)
+        MovieView(update: false)
     }
 }

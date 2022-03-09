@@ -18,7 +18,7 @@ struct MovieListView: View {
                 .ignoresSafeArea()
                 .overlay(
                     List(movieViewModel.movieList) { movie in
-                            NavigationLink(destination: MovieView(movie: movie, movieViewModel: movieViewModel, update: true)) {
+                        NavigationLink(destination: MovieView(movie: movie, update: true)) {
                             MovieListRowView(movie: movie)
                         }
                         .swipeActions(edge: .leading) {
@@ -39,10 +39,11 @@ struct MovieListView: View {
                         Image(systemName: "plus.circle")
                     })
                     .sheet(isPresented: $isPresented) {
-                        MovieView(movieViewModel: movieViewModel, update: false)
+                        MovieView(update: false)
                     }
                 )
         }
+        .environmentObject(movieViewModel)
     }
 }
 
