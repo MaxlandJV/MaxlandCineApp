@@ -9,16 +9,7 @@ import SwiftUI
 import CoreData
 
 struct MovieListView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Movie.showDate, ascending: false)],
-//        animation: .default)
-//    private var items: FetchedResults<Movie>
-    
-    @FetchRequest(entity: Movie.entity(), sortDescriptors: []) var xMovies: FetchedResults<Movie>
-   
-    @StateObject var movies = MoviesViewModel()
+    @StateObject var movieViewModel = MovieCoreDataViewModel()
     @State var isPresented: Bool = false
        
     var body: some View {
@@ -26,19 +17,20 @@ struct MovieListView: View {
             LinearGradient(colors: [Color(#colorLiteral(red: 0.4905710816, green: 0.8656919599, blue: 1, alpha: 1)), Color(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
                 .overlay(
-                    List(xMovies) { movieItem in
+                    List(movieViewModel.movieList) { movie in
 //                            NavigationLink(destination: MovieView(movie: movieItem, movies: movies, update: true)) {
-                            MovieListRowView(movie: movieItem)
+                            MovieListRowView(movie: movie)
 //                        }
-//                        .swipeActions(edge: .leading) {
-//                            Button {
-//                                movies.deleteMovie(id: movieItem.id)
-//                            } label: {
-//                                Label("Eliminar", systemImage: "trash.fill")
-//                            }
-//                            .tint(.red)
-//                        }
-//                        .listRowBackground(Color.white.opacity(0))
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                //movieViewModel.deleteMovie(indexSet: movie.indices)
+                                //movies.deleteMovie(id: movieItem.id)
+                            } label: {
+                                Label("Eliminar", systemImage: "trash.fill")
+                            }
+                            .tint(.red)
+                        }
+                        .listRowBackground(Color.white.opacity(0))
                     }
                     .listStyle(PlainListStyle())
                     .navigationTitle(Text("Películas"))
@@ -48,7 +40,7 @@ struct MovieListView: View {
                         Image(systemName: "plus.circle")
                     })
                     .sheet(isPresented: $isPresented) {
-                        MovieView(movies: movies, update: false)
+                        MovieView(movieViewModel: movieViewModel, update: false)
                     }
                 )
         }
@@ -57,6 +49,6 @@ struct MovieListView: View {
 
 struct MovieListView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        MovieListView()
     }
 }

@@ -9,12 +9,9 @@ import SwiftUI
 
 @main
 struct TestSwiftAppApp: App {
-    let persistenceController = PersistenceController.shared
-    
     var body: some Scene {
         WindowGroup {
             MovieListView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

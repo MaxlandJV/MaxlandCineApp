@@ -13,13 +13,13 @@ struct MovieView: View {
     @FocusState var movieNameInfocus: Bool // @FocusState no se tiene que inicializar, solamente definir
     
     @State var movieName = ""
-    @State var startDate = Date()
+    @State var showDate = Date()
     @State var sinopsis = ""
-    @State var score = 0
+    @State var score: Int16 = 0
     @State var movie: MovieModel?
     @State var showingAlert = false
     
-    @ObservedObject var movies: MoviesViewModel
+    @ObservedObject var movieViewModel: MovieCoreDataViewModel
     
     var update: Bool
     
@@ -41,7 +41,7 @@ struct MovieView: View {
             }
             Divider()
             
-            DatePicker("Fecha de estreno",selection: $startDate, displayedComponents: .date)
+            DatePicker("Fecha de estreno",selection: $showDate, displayedComponents: .date)
                 .padding(.vertical)
             
             Divider()
@@ -53,7 +53,7 @@ struct MovieView: View {
                     Image(systemName: "star.fill")
                         .foregroundColor(number > score ? Color(.systemGray6) : .yellow)
                         .onTapGesture {
-                            score = number
+                            score = Int16(number)
                         }
                 }
             }
@@ -100,7 +100,7 @@ struct MovieView: View {
         .onAppear {
             if let updatedMovie = movie {
                 movieName = updatedMovie.movieName
-                startDate = updatedMovie.startDate
+                showDate = updatedMovie.showDate
                 sinopsis = updatedMovie.sinopsis
                 score = updatedMovie.score
             } else {
@@ -120,23 +120,23 @@ struct MovieView: View {
         if (movieName.isEmpty) {
             showingAlert = true
         } else {
-            movies.saveMovie(movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
+            movieViewModel.addMovie(movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score)
             dismiss()
         }
     }
     
     // MARK: Actualizar una película existente
     func updateMovie() {
-        if let updatedMovie = movie {
-            movies.updateMovie(movieId: updatedMovie.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
-        }
+//        if let updatedMovie = movie {
+//            movies.updateMovie(movieId: updatedMovie.id, movieName: movieName, startDate: startDate, sinopsis: sinopsis, score: score)
+//        }
         dismiss()
     }
 }
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        let movies = MoviesViewModel()
-        MovieView(movies: movies, update: false)
+        let movies = MovieCoreDataViewModel()
+        MovieView(movieViewModel: movies, update: false)
     }
 }

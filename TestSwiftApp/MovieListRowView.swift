@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieListRowView: View {
-    let movie: FetchedResults<Movie>.Element
+    let movie: Movie
     
     var body: some View {
         HStack {
@@ -37,6 +37,6 @@ struct MovieListRowView: View {
 
 //struct MovieListRowView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        MovieListRowView(movie: MovieModel(movieName: "Nombre de la película bastante largo para que quepa", startDate: Date(), sinopsis: "", score: 5))
+//        MovieListRowView(movie: Movie(movieName: "Nombre de la película bastante largo para que quepa", startDate: Date(), sinopsis: "", score: 5))
 //    }
 //}
