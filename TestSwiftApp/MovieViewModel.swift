@@ -24,6 +24,9 @@ class MovieViewModel: ObservableObject {
     
     func fetchMovies() {
         let request = NSFetchRequest<Movie>(entityName: "Movie")
+        let sort = NSSortDescriptor(keyPath: \Movie.showDate, ascending: false)
+        
+        request.sortDescriptors = [sort]
         
         do {
             movieList = try dataModel.viewContext.fetch(request)
