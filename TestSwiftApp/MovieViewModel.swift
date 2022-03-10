@@ -16,7 +16,7 @@ class MovieViewModel: ObservableObject {
         dataModel = NSPersistentContainer(name: "MovieDataModel")
         dataModel.loadPersistentStores { description, error in
             if let error = error {
-                print("Error cargando CoreData: \(error.localizedDescription)")
+                fatalError("Error cargando CoreData: \(error.localizedDescription)")
             }
         }
         fetchMovies()
@@ -31,7 +31,7 @@ class MovieViewModel: ObservableObject {
         do {
             movieList = try dataModel.viewContext.fetch(request)
         } catch let error {
-            print("Error recuperando datos: \(error.localizedDescription)")
+            fatalError("Error recuperando datos: \(error.localizedDescription)")
         }
     }
     
@@ -62,7 +62,7 @@ class MovieViewModel: ObservableObject {
             try dataModel.viewContext.save()
             fetchMovies()
         } catch let error {
-            print("Error actualizando datos: \(error.localizedDescription)")
+            fatalError("Error actualizando datos: \(error.localizedDescription)")
         }
     }
 }

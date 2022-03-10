@@ -41,7 +41,7 @@ struct MovieView: View {
             }
             Divider()
             
-            DatePicker("Fecha de estreno",selection: $showDate, displayedComponents: .date)
+            DatePicker("Fecha de visionado",selection: $showDate, displayedComponents: .date)
                 .padding(.vertical)
             
             Divider()
