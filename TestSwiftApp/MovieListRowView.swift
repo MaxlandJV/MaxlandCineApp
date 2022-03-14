@@ -40,6 +40,7 @@ struct MovieListRowView: View {
 
 struct MovieListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListRowView(movieName: "Prueba de película con nombre largo", showDate: Date(), sinopsis: "", score: 5)
+        MovieListRowView(movieName: "Prueba de película con nombre largo", showDate: Date(), sinopsis: "", score: 3)
+            .preferredColorScheme(.dark)
     }
 }

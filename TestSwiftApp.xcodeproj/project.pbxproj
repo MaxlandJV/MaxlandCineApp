@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A21FDFF27A5AB4800D115A6 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FDFE27A5AB4800D115A6 /* MovieView.swift */; };
+		8A24289627DF8117004977DB /* MovieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A24289527DF8117004977DB /* MovieSetupView.swift */; };
 		8A46CAD127A54BBC000DC7C4 /* TestSwiftAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A46CAD027A54BBC000DC7C4 /* TestSwiftAppApp.swift */; };
 		8A46CAD327A54BBC000DC7C4 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A46CAD227A54BBC000DC7C4 /* MovieListView.swift */; };
 		8A46CAD527A54BBD000DC7C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		8A21FDFE27A5AB4800D115A6 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
+		8A24289527DF8117004977DB /* MovieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSetupView.swift; sourceTree = "<group>"; };
 		8A46CACD27A54BBC000DC7C4 /* TestSwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A46CAD027A54BBC000DC7C4 /* TestSwiftAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwiftAppApp.swift; sourceTree = "<group>"; };
 		8A46CAD227A54BBC000DC7C4 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				8A46CAD227A54BBC000DC7C4 /* MovieListView.swift */,
 				8A65046027ACFD9B00D556E0 /* MovieListRowView.swift */,
 				8A21FDFE27A5AB4800D115A6 /* MovieView.swift */,
+				8A24289527DF8117004977DB /* MovieSetupView.swift */,
 				8AE847EC27D87E6700C2BC8F /* MovieViewModel.swift */,
 				8A61457127CBBD590042A5FE /* MovieDataModel.xcdatamodeld */,
 				8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 				8A46CAD327A54BBC000DC7C4 /* MovieListView.swift in Sources */,
 				8A61457327CBBD590042A5FE /* MovieDataModel.xcdatamodeld in Sources */,
 				8AE847ED27D87E6700C2BC8F /* MovieViewModel.swift in Sources */,
+				8A24289627DF8117004977DB /* MovieSetupView.swift in Sources */,
 				8A46CAD127A54BBC000DC7C4 /* TestSwiftAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
