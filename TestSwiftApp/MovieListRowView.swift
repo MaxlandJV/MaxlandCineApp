@@ -23,7 +23,7 @@ struct MovieListRowView: View {
                         ForEach(1...5, id: \.self) { number in
                             Image(systemName: "star.fill")
                                 .font(.caption2)
-                                .foregroundColor(number > score ?? 0 ? Color(.systemGray6) : .yellow)
+                                .foregroundColor(number > score ?? 0 ? Color("StarNoActive") : .yellow)
                         }
                     }
                     Text("-")

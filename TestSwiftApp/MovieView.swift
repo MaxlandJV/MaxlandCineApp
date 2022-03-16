@@ -51,7 +51,7 @@ struct MovieView: View {
                 Spacer()
                 ForEach(1...5, id: \.self) { number in
                     Image(systemName: "star.fill")
-                        .foregroundColor(number > score ? Color(.systemGray6) : .yellow)
+                        .foregroundColor(number > score ? Color("StarNoActive") : .orange)
                         .onTapGesture {
                             score = Int16(number)
                         }
@@ -136,6 +136,10 @@ struct MovieView: View {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView(update: false)
+        Group {
+            MovieView(update: false)
+                
+            MovieView(update: false)
+        }
     }
 }

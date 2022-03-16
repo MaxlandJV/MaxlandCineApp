@@ -13,7 +13,7 @@ struct MovieListView: View {
     
     var body: some View {
         NavigationView {
-            LinearGradient(colors: [Color(#colorLiteral(red: 0.4905710816, green: 0.8656919599, blue: 1, alpha: 1)), Color(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
                 .overlay(
                     List(movieViewModel.movieList) { movie in
