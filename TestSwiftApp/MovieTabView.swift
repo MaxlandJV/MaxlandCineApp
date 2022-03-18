@@ -21,7 +21,7 @@ struct MovieTabView: View {
                     Text("Configuración")
                 }
         }
-        .accentColor(.orange)
+        
     }
 }
 

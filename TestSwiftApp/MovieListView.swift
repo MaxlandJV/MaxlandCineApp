@@ -32,6 +32,9 @@ struct MovieListView: View {
                     }
                         .listStyle(PlainListStyle())
                         .navigationTitle(Text("Películas"))
+                        .navigationBarItems(leading: NavigationLink(destination: MovieSetupView()) {
+                            Image(systemName: "gearshape")
+                        })
                         .navigationBarItems(trailing: Button {
                             isPresented.toggle()
                         } label: {
