@@ -16,21 +16,29 @@ struct MovieListView: View {
             LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
                 .overlay(
-                    List(movieViewModel.movieList) { movie in
-                        NavigationLink(destination: MovieView(movie: movie, update: true)) {
-                            MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score)
+                    ZStack {
+                        if movieViewModel.movieList.isEmpty {
+                            MovieEmptyView()
+                                .transition(AnyTransition.opacity.animation(.easeIn))
                         }
-                        .swipeActions(edge: .leading) {
-                            Button {
-                                movieViewModel.deleteMovie(movie: movie)
-                            } label: {
-                                Label("Eliminar", systemImage: "trash.fill")
+                        else {
+                            List(movieViewModel.movieList) { movie in
+                                NavigationLink(destination: MovieView(movie: movie, update: true)) {
+                                    MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score)
+                                }
+                                .swipeActions(edge: .leading) {
+                                    Button {
+                                        movieViewModel.deleteMovie(movie: movie)
+                                    } label: {
+                                        Label("Eliminar", systemImage: "trash.fill")
+                                    }
+                                    .tint(.red)
+                                }
+                                .listRowBackground(Color.white.opacity(0))
                             }
-                            .tint(.red)
+                                .listStyle(PlainListStyle())
                         }
-                        .listRowBackground(Color.white.opacity(0))
                     }
-                        .listStyle(PlainListStyle())
                         .navigationTitle(Text("Películas"))
                         .navigationBarItems(leading: NavigationLink(destination: MovieSetupView()) {
                             Image(systemName: "gearshape")
