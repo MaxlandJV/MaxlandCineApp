@@ -61,7 +61,7 @@ struct MovieView: View {
             Divider()
             
             HStack {
-                Text("Sinopsis:")
+                Text("Opinión:")
                     .font(.headline)
                 Spacer()
             }
@@ -137,8 +137,6 @@ struct MovieView: View {
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MovieView(update: false)
-                
             MovieView(update: false)
         }
     }
