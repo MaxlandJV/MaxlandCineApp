@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct TestSwiftAppApp: App {
+struct MaxlandCineApp: App {
     var body: some Scene {
         WindowGroup {
             MovieListView()

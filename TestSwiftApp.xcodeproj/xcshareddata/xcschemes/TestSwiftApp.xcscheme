@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A46CACC27A54BBC000DC7C4"
-               BuildableName = "TestSwiftApp.app"
+               BuildableName = "Maxland Cine.app"
                BlueprintName = "TestSwiftApp"
                ReferencedContainer = "container:TestSwiftApp.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A46CACC27A54BBC000DC7C4"
-            BuildableName = "TestSwiftApp.app"
+            BuildableName = "Maxland Cine.app"
             BlueprintName = "TestSwiftApp"
             ReferencedContainer = "container:TestSwiftApp.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A46CACC27A54BBC000DC7C4"
-            BuildableName = "TestSwiftApp.app"
+            BuildableName = "Maxland Cine.app"
             BlueprintName = "TestSwiftApp"
             ReferencedContainer = "container:TestSwiftApp.xcodeproj">
          </BuildableReference>

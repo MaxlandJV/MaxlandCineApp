@@ -15,7 +15,20 @@ struct MovieEmptyView: View {
                     .font(.title2)
                     .fontWeight(.bold)
                 Text("Añada su primera película para poder valorarla y realizar la crítica correspondiente.")
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 30)
+                   NavigationLink {
+                       MovieView(update: false)
+                   } label: {
+                       Label {
+                           Text("Añadir primera película")
+                       } icon: {
+                          Image(systemName: "plus.circle")
+                       }
+                       .font(.headline)
+                   }
+                   .buttonStyle(.borderedProminent)
+                   .tint(.orange)
+                Spacer()
                 Spacer()
                 Spacer()
             }
