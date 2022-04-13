@@ -21,7 +21,8 @@ struct MovieView: View {
     
     @EnvironmentObject var movieViewModel: MovieViewModel
     
-    var update: Bool
+    // MARK: Este valor se pasa como parámetro. Si no se pasa el valor por defecto es FALSE
+    var update: Bool = false
     
     var body: some View {
         VStack(spacing: 20) {
@@ -137,7 +138,7 @@ struct MovieView: View {
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MovieView(update: false)
+            MovieView()
         }
     }
 }

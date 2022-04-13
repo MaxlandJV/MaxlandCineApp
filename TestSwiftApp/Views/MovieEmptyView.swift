@@ -17,7 +17,7 @@ struct MovieEmptyView: View {
                 Text("Añada su primera película para poder valorarla y realizar la crítica correspondiente.")
                     .padding(.bottom, 30)
                    NavigationLink {
-                       MovieView(update: false)
+                       MovieView()
                    } label: {
                        Label {
                            Text("Añadir primera película")

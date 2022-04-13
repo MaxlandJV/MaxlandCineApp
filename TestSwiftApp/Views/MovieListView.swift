@@ -51,7 +51,7 @@ struct MovieListView: View {
                                 .foregroundColor(.black)
                         })
                         .sheet(isPresented: $isPresented) {
-                            MovieView(update: false)
+                            MovieView()
                         }
                 )
         }
