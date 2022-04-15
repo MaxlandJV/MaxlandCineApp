@@ -25,7 +25,7 @@ struct MovieView: View {
     var update: Bool = false
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 0) {
             if !update {
                 HStack {
                     Text("Nueva película")
@@ -39,6 +39,7 @@ struct MovieView: View {
                     .background(Color(UIColor.systemGray6))
                     .cornerRadius(10)
                     .disableAutocorrection(true)
+                    .padding(.bottom, 10)
             }
             Divider()
             
@@ -57,13 +58,14 @@ struct MovieView: View {
                             score = Int16(number)
                         }
                 }
-            }
+            }.padding(.vertical, 10)
             
             Divider()
             
             HStack {
                 Text("Opinión:")
                     .font(.headline)
+                    .padding(.top, 10)
                 Spacer()
             }
             TextEditor(text: $sinopsis)
@@ -71,6 +73,7 @@ struct MovieView: View {
                 .cornerRadius(10)
             
             Divider()
+                .padding(.bottom, 10)
             
             if !update {
                 HStack {
