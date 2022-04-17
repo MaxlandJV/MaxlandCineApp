@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MovieListView: View {
     @StateObject var movieViewModel = MovieViewModel()
+    @State var searchMovie: String = ""
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -22,21 +23,29 @@ struct MovieListView: View {
                                 .transition(AnyTransition.opacity.animation(.easeIn))
                         }
                         else {
-                            List(movieViewModel.movieList) { movie in
-                                NavigationLink(destination: MovieView(movie: movie, update: true)) {
-                                    MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score)
-                                }
-                                .swipeActions(edge: .leading) {
-                                    Button {
-                                        movieViewModel.deleteMovie(movie: movie)
-                                    } label: {
-                                        Label("Eliminar", systemImage: "trash.fill")
+                            VStack {
+                                TextField("Buscar una película", text: $searchMovie)
+                                    .padding(8)
+                                    .background(Color(UIColor.systemGray3))
+                                    .cornerRadius(10)
+                                    .disableAutocorrection(true)
+                                    .padding()
+                                List(movieViewModel.movieList) { movie in
+                                    NavigationLink(destination: MovieView(movie: movie, update: true)) {
+                                        MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score)
                                     }
-                                    .tint(.red)
+                                    .swipeActions(edge: .leading) {
+                                        Button {
+                                            movieViewModel.deleteMovie(movie: movie)
+                                        } label: {
+                                            Label("Eliminar", systemImage: "trash.fill")
+                                        }
+                                        .tint(.red)
+                                    }
+                                    .listRowBackground(Color.white.opacity(0))
                                 }
-                                .listRowBackground(Color.white.opacity(0))
+                                    .listStyle(PlainListStyle())
                             }
-                                .listStyle(PlainListStyle())
                         }
                     }
                         .navigationTitle(Text("Películas"))
