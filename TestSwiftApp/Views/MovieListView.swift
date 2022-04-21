@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct MovieListView: View {
-    @StateObject var movieViewModel = MovieViewModel()
+    
     @State var searchMovie: String = ""
     @State var isPresented: Bool = false
+    
+    @EnvironmentObject var movieViewModel: MovieViewModel
     
     var body: some View {
         NavigationView {
@@ -64,7 +66,6 @@ struct MovieListView: View {
                         }
                 )
         }
-        .environmentObject(movieViewModel)
     }
 }
 

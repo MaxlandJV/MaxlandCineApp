@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct MaxlandCineApp: App {
+    
+    @StateObject var movieViewModel = MovieViewModel()
+    
     var body: some Scene {
         WindowGroup {
             MovieListView()
+                .environmentObject(movieViewModel)
         }
     }
 }

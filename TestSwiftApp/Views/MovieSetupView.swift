@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MovieSetupView: View {
     
-    @State var biometricAuth: Bool = false
+    @EnvironmentObject var movieViewModel: MovieViewModel
     
     var body: some View {
         Form {
             Section {
-                Toggle("Requerir autenticación", isOn: $biometricAuth)
+                Toggle("Requerir autenticación", isOn: $movieViewModel.biometricAuth)
             } header: {
                 Text("Autenticación biométrica")
             } footer: {

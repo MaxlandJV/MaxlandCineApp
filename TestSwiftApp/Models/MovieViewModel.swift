@@ -11,6 +11,7 @@ class MovieViewModel: ObservableObject {
     let dataModel: NSPersistentContainer
     
     @Published var movieList: [Movie] = []
+    @Published var biometricAuth: Bool = false
     
     init() {
         dataModel = NSPersistentContainer(name: "MovieDataModel")
