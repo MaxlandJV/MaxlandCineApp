@@ -11,9 +11,15 @@ class MovieViewModel: ObservableObject {
     let dataModel: NSPersistentContainer
     
     @Published var movieList: [Movie] = []
-    @Published var biometricAuth: Bool = false
+    @Published var biometricAuth: Bool = false {
+        didSet {
+            // MARK: Guardar en el UserDefaults el valor del parámetro de autenticación biométrica
+            UserDefaults.standard.set(self.biometricAuth, forKey: "BiometricAuth")
+        }
+    }
     
     init() {
+        biometricAuth = UserDefaults.standard.bool(forKey: "BiometricAuth")
         dataModel = NSPersistentContainer(name: "MovieDataModel")
         dataModel.loadPersistentStores { description, error in
             if let error = error {
