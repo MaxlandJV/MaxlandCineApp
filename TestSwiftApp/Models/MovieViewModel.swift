@@ -9,6 +9,7 @@ import CoreData
 
 class MovieViewModel: ObservableObject {
     let dataModel: NSPersistentContainer
+    let biometricAuthUtil: BiometricAuth
     
     @Published var movieList: [Movie] = []
     @Published var biometricAuth: Bool = false {
@@ -19,6 +20,7 @@ class MovieViewModel: ObservableObject {
     }
     
     init() {
+        biometricAuthUtil = BiometricAuth()
         biometricAuth = UserDefaults.standard.bool(forKey: "BiometricAuth")
         dataModel = NSPersistentContainer(name: "MovieDataModel")
         dataModel.loadPersistentStores { description, error in
