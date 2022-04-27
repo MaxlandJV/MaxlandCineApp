@@ -14,13 +14,10 @@ struct MaxlandCineApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MovieListView()
-                .environmentObject(movieViewModel)
-                .onAppear(perform: {
-                    if movieViewModel.biometricAuth {
-                        movieViewModel.biometricAuthUtil.authentication()
-                    }
-                })
+            //if movieViewModel.isAuthorized {
+                MovieListView()
+                    .environmentObject(movieViewModel)
+            //}
         }
     }
 }

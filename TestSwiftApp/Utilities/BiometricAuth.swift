@@ -24,14 +24,24 @@ class BiometricAuth {
         }
     }
     
-    func authentication() {
+    func authentication() -> Bool {
+        var isAuth = false
+        
         if existBiometricAuth {
             laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Se ha solicitado autentificación biométrica") { authenticated, error in
                 if authenticated  {
-
+                    isAuth = true
+                }
+                else {
+                    isAuth = false
                 }
             }
         }
+        else {
+            isAuth = true
+        }
+        
+        return isAuth
     }
     
     func biometricAuthActive() -> Bool {
