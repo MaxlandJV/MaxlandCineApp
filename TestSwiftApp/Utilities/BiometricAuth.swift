@@ -26,9 +26,9 @@ class BiometricAuth {
     
     func authentication() {
         if existBiometricAuth {
-            laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Autentificación necesaria") { authenticated, error in
+            laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Se ha solicitado autentificación biométrica") { authenticated, error in
                 if authenticated  {
-                    // TODO: Se ha autenticado
+
                 }
             }
         }

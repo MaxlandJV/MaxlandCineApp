@@ -16,6 +16,11 @@ struct MaxlandCineApp: App {
         WindowGroup {
             MovieListView()
                 .environmentObject(movieViewModel)
+                .onAppear(perform: {
+                    if movieViewModel.biometricAuth {
+                        movieViewModel.biometricAuthUtil.authentication()
+                    }
+                })
         }
     }
 }

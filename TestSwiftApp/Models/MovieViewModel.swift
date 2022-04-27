@@ -14,6 +14,11 @@ class MovieViewModel: ObservableObject {
     @Published var movieList: [Movie] = []
     @Published var biometricAuth: Bool = false {
         didSet {
+            // Activar la auténticación biométrica
+            if self.biometricAuth {
+                biometricAuthUtil.authentication()
+            }
+            
             // MARK: Guardar en el UserDefaults el valor del parámetro de autenticación biométrica
             UserDefaults.standard.set(self.biometricAuth, forKey: "BiometricAuth")
         }
