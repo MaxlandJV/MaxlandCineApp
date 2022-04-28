@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MovieListView: View {
     
-    @State var searchMovie: String = ""
     @State var isPresented: Bool = false
     
     @EnvironmentObject var movieViewModel: MovieViewModel
@@ -29,14 +28,15 @@ struct MovieListView: View {
                                 HStack {
                                     Image(systemName: "magnifyingglass")
                                         .foregroundColor(
-                                            searchMovie.isEmpty ? Color(UIColor.systemGray2) : Color.primary
+                                            movieViewModel.searchMovie.isEmpty ? Color(UIColor.systemGray2) : Color.primary
                                         )
-                                    TextField("Buscar una película...", text: $searchMovie)
+                                    TextField("Buscar una película...", text: $movieViewModel.searchMovie)
+                                        .disableAutocorrection(true)
                                         .overlay(
                                             Image(systemName: "xmark.circle.fill")
-                                                .opacity(searchMovie.isEmpty ? 0.0 : 1.0)
+                                                .opacity(movieViewModel.searchMovie.isEmpty ? 0.0 : 1.0)
                                                 .onTapGesture {
-                                                    searchMovie = ""
+                                                    movieViewModel.searchMovie = ""
                                                 }, alignment: .trailing
                                         )
                                 }
