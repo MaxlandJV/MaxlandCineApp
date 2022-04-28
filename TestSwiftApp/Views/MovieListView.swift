@@ -10,8 +10,23 @@ import SwiftUI
 struct MovieListView: View {
     
     @State var isPresented: Bool = false
+    @State var searchMovie: String = ""
     
     @EnvironmentObject var movieViewModel: MovieViewModel
+    
+    var searchResults: [Movie] {
+        if searchMovie.isEmpty {
+            return movieViewModel.movieList
+        } else {
+            let lowercaseSearchMovie = searchMovie.lowercased()
+            return movieViewModel.movieList.filter { movie -> Bool in
+                if let movieName = movie.movieName {
+                    return movieName.lowercased().contains(lowercaseSearchMovie)
+                }
+                return false
+            }
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -28,15 +43,15 @@ struct MovieListView: View {
                                 HStack {
                                     Image(systemName: "magnifyingglass")
                                         .foregroundColor(
-                                            movieViewModel.searchMovie.isEmpty ? Color(UIColor.systemGray2) : Color.primary
+                                            searchMovie.isEmpty ? Color(UIColor.systemGray2) : Color.primary
                                         )
-                                    TextField("Buscar una película...", text: $movieViewModel.searchMovie)
+                                    TextField("Buscar una película...", text: $searchMovie)
                                         .disableAutocorrection(true)
                                         .overlay(
                                             Image(systemName: "xmark.circle.fill")
-                                                .opacity(movieViewModel.searchMovie.isEmpty ? 0.0 : 1.0)
+                                                .opacity(searchMovie.isEmpty ? 0.0 : 1.0)
                                                 .onTapGesture {
-                                                    movieViewModel.searchMovie = ""
+                                                    searchMovie = ""
                                                 }, alignment: .trailing
                                         )
                                 }
@@ -48,7 +63,7 @@ struct MovieListView: View {
                                 )
                                 .padding()
                                 
-                                List(movieViewModel.movieList) { movie in
+                                List(searchResults) { movie in
                                     NavigationLink(destination: MovieView(movie: movie, update: true)) {
                                         MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score)
                                     }
@@ -62,7 +77,8 @@ struct MovieListView: View {
                                     }
                                     .listRowBackground(Color.white.opacity(0))
                                 }
-                                    .listStyle(PlainListStyle())
+                                .listStyle(PlainListStyle())
+                                .searchable(text: $searchMovie)
                             }
                         }
                     }

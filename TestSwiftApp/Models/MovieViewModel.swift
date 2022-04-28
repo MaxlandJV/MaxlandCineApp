@@ -12,11 +12,6 @@ class MovieViewModel: ObservableObject {
     let biometricAuthUtil: BiometricAuth
     
     @Published var movieList: [Movie] = []
-    @Published var searchMovie: String = "" {
-        didSet {
-            fetchMovies()
-        }
-    }
     @Published var isAuthorized: Bool = true
     @Published var biometricAuth: Bool = false {
         didSet {
@@ -60,16 +55,6 @@ class MovieViewModel: ObservableObject {
         
         do {
             movieList = try dataModel.viewContext.fetch(request)
-            if !searchMovie.isEmpty {
-                let lowercaseSearchMovie = searchMovie.lowercased()
-                let filteredMovies = movieList.filter { movie -> Bool in
-                    if let movieName = movie.movieName {
-                        return movieName.lowercased().contains(lowercaseSearchMovie)
-                    }
-                    return false
-                }
-                movieList = filteredMovies
-            }
         } catch let error {
             fatalError("Error recuperando datos: \(error.localizedDescription)")
         }
