@@ -60,9 +60,13 @@ struct MovieListView: View {
                         }
                     }
                     .navigationTitle(Text("Películas"))
-                    .navigationBarItems(leading: NavigationLink(destination: MovieSetupView()) {
-                        Image(systemName: "gearshape")
-                            .foregroundColor(.black)
+                    .toolbar(content: {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            NavigationLink(destination: MovieSetupView()) {
+                                Image(systemName: "gearshape")
+                                    .foregroundColor(.black)
+                            }
+                        }
                     })
                     .navigationBarItems(trailing: Button {
                         isPresented.toggle()
