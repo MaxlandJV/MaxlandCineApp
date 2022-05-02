@@ -14,8 +14,6 @@ class BiometricAuth: ObservableObject {
     private let laContext: LAContext
     private let existBiometricAuth: Bool
     
-    @Published var isAuth: Bool = false
-    
     init() {
         laContext = LAContext()
         
@@ -26,24 +24,7 @@ class BiometricAuth: ObservableObject {
             existBiometricAuth = false
         }
     }
-    
-    func authentication() {
-        if existBiometricAuth {
-            laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Se ha solicitado autentificación biométrica") { authenticated, error in
-                print(authenticated, error)
-                if authenticated  {
-                    self.isAuth = true
-                }
-                else {
-                    self.isAuth = false
-                }
-            }
-        }
-        else {
-            self.isAuth = true
-        }
-    }
-    
+        
     func biometricAuthActive() -> Bool {
         return existBiometricAuth
     }

@@ -12,15 +12,8 @@ class MovieViewModel: ObservableObject {
     let biometricAuthUtil: BiometricAuth
     
     @Published var movieList: [Movie] = []
-    @Published var isAuthorized: Bool = true
     @Published var biometricAuth: Bool = false {
         didSet {
-            // Activar la auténticación biométrica
-            self.biometricAuthUtil.authentication()
-            if self.biometricAuth {
-                self.isAuthorized = biometricAuthUtil.isAuth
-            }
-            
             // MARK: Guardar en el UserDefaults el valor del parámetro de autenticación biométrica
             UserDefaults.standard.set(self.biometricAuth, forKey: "BiometricAuth")
         }
@@ -35,18 +28,7 @@ class MovieViewModel: ObservableObject {
                 fatalError("Error cargando CoreData: \(error.localizedDescription)")
             }
         }
-        authorize()
         fetchMovies()
-    }
-    
-    func authorize() {
-        if biometricAuth {
-            self.biometricAuthUtil.authentication()
-            isAuthorized = self.biometricAuthUtil.isAuth
-        }
-        else {
-            isAuthorized = true
-        }
     }
     
     func fetchMovies() {
