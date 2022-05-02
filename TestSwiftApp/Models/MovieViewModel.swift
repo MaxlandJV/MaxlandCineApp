@@ -16,8 +16,9 @@ class MovieViewModel: ObservableObject {
     @Published var biometricAuth: Bool = false {
         didSet {
             // Activar la auténticación biométrica
+            self.biometricAuthUtil.authentication()
             if self.biometricAuth {
-                self.isAuthorized = biometricAuthUtil.authentication()
+                self.isAuthorized = biometricAuthUtil.isAuth
             }
             
             // MARK: Guardar en el UserDefaults el valor del parámetro de autenticación biométrica
@@ -40,7 +41,8 @@ class MovieViewModel: ObservableObject {
     
     func authorize() {
         if biometricAuth {
-            isAuthorized = self.biometricAuthUtil.authentication()
+            self.biometricAuthUtil.authentication()
+            isAuthorized = self.biometricAuthUtil.isAuth
         }
         else {
             isAuthorized = true

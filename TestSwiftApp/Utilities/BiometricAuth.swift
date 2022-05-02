@@ -8,10 +8,13 @@
 import Foundation
 import LocalAuthentication
 
-class BiometricAuth {
+class BiometricAuth: ObservableObject {
+    
     private var error: NSError?
     private let laContext: LAContext
     private let existBiometricAuth: Bool
+    
+    @Published var isAuth: Bool = false
     
     init() {
         laContext = LAContext()
@@ -24,24 +27,21 @@ class BiometricAuth {
         }
     }
     
-    func authentication() -> Bool {
-        var isAuth = false
-        
+    func authentication() {
         if existBiometricAuth {
             laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Se ha solicitado autentificación biométrica") { authenticated, error in
+                print(authenticated, error)
                 if authenticated  {
-                    isAuth = true
+                    self.isAuth = true
                 }
                 else {
-                    isAuth = false
+                    self.isAuth = false
                 }
             }
         }
         else {
-            isAuth = true
+            self.isAuth = true
         }
-        
-        return isAuth
     }
     
     func biometricAuthActive() -> Bool {

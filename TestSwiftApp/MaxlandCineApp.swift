@@ -14,10 +14,10 @@ struct MaxlandCineApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //if movieViewModel.isAuthorized {
+            if movieViewModel.isAuthorized {
                 MovieListView()
                     .environmentObject(movieViewModel)
-            //}
+            }
         }
     }
 }
