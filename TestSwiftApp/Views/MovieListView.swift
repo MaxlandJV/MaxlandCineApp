@@ -67,12 +67,14 @@ struct MovieListView: View {
                                     .foregroundColor(.black)
                             }
                         }
-                    })
-                    .navigationBarItems(trailing: Button {
-                        isPresented.toggle()
-                    } label: {
-                        Image(systemName: "plus.circle")
-                            .foregroundColor(.black)
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                isPresented.toggle()
+                            } label: {
+                                Image(systemName: "plus.circle")
+                                    .foregroundColor(.black)
+                            }
+                        }
                     })
                     .sheet(isPresented: $isPresented) {
                         MovieView()
