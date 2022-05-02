@@ -55,7 +55,7 @@ struct MovieListView: View {
                                     .listRowBackground(Color.white.opacity(0))
                                 }
                                 .listStyle(PlainListStyle())
-                                .searchable(text: $searchMovie)
+                                .searchable(text: $searchMovie, prompt: "Buscar películas...")
                             }
                         }
                     }
