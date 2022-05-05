@@ -13,7 +13,6 @@
 		8A24289627DF8117004977DB /* MovieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A24289527DF8117004977DB /* MovieSetupView.swift */; };
 		8A46CAD127A54BBC000DC7C4 /* MaxlandCineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A46CAD027A54BBC000DC7C4 /* MaxlandCineApp.swift */; };
 		8A46CAD527A54BBD000DC7C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */; };
-		8A46CAD827A54BBD000DC7C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A46CAD727A54BBD000DC7C4 /* Preview Assets.xcassets */; };
 		8A5AE31A27F7052B00AC89E4 /* MovieEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AE31927F7052B00AC89E4 /* MovieEmptyView.swift */; };
 		8A61457327CBBD590042A5FE /* MovieDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A61457127CBBD590042A5FE /* MovieDataModel.xcdatamodeld */; };
 		8A65046127ACFD9B00D556E0 /* MovieListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65046027ACFD9B00D556E0 /* MovieListRowView.swift */; };
@@ -29,7 +28,6 @@
 		8A46CACD27A54BBC000DC7C4 /* Maxland Cine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Maxland Cine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A46CAD027A54BBC000DC7C4 /* MaxlandCineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxlandCineApp.swift; sourceTree = "<group>"; };
 		8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A46CAD727A54BBD000DC7C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A5AE31927F7052B00AC89E4 /* MovieEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEmptyView.swift; sourceTree = "<group>"; };
 		8A61457227CBBD590042A5FE /* MovieDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8A65046027ACFD9B00D556E0 /* MovieListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRowView.swift; sourceTree = "<group>"; };
@@ -73,7 +71,7 @@
 		8A46CAC427A54BBC000DC7C4 = {
 			isa = PBXGroup;
 			children = (
-				8A46CACF27A54BBC000DC7C4 /* TestSwiftApp */,
+				8A46CACF27A54BBC000DC7C4 /* MaxlandCineApp */,
 				8A46CACE27A54BBC000DC7C4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,7 +84,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8A46CACF27A54BBC000DC7C4 /* TestSwiftApp */ = {
+		8A46CACF27A54BBC000DC7C4 /* MaxlandCineApp */ = {
 			isa = PBXGroup;
 			children = (
 				8A46CAD027A54BBC000DC7C4 /* MaxlandCineApp.swift */,
@@ -94,17 +92,8 @@
 				8A468DA127F5C72C0038A819 /* Views */,
 				8A468DA227F5C73A0038A819 /* Models */,
 				8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */,
-				8A46CAD627A54BBD000DC7C4 /* Preview Content */,
 			);
-			path = TestSwiftApp;
-			sourceTree = "<group>";
-		};
-		8A46CAD627A54BBD000DC7C4 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				8A46CAD727A54BBD000DC7C4 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
+			path = MaxlandCineApp;
 			sourceTree = "<group>";
 		};
 		8AED453E281816C50016C602 /* Utilities */ = {
@@ -118,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8A46CACC27A54BBC000DC7C4 /* TestSwiftApp */ = {
+		8A46CACC27A54BBC000DC7C4 /* MaxlandCineApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A46CADB27A54BBD000DC7C4 /* Build configuration list for PBXNativeTarget "TestSwiftApp" */;
+			buildConfigurationList = 8A46CADB27A54BBD000DC7C4 /* Build configuration list for PBXNativeTarget "MaxlandCineApp" */;
 			buildPhases = (
 				8A46CAC927A54BBC000DC7C4 /* Sources */,
 				8A46CACA27A54BBC000DC7C4 /* Frameworks */,
@@ -130,7 +119,7 @@
 			);
 			dependencies = (
 			);
-			name = TestSwiftApp;
+			name = MaxlandCineApp;
 			productName = TestSwiftApp;
 			productReference = 8A46CACD27A54BBC000DC7C4 /* Maxland Cine.app */;
 			productType = "com.apple.product-type.application";
@@ -143,14 +132,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					8A46CACC27A54BBC000DC7C4 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
-			buildConfigurationList = 8A46CAC827A54BBC000DC7C4 /* Build configuration list for PBXProject "TestSwiftApp" */;
+			buildConfigurationList = 8A46CAC827A54BBC000DC7C4 /* Build configuration list for PBXProject "MaxlandCineApp" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -165,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8A46CACC27A54BBC000DC7C4 /* TestSwiftApp */,
+				8A46CACC27A54BBC000DC7C4 /* MaxlandCineApp */,
 			);
 		};
 /* End PBXProject section */
@@ -176,7 +165,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A2383B727EE371500CE4998 /* LaunchScreen.storyboard in Resources */,
-				8A46CAD827A54BBD000DC7C4 /* Preview Assets.xcassets in Resources */,
 				8A46CAD527A54BBD000DC7C4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +195,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -268,6 +257,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -327,7 +317,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestSwiftApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = DMKM69YTG5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -343,7 +333,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = es.maxland.TestSwiftApp;
+				PRODUCT_BUNDLE_IDENTIFIER = es.maxland.cineapp;
 				PRODUCT_NAME = "Maxland Cine";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -360,7 +350,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestSwiftApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = DMKM69YTG5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -376,7 +366,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = es.maxland.TestSwiftApp;
+				PRODUCT_BUNDLE_IDENTIFIER = es.maxland.cineapp;
 				PRODUCT_NAME = "Maxland Cine";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -388,7 +378,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8A46CAC827A54BBC000DC7C4 /* Build configuration list for PBXProject "TestSwiftApp" */ = {
+		8A46CAC827A54BBC000DC7C4 /* Build configuration list for PBXProject "MaxlandCineApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A46CAD927A54BBD000DC7C4 /* Debug */,
@@ -397,7 +387,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A46CADB27A54BBD000DC7C4 /* Build configuration list for PBXNativeTarget "TestSwiftApp" */ = {
+		8A46CADB27A54BBD000DC7C4 /* Build configuration list for PBXNativeTarget "MaxlandCineApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A46CADC27A54BBD000DC7C4 /* Debug */,

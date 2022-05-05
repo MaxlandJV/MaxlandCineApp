@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1320"
+   LastUpgradeVersion = "1330"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A46CACC27A54BBC000DC7C4"
                BuildableName = "Maxland Cine.app"
-               BlueprintName = "TestSwiftApp"
-               ReferencedContainer = "container:TestSwiftApp.xcodeproj">
+               BlueprintName = "MaxlandCineApp"
+               ReferencedContainer = "container:MaxlandCineApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,8 +46,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A46CACC27A54BBC000DC7C4"
             BuildableName = "Maxland Cine.app"
-            BlueprintName = "TestSwiftApp"
-            ReferencedContainer = "container:TestSwiftApp.xcodeproj">
+            BlueprintName = "MaxlandCineApp"
+            ReferencedContainer = "container:MaxlandCineApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A46CACC27A54BBC000DC7C4"
             BuildableName = "Maxland Cine.app"
-            BlueprintName = "TestSwiftApp"
-            ReferencedContainer = "container:TestSwiftApp.xcodeproj">
+            BlueprintName = "MaxlandCineApp"
+            ReferencedContainer = "container:MaxlandCineApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
