@@ -59,7 +59,7 @@ struct MovieListView: View {
                             }
                         }
                     }
-                    .navigationTitle(Text("Películas"))
+                    .navigationTitle(Text("navigation-list-title"))
                     .toolbar(content: {
                         ToolbarItem(placement: .navigationBarLeading) {
                             NavigationLink(destination: MovieSetupView()) {
