@@ -8,3 +8,6 @@
 
 "navigation-list-title" = "Películas";
 
+"empty-title" = "Todavía no han creeado películas";
+"empty-add-movie-text" = "Añada su primera película para poder valorarla y realizar la crítica correspondiente.";
+"empty-add-movie-button" = "Añadir primera película";

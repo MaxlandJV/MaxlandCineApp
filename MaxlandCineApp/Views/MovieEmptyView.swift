@@ -11,16 +11,16 @@ struct MovieEmptyView: View {
     var body: some View {
                VStack(spacing: 20) {
                 Spacer()
-                Text("Todavía no han creeado películas")
+                Text("empty-title")
                     .font(.title2)
                     .fontWeight(.bold)
-                Text("Añada su primera película para poder valorarla y realizar la crítica correspondiente.")
+                Text("empty-add-movie-text")
                     .padding(.bottom, 30)
                    NavigationLink {
                        MovieView()
                    } label: {
                        Label {
-                           Text("Añadir primera película")
+                           Text("empty-add-movie-button")
                        } icon: {
                           Image(systemName: "plus.circle")
                        }

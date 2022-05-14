@@ -8,3 +8,6 @@
 
 "navigation-list-title" = "Movies";
 
+"empty-title" = "They haven't created movies yet";
+"empty-add-movie-text" = "Add your first movie to be able to rate it and review it accordingly.";
+"empty-add-movie-button" = "Add first movie";
