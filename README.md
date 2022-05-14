@@ -1,5 +1,5 @@
-#MaxlandCineApp
-##Proyecto para pruebas de programación en Swift y SwiftUI
+# MaxlandCineApp
+## Proyecto para pruebas de programación en Swift y SwiftUI
 
 Este proyecto consiste en un sencilla aplicación para crear registros de películas que hayamos visto, indicando su título, la fecha en que se vió, una puntuación mediante estrellas y un texto para realizar una crítica o explicación de lo que nos ha parecido.
 
