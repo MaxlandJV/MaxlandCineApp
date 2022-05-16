@@ -11,3 +11,13 @@
 "empty-title" = "Encara no s'han creat pel·lícules";
 "empty-add-movie-text" = "Afegiu la vostra primera pel·lícula per poder valorar-la i realitzar la crítica corresponent.";
 "empty-add-movie-button" = "Afegir primera pel·lícula";
+
+"movie-new" = "Nova pel·lícula";
+"movie-name" = "Nom de la pel·lícula";
+"movie-date" = "Data de visionat";
+"movie-score" = "Puntuació:";
+"movie-review" = "Opinió:";
+"movie-button-save" = "Guardar";
+"movie-button-cancel" = "Cancel·lar";
+"movie-button-update" = "Actualitzar";
+"movie-error-01" = "El nom de la pel·lícula és una dada obligatòria.";

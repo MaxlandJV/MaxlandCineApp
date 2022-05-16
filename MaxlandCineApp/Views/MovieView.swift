@@ -28,12 +28,12 @@ struct MovieView: View {
         VStack(spacing: 0) {
             if !update {
                 HStack {
-                    Text("Nueva película")
+                    Text("movie-new")
                         .padding(.vertical, 10)
                         .font(.title2)
                     Spacer()
                 }
-                TextField("Nombre de la película", text: $movieName)
+                TextField("movie-name", text: $movieName)
                     .focused($movieNameInfocus)
                     .padding()
                     .background(Color(UIColor.systemGray6))
@@ -43,13 +43,13 @@ struct MovieView: View {
             }
             Divider()
             
-            DatePicker("Fecha de visionado",selection: $showDate, displayedComponents: .date)
+            DatePicker("movie-date",selection: $showDate, displayedComponents: .date)
                 .padding(.vertical)
             
             Divider()
             
             HStack {
-                Text("Puntuación:")
+                Text("movie-score")
                 Spacer()
                 ForEach(1...5, id: \.self) { number in
                     Image(systemName: "star.fill")
@@ -63,7 +63,7 @@ struct MovieView: View {
             Divider()
             
             HStack {
-                Text("Opinión:")
+                Text("movie-review")
                     .font(.headline)
                     .padding(.top, 10)
                 Spacer()
@@ -78,14 +78,14 @@ struct MovieView: View {
             if !update {
                 HStack {
                     Button(action: newMovie, label: {
-                        Label("Guardar", systemImage: "doc.fill.badge.plus")
+                        Label("movie-button-save", systemImage: "doc.fill.badge.plus")
                             .padding(.horizontal)
                     })
                         .buttonStyle(.borderedProminent)
-                        .alert("El nombre de la película es un dato obligatorio.", isPresented: $showingAlert) {}
+                        .alert("movie-error-01", isPresented: $showingAlert) {}
                     
                     Button(action: { dismiss() }) {
-                        Label("Cancelar", systemImage: "xmark")
+                        Label("movie-button-cancel", systemImage: "xmark")
                             .padding(.horizontal)
                     }
                     .buttonStyle(.bordered)
@@ -93,7 +93,7 @@ struct MovieView: View {
             }
             else {
                 Button(action: updateMovie, label: {
-                    Label("Actualizar", systemImage: "doc.badge.gearshape.fill")
+                    Label("movie-button-update", systemImage: "doc.badge.gearshape.fill")
                         .padding(.horizontal)
                 })
                     .buttonStyle(.borderedProminent)

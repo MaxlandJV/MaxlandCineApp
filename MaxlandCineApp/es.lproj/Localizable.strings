@@ -11,3 +11,13 @@
 "empty-title" = "Todavía no han creeado películas";
 "empty-add-movie-text" = "Añada su primera película para poder valorarla y realizar la crítica correspondiente.";
 "empty-add-movie-button" = "Añadir primera película";
+
+"movie-new" = "Nueva película";
+"movie-name" = "Nombre de la película";
+"movie-date" = "Fecha de visionado";
+"movie-score" = "Puntuación:";
+"movie-review" = "Opinión:";
+"movie-button-save" = "Guardar";
+"movie-button-cancel" = "Cancelar";
+"movie-button-update" = "Actualizar";
+"movie-error-01" = "El nombre de la película es un dato obligatorio.";

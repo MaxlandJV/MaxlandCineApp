@@ -11,3 +11,13 @@
 "empty-title" = "They haven't created movies yet";
 "empty-add-movie-text" = "Add your first movie to be able to rate it and review it accordingly.";
 "empty-add-movie-button" = "Add first movie";
+
+"movie-new" = "New movie";
+"movie-name" = "Name of the movie";
+"movie-date" = "Viewing date";
+"movie-score" = "Score:";
+"movie-review" = "Review:";
+"movie-button-save" = "Save";
+"movie-button-cancel" = "Cancel";
+"movie-button-update" = "Update";
+"movie-error-01" = "The name of the film is a mandatory information.";
