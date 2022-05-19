@@ -125,7 +125,7 @@
 			dependencies = (
 			);
 			name = MaxlandCineApp;
-			productName = TestSwiftApp;
+			productName = MaxlandCineApp;
 			productReference = 8A46CACD27A54BBC000DC7C4 /* Maxland Cine.app */;
 			productType = "com.apple.product-type.application";
 		};
