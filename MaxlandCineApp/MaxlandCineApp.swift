@@ -25,7 +25,7 @@ struct MaxlandCineApp: App {
                     Button {
                         authenticate()
                     } label: {
-                        Text("Autenticación requerida")
+                        Text("auth-required")
                     }
 
                 }

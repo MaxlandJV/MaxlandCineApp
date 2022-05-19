@@ -5,6 +5,7 @@
   Created by Jordi Villaró on 13/5/22.
   
 */
+"auth-required" = "Authentication required";
 
 "navigation-list-title" = "Movies";
 
