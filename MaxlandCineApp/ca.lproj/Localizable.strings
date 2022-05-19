@@ -21,3 +21,11 @@
 "movie-button-cancel" = "Cancel·lar";
 "movie-button-update" = "Actualitzar";
 "movie-error-01" = "El nom de la pel·lícula és una dada obligatòria.";
+
+"setup-about" = "Sobre Maxland Cine";
+"setup-details" = "Aquesta aplicació està concebuda per poder emmagatzemar un diari de pel·lícules, indicant-ne el títol, la data de visualització, una puntuació i un text descriptiu o crítica cinematrogràfica. L'aplicació utilitza arquitectura MVVM i CoreData.";
+"setup-code" = "Codi font de l'APP";
+"setup-about-me" = "Sobre mi...";
+"setup-auth" = "Requerir autenticació";
+"setup-bioauth" = "Autenticació biomètrica";
+"setup-auth-details" = "Quan està habilitat, cal utilitzar Face ID o Touch ID per accedir al contingut.";

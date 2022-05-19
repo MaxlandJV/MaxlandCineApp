@@ -13,13 +13,25 @@ struct MovieSetupView: View {
     
     var body: some View {
         Form {
+            Section(header: Text("setup-about")) {
+                VStack(alignment: .leading) {
+                    Image("MaxlandWorld")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                    Text("setup-details")
+                }
+                .padding(.vertical)
+                Link("setup-code", destination: URL(string: "https://github.com/MaxlandJV/MaxlandCineApp")!)
+                Link("setup-about-me", destination: URL(string: "https://www.linkedin.com/in/jordivilaro")!)
+            }
+
             if movieViewModel.biometricAuthUtil.biometricAuthActive() {
                 Section {
-                    Toggle("Requerir autenticación", isOn: $movieViewModel.biometricAuth)
+                    Toggle("setup-auth", isOn: $movieViewModel.biometricAuth)
                 } header: {
-                    Text("Autenticación biométrica")
+                    Text("setup-bioauth")
                 } footer: {
-                    Text("Cuando está habilitado, es necesario utilizar Face ID o Touch ID para acceder al contenido.")
+                    Text("setup-auth-details")
                 }
             }
         }
