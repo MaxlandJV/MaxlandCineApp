@@ -8,4 +8,4 @@ La aplicación puede activar la autenticación biométrica, siempre que esté di
 Los datos se guardan de forma local en el dispositivo mediante **CoreData**, además de utilizar **arquitectura MVVM** para su gestión.
 
 Enlace para descarga en AppStore:
-[Pulsa aquí](https://github.com/MaxlandJV/MaxlandCineApp)
+[Pulsa aquí](https://apps.apple.com/es/app/maxland-cine/id1625050643?l=es)
