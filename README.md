@@ -5,4 +5,7 @@ Este proyecto consiste en un sencilla aplicación para crear registros de pelíc
 
 La aplicación puede activar la autenticación biométrica, siempre que esté disponible, de este modo podemos proteger la lista de películas. 
 
-Los datos se guardan de forma local en el dispositivo mediante Core Data, además de utilizar MVVM para su gestión.
+Los datos se guardan de forma local en el dispositivo mediante **CoreData**, además de utilizar **arquitectura MVVM** para su gestión.
+
+Enlace para descarga en AppStore:
+[Pulsa aquí](https://github.com/MaxlandJV/MaxlandCineApp)
