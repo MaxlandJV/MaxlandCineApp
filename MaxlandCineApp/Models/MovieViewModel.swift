@@ -78,4 +78,16 @@ class MovieViewModel: ObservableObject {
     func getNumberMovies() -> Int {
         return movieList.count
     }
+    
+    func getNumberMoviesByScore() -> [Int] {
+        let moviesScore1 = movieList.filter( { $0.score == 1 } ).count
+        let moviesScore2 = movieList.filter( { $0.score == 2 } ).count
+        let moviesScore3 = movieList.filter( { $0.score == 3 } ).count
+        let moviesScore4 = movieList.filter( { $0.score == 4 } ).count
+        let moviesScore5 = movieList.filter( { $0.score == 5 } ).count
+        
+        let movieListScore = [moviesScore1, moviesScore2, moviesScore3, moviesScore4, moviesScore5]
+        
+        return movieListScore
+    }
 }

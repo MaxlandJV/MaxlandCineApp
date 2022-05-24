@@ -10,6 +10,8 @@ import SwiftUI
 struct MovieStatsView: View {
     @EnvironmentObject var movieViewModel: MovieViewModel
     
+    @State private var movieListScore: [Int] = []
+    
     var body: some View {
         VStack {
             VStack(spacing: 20) {
@@ -17,8 +19,7 @@ struct MovieStatsView: View {
                     Text("stats-movie-number")
                         .font(.headline)
                     Spacer()
-                    //Text("\(movieViewModel.getNumberMovies())")
-                    Text("24")
+                    Text("\(movieViewModel.getNumberMovies())")
                         .font(.title3)
                         .fontWeight(.bold)
                 }
@@ -42,6 +43,10 @@ struct MovieStatsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.gray.opacity(0.1))
         .navigationBarTitle("stats-title")
+        .onAppear {
+            movieListScore = movieViewModel.getNumberMoviesByScore()
+            print(movieListScore)
+        }
     }
 }
 
