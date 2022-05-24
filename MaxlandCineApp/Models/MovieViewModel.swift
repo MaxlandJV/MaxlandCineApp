@@ -74,4 +74,8 @@ class MovieViewModel: ObservableObject {
             fatalError("Error actualizando datos: \(error.localizedDescription)")
         }
     }
+    
+    func getNumberMovies() -> Int {
+        return movieList.count
+    }
 }

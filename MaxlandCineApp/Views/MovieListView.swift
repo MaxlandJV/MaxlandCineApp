@@ -67,6 +67,12 @@ struct MovieListView: View {
                                     .foregroundColor(.black)
                             }
                         }
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            NavigationLink(destination: MovieStatsView()) {
+                                Image(systemName: "chart.bar.xaxis")
+                                    .foregroundColor(.black)
+                            }
+                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
                                 isPresented.toggle()

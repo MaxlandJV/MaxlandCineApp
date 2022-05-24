@@ -23,6 +23,7 @@
 "movie-button-update" = "Actualizar";
 "movie-error-01" = "El nombre de la película es un dato obligatorio.";
 
+"setup-title" = "Configuración";
 "setup-about" = "Acerca de Maxland Cine";
 "setup-details" = "Esta aplicación está concebida para poder almacenar un diario de películas, indicando su título, su fecha de visualización, una puntuación y un texto descriptivo o crítica cinematrográfica. La aplicación usa arquitectura MVVM y CoreData.";
 "setup-code" = "Código fuente de la APP";
@@ -30,3 +31,7 @@
 "setup-auth" = "Requerir autenticación";
 "setup-bioauth" = "Autenticación biométrica";
 "setup-auth-details" = "Cuando está habilitado, es necesario utilizar Face ID o Touch ID para acceder al contenido.";
+
+"stats-title" = "Estadísticas";
+"stats-movie-number" = "Número de películas";
+"stats-movie-score" = "Películas por puntuación";

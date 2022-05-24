@@ -23,6 +23,7 @@
 "movie-button-update" = "Update";
 "movie-error-01" = "The name of the film is a mandatory information.";
 
+"setup-title" = "Settings";
 "setup-about" = "About Maxland Cine";
 "setup-details" = "This application is designed to be able to store a movie diary, indicating its title, its viewing date, a score and a descriptive text or film review. The application uses MVVM architecture and CoreData.";
 "setup-code" = "APP source code";
@@ -30,3 +31,7 @@
 "setup-auth" = "Require authentication";
 "setup-bioauth" = "Biometric authentication";
 "setup-auth-details" = "When enabled, Face ID or Touch ID is required to access content.";
+
+"stats-title" = "Statistics";
+"stats-movie-number" = "Number of movies";
+"stats-movie-score" = "Movies by score";

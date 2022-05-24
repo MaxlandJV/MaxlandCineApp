@@ -35,7 +35,7 @@ struct MovieSetupView: View {
                 }
             }
         }
-        .navigationBarTitle("Configuración")
+        .navigationBarTitle("setup-title")
     }
 }
 
