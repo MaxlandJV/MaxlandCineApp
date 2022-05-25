@@ -28,7 +28,7 @@ struct MovieStatsView: View {
                     
                     HStack {
                         Capsule()
-                            .fill(Color.blue.opacity(0.6))
+                            .fill(Color.blue)
                             .frame(width: 20, height: 8)
                         Text("stats-movie-score")
                             .font(.subheadline)
@@ -42,10 +42,15 @@ struct MovieStatsView: View {
                                 Text("\(movieScore)")
                                     .font(.headline)
                                 Capsule()
-                                    .fill(Color.blue.opacity(0.6))
+                                    .fill(Color.blue.opacity(0.5 + CGFloat(Double(index) / 10.0)))
                                     .frame(width: 18)
                                     .frame(height: getBarHeight(valor: CGFloat(movieScore)))
-                                Text("\(index+1)")
+                                HStack(spacing: 0) {
+                                    Text("\(index + 1)")
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.orange)
+                                }
+                                .font(.subheadline)
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                         }
@@ -54,17 +59,16 @@ struct MovieStatsView: View {
                     .frame(height: 280)
                 }
                 .padding()
-                .background(Color.white)
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(18)
             }
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.gray.opacity(0.1))
+        .background(Color(UIColor.systemGray5))
         .navigationBarTitle("stats-title")
         .onAppear {
             movieListScore = movieViewModel.getNumberMoviesByScore()
-            print(movieListScore)
         }
     }
     
@@ -80,7 +84,7 @@ struct MovieStatsView: View {
     // MArK: Obtener el tamaño de cada barra del gráfico
     func getBarHeight(valor: CGFloat) -> CGFloat {
         let max = CGFloat(getMax())
-        let height = (valor * 180) / max
+        let height = max > 0 ? (valor * 180) / max : 0
         
         return height
     }
