@@ -10,8 +10,8 @@ import SwiftUI
 struct MovieStatsView: View {
     @EnvironmentObject var movieViewModel: MovieViewModel
     
-    @State private var movieListScore: [Int] = []
-    @State private var score = 0
+    @State private var movieListScore: [Int] = [0,0,0,0,0]
+    @State private var score: [CGFloat] = [0,0,0,0,0]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -37,23 +37,82 @@ struct MovieStatsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     HStack(spacing: 0) {
-                        ForEach(Array(movieListScore.enumerated()), id: \.offset) { index, movieScore in
-                            VStack {
-                                Text("\(movieScore)")
-                                    .font(.headline)
-                                Capsule()
-                                    .fill(Color.blue.opacity(0.5 + CGFloat(Double(index) / 10.0)))
-                                    .frame(width: 18)
-                                    .frame(height: getBarHeight(valor: CGFloat(movieScore)))
-                                HStack(spacing: 0) {
-                                    Text("\(index + 1)")
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(.orange)
-                                }
-                                .font(.subheadline)
+                        VStack {
+                            Text("\(movieListScore[0])")
+                                .font(.headline)
+                            Capsule()
+                            //.fill(Color.blue.opacity(0.5 + CGFloat(Double(index) / 10.0)))
+                                .fill(Color.blue.opacity(0.5))
+                                .frame(width: 18, height: score[0])
+                            HStack(spacing: 0) {
+                                Text("\(1)")
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.orange)
                             }
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                            .font(.subheadline)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                
+                        VStack {
+                            Text("\(movieListScore[1])")
+                                .font(.headline)
+                            Capsule()
+                                .fill(Color.blue.opacity(0.6))
+                                .frame(width: 18, height: score[1])
+                            HStack(spacing: 0) {
+                                Text("\(2)")
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.orange)
+                            }
+                            .font(.subheadline)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                    
+                        VStack {
+                            Text("\(movieListScore[2])")
+                                .font(.headline)
+                            Capsule()
+                                .fill(Color.blue.opacity(0.7))
+                                .frame(width: 18, height: score[2])
+                            HStack(spacing: 0) {
+                                Text("\(3)")
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.orange)
+                            }
+                            .font(.subheadline)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                    
+                        VStack {
+                            Text("\(movieListScore[3])")
+                                .font(.headline)
+                            Capsule()
+                                .fill(Color.blue.opacity(0.8))
+                                .frame(width: 18, height: score[3])
+                            HStack(spacing: 0) {
+                                Text("\(4)")
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.orange)
+                            }
+                            .font(.subheadline)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                    
+                        VStack {
+                            Text("\(movieListScore[4])")
+                                .font(.headline)
+                            Capsule()
+                                .fill(Color.blue.opacity(0.9))
+                                .frame(width: 18, height: score[4])
+                            HStack(spacing: 0) {
+                                Text("\(5)")
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.orange)
+                            }
+                            .font(.subheadline)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                            
                     }
                     .padding(.top, 20)
                     .frame(height: 280)
@@ -69,6 +128,13 @@ struct MovieStatsView: View {
         .navigationBarTitle("stats-title")
         .onAppear {
             movieListScore = movieViewModel.getNumberMoviesByScore()
+            withAnimation(.linear(duration: 0.5)) {
+                score[0] = getBarHeight(valor: CGFloat(movieListScore[0]))
+                score[1] = getBarHeight(valor: CGFloat(movieListScore[1]))
+                score[2] = getBarHeight(valor: CGFloat(movieListScore[2]))
+                score[3] = getBarHeight(valor: CGFloat(movieListScore[3]))
+                score[4] = getBarHeight(valor: CGFloat(movieListScore[4]))
+            }
         }
     }
     
