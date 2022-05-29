@@ -37,82 +37,11 @@ struct MovieStatsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     HStack(spacing: 0) {
-                        VStack {
-                            Text("\(movieListScore[0])")
-                                .font(.headline)
-                            Capsule()
-                            //.fill(Color.blue.opacity(0.5 + CGFloat(Double(index) / 10.0)))
-                                .fill(Color.blue.opacity(0.5))
-                                .frame(width: 18, height: score[0])
-                            HStack(spacing: 0) {
-                                Text("\(1)")
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.orange)
-                            }
-                            .font(.subheadline)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                
-                        VStack {
-                            Text("\(movieListScore[1])")
-                                .font(.headline)
-                            Capsule()
-                                .fill(Color.blue.opacity(0.6))
-                                .frame(width: 18, height: score[1])
-                            HStack(spacing: 0) {
-                                Text("\(2)")
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.orange)
-                            }
-                            .font(.subheadline)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                    
-                        VStack {
-                            Text("\(movieListScore[2])")
-                                .font(.headline)
-                            Capsule()
-                                .fill(Color.blue.opacity(0.7))
-                                .frame(width: 18, height: score[2])
-                            HStack(spacing: 0) {
-                                Text("\(3)")
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.orange)
-                            }
-                            .font(.subheadline)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                    
-                        VStack {
-                            Text("\(movieListScore[3])")
-                                .font(.headline)
-                            Capsule()
-                                .fill(Color.blue.opacity(0.8))
-                                .frame(width: 18, height: score[3])
-                            HStack(spacing: 0) {
-                                Text("\(4)")
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.orange)
-                            }
-                            .font(.subheadline)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                    
-                        VStack {
-                            Text("\(movieListScore[4])")
-                                .font(.headline)
-                            Capsule()
-                                .fill(Color.blue.opacity(0.9))
-                                .frame(width: 18, height: score[4])
-                            HStack(spacing: 0) {
-                                Text("\(5)")
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.orange)
-                            }
-                            .font(.subheadline)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                            
+                        MovieStatsGraphBarView(starsNumber: 1, movies: movieListScore[0], score: score[0])
+                        MovieStatsGraphBarView(starsNumber: 2, movies: movieListScore[1], score: score[1])
+                        MovieStatsGraphBarView(starsNumber: 3, movies: movieListScore[2], score: score[2])
+                        MovieStatsGraphBarView(starsNumber: 4, movies: movieListScore[3], score: score[3])
+                        MovieStatsGraphBarView(starsNumber: 5, movies: movieListScore[4], score: score[4])
                     }
                     .padding(.top, 20)
                     .frame(height: 280)
