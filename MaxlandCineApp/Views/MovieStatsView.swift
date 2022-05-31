@@ -68,17 +68,17 @@ struct MovieStatsView: View {
     }
     
     // MARK: Obtener el valor máximo
-    func getMax() -> Int {
+    func getMax() -> CGFloat {
         let max = movieListScore.max { valor1, valor2 in
             return valor2 > valor1
         } ?? 0
         
-        return max
+        return CGFloat(max)
     }
     
     // MArK: Obtener el tamaño de cada barra del gráfico
     func getBarHeight(valor: CGFloat) -> CGFloat {
-        let max = CGFloat(getMax())
+        let max = getMax()
         let height = max > 0 ? (valor * 180) / max : 0
         
         return height

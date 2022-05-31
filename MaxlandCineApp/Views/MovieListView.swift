@@ -32,7 +32,7 @@ struct MovieListView: View {
         NavigationView {
             LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
-                .overlay(
+                .overlay (
                     ZStack {
                         if movieViewModel.movieList.isEmpty {
                             MovieEmptyView()
