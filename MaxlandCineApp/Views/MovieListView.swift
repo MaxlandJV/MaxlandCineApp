@@ -68,9 +68,11 @@ struct MovieListView: View {
                             }
                         }
                         ToolbarItem(placement: .navigationBarLeading) {
-                            NavigationLink(destination: MovieStatsView()) {
-                                Image(systemName: "chart.bar.xaxis")
-                                    .foregroundColor(.black)
+                            if (movieViewModel.movieList.count > 0) {
+                                NavigationLink(destination: MovieStatsView()) {
+                                    Image(systemName: "chart.bar.xaxis")
+                                        .foregroundColor(.black)
+                                }
                             }
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
