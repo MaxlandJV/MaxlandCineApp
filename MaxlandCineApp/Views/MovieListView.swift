@@ -89,6 +89,7 @@ struct MovieListView: View {
                     }
                 )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
