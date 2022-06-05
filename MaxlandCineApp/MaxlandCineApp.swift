@@ -13,6 +13,7 @@ struct MaxlandCineApp: App {
     
     @StateObject var movieViewModel = MovieViewModel()
     @State var isUnlocked = false
+    @State var showAuthButton = false
     
     var body: some Scene {
         WindowGroup {
@@ -22,15 +23,27 @@ struct MaxlandCineApp: App {
                         .environmentObject(movieViewModel)
                 }
                 else {
-                    Button {
-                        authenticate()
-                    } label: {
-                        Text("auth-required")
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        if (showAuthButton) {
+                            Button {
+                                authenticate()
+                            } label: {
+                                Text("auth-required")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        Spacer()
                     }
-
+                    Spacer()
                 }
             }
             .onAppear(perform: authenticate)
+            .background(
+                LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
         }
     }
     
@@ -50,6 +63,7 @@ struct MaxlandCineApp: App {
                 } else {
                     // Problema en la autenticación
                     isUnlocked = false
+                    showAuthButton = true
                 }
             }
         }
