@@ -12,6 +12,7 @@ struct MovieListRowView: View {
     let showDate: Date?
     let sinopsis: String?
     let score: Int16?
+    let isSerie: Bool?
     
     var body: some View {
         HStack {
@@ -32,6 +33,8 @@ struct MovieListRowView: View {
                     Text(showDate ?? Date(), style: .date)
                         .font(.caption2)
                         .foregroundColor(Color.black)
+                    if (isSerie != nil) { Text(isSerie! ? "Serie" : "Película") }
+                    else { Text("Película") }
                 }
             }
         }
@@ -40,7 +43,7 @@ struct MovieListRowView: View {
 
 struct MovieListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListRowView(movieName: "Prueba de película con nombre largo", showDate: Date(), sinopsis: "", score: 3)
+        MovieListRowView(movieName: "Prueba de película con nombre largo", showDate: Date(), sinopsis: "", score: 3, isSerie: false)
             .padding()
             .previewLayout(.sizeThatFits)
     }

@@ -42,7 +42,7 @@ struct MovieListView: View {
                             VStack {
                                 List(searchResults) { movie in
                                     NavigationLink(destination: MovieView(movie: movie, update: true)) {
-                                        MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score)
+                                        MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
                                     }
                                     .swipeActions(edge: .leading) {
                                         Button {
