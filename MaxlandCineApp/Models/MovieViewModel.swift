@@ -44,12 +44,13 @@ class MovieViewModel: ObservableObject {
         }
     }
     
-    func addMovie(movieName: String, showDate: Date, sinopsis: String, score: Int16) {
+    func addMovie(movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool) {
         let newMovie = Movie(context: dataModel.viewContext)
         newMovie.movieName = movieName
         newMovie.showDate = showDate
         newMovie.score = score
         newMovie.sinopsis = sinopsis
+        newMovie.isSerie = isSerie
         saveData()
     }
     
@@ -58,11 +59,12 @@ class MovieViewModel: ObservableObject {
         saveData()
     }
     
-    func updateMovie(movie: Movie, movieName: String, showDate: Date, sinopsis: String, score: Int16) {
+    func updateMovie(movie: Movie, movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool) {
         movie.movieName = movieName
         movie.showDate = showDate
         movie.score = score
         movie.sinopsis = sinopsis
+        movie.isSerie = isSerie
         saveData()
     }
        

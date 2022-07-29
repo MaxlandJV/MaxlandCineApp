@@ -16,6 +16,7 @@ struct MovieView: View {
     @State var showDate = Date()
     @State var sinopsis = ""
     @State var score: Int16 = 0
+    @State var isSerie: Bool = false
     @State var movie: Movie?
     @State var showingAlert = false
     
@@ -41,12 +42,19 @@ struct MovieView: View {
                     .disableAutocorrection(true)
                     .padding(.bottom, 10)
             }
-            Divider()
-            
-            DatePicker("movie-date",selection: $showDate, displayedComponents: .date)
-                .padding(.vertical)
             
             Divider()
+            
+            VStack {
+                DatePicker("movie-date",selection: $showDate, displayedComponents: .date)
+                    .padding(.top, 8)
+                
+                Divider()
+                
+                Toggle("Es una serie", isOn: $isSerie)
+                
+                Divider()
+            }
             
             HStack {
                 Text("movie-score")
@@ -124,7 +132,7 @@ struct MovieView: View {
         if (movieName.isEmpty) {
             showingAlert = true
         } else {
-            movieViewModel.addMovie(movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score)
+            movieViewModel.addMovie(movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie)
             dismiss()
         }
     }
@@ -132,7 +140,7 @@ struct MovieView: View {
     // MARK: Actualizar una película existente
     func updateMovie() {
         if let updatedMovie = movie {
-            movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score)
+            movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie)
         }
         dismiss()
     }
