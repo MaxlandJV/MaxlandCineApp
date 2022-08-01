@@ -16,7 +16,12 @@ struct MovieListRowView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "film").font(.title)
+            if (isSerie != nil) {
+                Image(systemName: isSerie! ? "sparkles.tv" : "film").font(.title)
+            }
+            else {
+                Image(systemName: "film").font(.title)
+            }
             VStack(alignment: .leading) {
                 Text(movieName ?? "").font(.subheadline).bold()
                 HStack {
@@ -33,8 +38,6 @@ struct MovieListRowView: View {
                     Text(showDate ?? Date(), style: .date)
                         .font(.caption2)
                         .foregroundColor(Color.black)
-                    if (isSerie != nil) { Text(isSerie! ? "Serie" : "Película") }
-                    else { Text("Película") }
                 }
             }
         }

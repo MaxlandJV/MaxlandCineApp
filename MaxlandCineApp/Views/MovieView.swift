@@ -115,6 +115,7 @@ struct MovieView: View {
                 showDate = updatedMovie.showDate ?? Date()
                 sinopsis = updatedMovie.sinopsis ?? ""
                 score = updatedMovie.score
+                isSerie = updatedMovie.isSerie
             } else {
                 // Poner el foco en el campo del nombre de la película
                 // Si se cambia el valor de "movieNameInFocus" no funciona
