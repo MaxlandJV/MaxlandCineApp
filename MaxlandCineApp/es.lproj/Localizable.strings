@@ -18,6 +18,8 @@
 "movie-date" = "Fecha de visionado";
 "movie-score" = "Puntuación:";
 "movie-review" = "Opinión:";
+"movie-type-1" = "Es una serie";
+"movie-type-2" = "Es una película";
 "movie-button-save" = "Guardar";
 "movie-button-cancel" = "Cancelar";
 "movie-button-update" = "Actualizar";

@@ -51,7 +51,8 @@ struct MovieView: View {
                 
                 Divider()
                 
-                Toggle("Es una serie", isOn: $isSerie)
+                Toggle(isSerie ? "movie-type-1" : "movie-type-2", isOn: $isSerie)
+                    .toggleStyle(CheckboxStyle())
                 
                 Divider()
             }

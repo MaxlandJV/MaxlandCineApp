@@ -18,6 +18,8 @@
 "movie-date" = "Viewing date";
 "movie-score" = "Score:";
 "movie-review" = "Review:";
+"movie-type-1" = "It is a series";
+"movie-type-2" = "It is a movie";
 "movie-button-save" = "Save";
 "movie-button-cancel" = "Cancel";
 "movie-button-update" = "Update";
