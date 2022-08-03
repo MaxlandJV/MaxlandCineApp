@@ -13,8 +13,8 @@
 "empty-add-movie-text" = "Add your first movie to be able to rate it and review it accordingly.";
 "empty-add-movie-button" = "Add first movie";
 
-"movie-new" = "New movie";
-"movie-name" = "Name of the movie";
+"movie-new" = "New movie or series";
+"movie-name" = "Name";
 "movie-date" = "Viewing date";
 "movie-score" = "Score:";
 "movie-review" = "Review:";

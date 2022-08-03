@@ -18,9 +18,11 @@ struct MovieListRowView: View {
         HStack {
             if (isSerie != nil) {
                 Image(systemName: isSerie! ? "sparkles.tv" : "film").font(.title)
+                    .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
             }
             else {
                 Image(systemName: "film").font(.title)
+                    .foregroundColor(Color("Movie"))
             }
             VStack(alignment: .leading) {
                 Text(movieName ?? "").font(.subheadline).bold()

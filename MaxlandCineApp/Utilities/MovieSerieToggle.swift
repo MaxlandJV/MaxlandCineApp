@@ -18,7 +18,7 @@ struct CheckboxStyle: ToggleStyle {
             Image(systemName: configuration.isOn ? "sparkles.tv" : "film")
                 .resizable()
                 .frame(width: 24, height: 24)
-                .foregroundColor(configuration.isOn ? .purple : .blue)
+                .foregroundColor(configuration.isOn ? Color("Serie") : Color("Movie"))
                 .font(.system(size: 20, weight: .bold, design: .default))
                 .onTapGesture {
                     configuration.isOn.toggle()

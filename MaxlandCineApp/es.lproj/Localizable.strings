@@ -13,8 +13,8 @@
 "empty-add-movie-text" = "Añada su primera película para poder valorarla y realizar la crítica correspondiente.";
 "empty-add-movie-button" = "Añadir primera película";
 
-"movie-new" = "Nueva película";
-"movie-name" = "Nombre de la película";
+"movie-new" = "Nueva película o serie";
+"movie-name" = "Nombre";
 "movie-date" = "Fecha de visionado";
 "movie-score" = "Puntuación:";
 "movie-review" = "Opinión:";
