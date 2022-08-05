@@ -9,9 +9,9 @@
 
 "navigation-list-title" = "Movies and series";
 
-"empty-title" = "They haven't created movies yet";
-"empty-add-movie-text" = "Add your first movie to be able to rate it and review it accordingly.";
-"empty-add-movie-button" = "Add first movie";
+"empty-title" = "They haven't created movies or series yet";
+"empty-add-movie-text" = "Add your first movie or series to be able to rate it and review it accordingly.";
+"empty-add-movie-button" = "Add first movie or series";
 
 "movie-new" = "New movie or series";
 "movie-name" = "Name";

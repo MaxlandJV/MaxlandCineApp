@@ -363,7 +363,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = es.maxland.cineapp;
 				PRODUCT_NAME = "Maxland Cine";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -396,7 +396,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = es.maxland.cineapp;
 				PRODUCT_NAME = "Maxland Cine";
 				PROVISIONING_PROFILE_SPECIFIER = "";

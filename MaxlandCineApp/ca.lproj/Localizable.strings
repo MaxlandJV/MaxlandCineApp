@@ -9,9 +9,9 @@
 
 "navigation-list-title" = "Pel·lícules y sèries";
 
-"empty-title" = "Encara no s'han creat pel·lícules";
-"empty-add-movie-text" = "Afegiu la vostra primera pel·lícula per poder valorar-la i realitzar la crítica corresponent.";
-"empty-add-movie-button" = "Afegir primera pel·lícula";
+"empty-title" = "Encara no s'han creat pel·lícules ni sèries";
+"empty-add-movie-text" = "Afegiu la vostra primera pel·lícula o sèrie per poder valorar-la i realitzar la crítica corresponent.";
+"empty-add-movie-button" = "Afegir primera pel·lícula o sèrie";
 
 "movie-new" = "Nova pel·lícula o sèrie";
 "movie-name" = "Nom";
