@@ -36,4 +36,6 @@
 
 "stats-title" = "Estadístiques";
 "stats-movie-number" = "Nombre de pel·lícules";
-"stats-movie-score" = "Pel·lícules per puntuació";
+"stats-serie-number" = "Nombre de sèries";
+"stats-total-number" = "Nombre de pel·lícules i sèries";
+"stats-score" = "Per puntuació";

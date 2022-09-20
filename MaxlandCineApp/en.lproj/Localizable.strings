@@ -36,4 +36,6 @@
 
 "stats-title" = "Statistics";
 "stats-movie-number" = "Number of movies";
-"stats-movie-score" = "Movies by score";
+"stats-serie-number" = "Number of series";
+"stats-total-number" = "Number of movies and series";
+"stats-score" = "By score";
