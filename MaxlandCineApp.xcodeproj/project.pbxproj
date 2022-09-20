@@ -11,6 +11,7 @@
 		8A21FDFF27A5AB4800D115A6 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FDFE27A5AB4800D115A6 /* MovieView.swift */; };
 		8A2383B727EE371500CE4998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A2383B627EE371500CE4998 /* LaunchScreen.storyboard */; };
 		8A24289627DF8117004977DB /* MovieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A24289527DF8117004977DB /* MovieSetupView.swift */; };
+		8A2B642728D9BF7F005C9165 /* MovieStatsViewGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2B642628D9BF7F005C9165 /* MovieStatsViewGraph.swift */; };
 		8A46CAD127A54BBC000DC7C4 /* MaxlandCineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A46CAD027A54BBC000DC7C4 /* MaxlandCineApp.swift */; };
 		8A46CAD527A54BBD000DC7C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */; };
 		8A5AE31A27F7052B00AC89E4 /* MovieEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AE31927F7052B00AC89E4 /* MovieEmptyView.swift */; };
@@ -29,6 +30,7 @@
 		8A21FDFE27A5AB4800D115A6 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		8A2383B627EE371500CE4998 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A24289527DF8117004977DB /* MovieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSetupView.swift; sourceTree = "<group>"; };
+		8A2B642628D9BF7F005C9165 /* MovieStatsViewGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStatsViewGraph.swift; sourceTree = "<group>"; };
 		8A46CACD27A54BBC000DC7C4 /* Maxland Cine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Maxland Cine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A46CAD027A54BBC000DC7C4 /* MaxlandCineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxlandCineApp.swift; sourceTree = "<group>"; };
 		8A46CAD427A54BBD000DC7C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				8A21FDFE27A5AB4800D115A6 /* MovieView.swift */,
 				8A24289527DF8117004977DB /* MovieSetupView.swift */,
 				8AA73440283CFF8C004D195A /* MovieStatsView.swift */,
+				8A2B642628D9BF7F005C9165 /* MovieStatsViewGraph.swift */,
 				8A722DC128434FFE00C19855 /* MovieStatsGraphBarView.swift */,
 				8A2383B627EE371500CE4998 /* LaunchScreen.storyboard */,
 			);
@@ -202,6 +205,7 @@
 				8A095ED827DFA3A60042A8E1 /* MovieListView.swift in Sources */,
 				8AED4540281816DC0016C602 /* BiometricAuth.swift in Sources */,
 				8A24289627DF8117004977DB /* MovieSetupView.swift in Sources */,
+				8A2B642728D9BF7F005C9165 /* MovieStatsViewGraph.swift in Sources */,
 				8A46CAD127A54BBC000DC7C4 /* MaxlandCineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
