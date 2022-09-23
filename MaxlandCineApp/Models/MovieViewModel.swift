@@ -11,6 +11,10 @@ class MovieViewModel: ObservableObject {
     let dataModel: NSPersistentContainer
     let biometricAuthUtil: BiometricAuth
     
+    enum typeData {
+        case All, Movies, Series
+    }
+    
     @Published var movieList: [Movie] = []
     @Published var biometricAuth: Bool = false {
         didSet {
@@ -77,8 +81,12 @@ class MovieViewModel: ObservableObject {
         }
     }
     
-    func getNumberMovies() -> Int {
-        return movieList.count
+    func getNumberMovies(type: typeData) -> Int {
+        switch type {
+        case .All: return movieList.count
+        case .Movies: return movieList.filter( { !$0.isSerie } ).count
+        case .Series: return movieList.filter( { $0.isSerie } ).count
+        }
     }
     
     func getNumberMoviesByScore() -> [Int] {
