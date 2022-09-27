@@ -83,18 +83,42 @@ class MovieViewModel: ObservableObject {
     
     func getNumberMovies(type: typeData) -> Int {
         switch type {
-        case .All: return movieList.count
-        case .Movies: return movieList.filter( { !$0.isSerie } ).count
-        case .Series: return movieList.filter( { $0.isSerie } ).count
+            case .All: return movieList.count
+            case .Movies: return movieList.filter( { !$0.isSerie } ).count
+            case .Series: return movieList.filter( { $0.isSerie } ).count
         }
     }
     
-    func getNumberMoviesByScore() -> [Int] {
-        let moviesScore1 = movieList.filter( { $0.score == 1 } ).count
-        let moviesScore2 = movieList.filter( { $0.score == 2 } ).count
-        let moviesScore3 = movieList.filter( { $0.score == 3 } ).count
-        let moviesScore4 = movieList.filter( { $0.score == 4 } ).count
-        let moviesScore5 = movieList.filter( { $0.score == 5 } ).count
+    func getNumberMoviesByScore(type: typeData) -> [Int] {
+        var moviesScore1 = 0
+        var moviesScore2 = 0
+        var moviesScore3 = 0
+        var moviesScore4 = 0
+        var moviesScore5 = 0
+        
+        switch type {
+            case .All:
+                moviesScore1 = movieList.filter( { $0.score == 1 } ).count
+                moviesScore2 = movieList.filter( { $0.score == 2 } ).count
+                moviesScore3 = movieList.filter( { $0.score == 3 } ).count
+                moviesScore4 = movieList.filter( { $0.score == 4 } ).count
+                moviesScore5 = movieList.filter( { $0.score == 5 } ).count
+                break;
+            case .Movies:
+                moviesScore1 = movieList.filter( { $0.score == 1 && !$0.isSerie } ).count
+                moviesScore2 = movieList.filter( { $0.score == 2 && !$0.isSerie } ).count
+                moviesScore3 = movieList.filter( { $0.score == 3 && !$0.isSerie } ).count
+                moviesScore4 = movieList.filter( { $0.score == 4 && !$0.isSerie } ).count
+                moviesScore5 = movieList.filter( { $0.score == 5 && !$0.isSerie } ).count
+                break;
+            case .Series:
+                moviesScore1 = movieList.filter( { $0.score == 1 && $0.isSerie } ).count
+                moviesScore2 = movieList.filter( { $0.score == 2 && $0.isSerie } ).count
+                moviesScore3 = movieList.filter( { $0.score == 3 && $0.isSerie } ).count
+                moviesScore4 = movieList.filter( { $0.score == 4 && $0.isSerie } ).count
+                moviesScore5 = movieList.filter( { $0.score == 5 && $0.isSerie } ).count
+                break;
+        }
         
         let movieListScore = [moviesScore1, moviesScore2, moviesScore3, moviesScore4, moviesScore5]
         

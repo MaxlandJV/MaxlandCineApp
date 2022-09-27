@@ -16,9 +16,9 @@ struct MovieStatsView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                MovieStatsViewGraph(TitleText: Text("stats-total-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.All), movieListScore: movieViewModel.getNumberMoviesByScore())
-                MovieStatsViewGraph(TitleText: Text("stats-movie-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.Movies), movieListScore: movieViewModel.getNumberMoviesByScore())
-                MovieStatsViewGraph(TitleText: Text("stats-serie-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.Series), movieListScore: movieViewModel.getNumberMoviesByScore())
+                MovieStatsViewGraph(TitleText: Text("stats-total-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.All), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.All))
+                MovieStatsViewGraph(TitleText: Text("stats-movie-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.Movies), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.Movies))
+                MovieStatsViewGraph(TitleText: Text("stats-serie-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.Series), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.Series))
             }
         }
         .padding()
