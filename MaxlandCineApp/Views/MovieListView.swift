@@ -30,64 +30,65 @@ struct MovieListView: View {
     
     var body: some View {
         NavigationView {
-            LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
-                .ignoresSafeArea()
-                .overlay (
-                    ZStack {
-                        if movieViewModel.movieList.isEmpty {
-                            MovieEmptyView()
-                                .transition(AnyTransition.opacity.animation(.easeIn))
-                        }
-                        else {
-                            VStack {
-                                List(searchResults) { movie in
-                                    NavigationLink(destination: MovieView(movie: movie, update: true)) {
-                                        MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
-                                    }
-                                    .swipeActions(edge: .leading) {
-                                        Button {
-                                            movieViewModel.deleteMovie(movie: movie)
-                                        } label: {
-                                            Label("Eliminar", systemImage: "trash.fill")
-                                        }
-                                        .tint(.red)
-                                    }
-                                    .listRowBackground(Color.white.opacity(0))
-                                }
-                                .listStyle(PlainListStyle())
-                                .searchable(text: $searchMovie, prompt: "Buscar películas...")
+            ZStack {
+                if movieViewModel.movieList.isEmpty {
+                    MovieEmptyView()
+                        .transition(AnyTransition.opacity.animation(.easeIn))
+                }
+                else {
+                    VStack {
+                        List(searchResults) { movie in
+                            NavigationLink(destination: MovieView(movie: movie, update: true)) {
+                                MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
                             }
+                            .swipeActions(edge: .leading) {
+                                Button {
+                                    movieViewModel.deleteMovie(movie: movie)
+                                } label: {
+                                    Label("Eliminar", systemImage: "trash.fill")
+                                }
+                                .tint(.red)
+                            }
+                            .listRowBackground(Color.white.opacity(0))
+                        }
+                        .background(
+                            LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                .ignoresSafeArea()
+                        )
+                        .scrollContentBackground(.hidden)
+                        .listStyle(PlainListStyle())
+                        .searchable(text: $searchMovie, prompt: "Buscar películas...")
+                    }
+                }
+            }
+            .navigationTitle(Text("navigation-list-title"))
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: MovieSetupView()) {
+                        Image(systemName: "gearshape")
+                            .foregroundColor(.black)
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if (movieViewModel.movieList.count > 0) {
+                        NavigationLink(destination: MovieStatsView()) {
+                            Image(systemName: "chart.bar.xaxis")
+                                .foregroundColor(.black)
                         }
                     }
-                    .navigationTitle(Text("navigation-list-title"))
-                    .toolbar(content: {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            NavigationLink(destination: MovieSetupView()) {
-                                Image(systemName: "gearshape")
-                                    .foregroundColor(.black)
-                            }
-                        }
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            if (movieViewModel.movieList.count > 0) {
-                                NavigationLink(destination: MovieStatsView()) {
-                                    Image(systemName: "chart.bar.xaxis")
-                                        .foregroundColor(.black)
-                                }
-                            }
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button {
-                                isPresented.toggle()
-                            } label: {
-                                Image(systemName: "plus.circle")
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    })
-                    .sheet(isPresented: $isPresented) {
-                        MovieView()
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isPresented.toggle()
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .foregroundColor(.black)
                     }
-                )
+                }
+            })
+            .sheet(isPresented: $isPresented) {
+                MovieView()
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
