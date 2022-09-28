@@ -31,10 +31,15 @@ struct MovieStatsView: View {
         .navigationBarTitle("stats-title")
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    // TODO: Añadir un menú para cambiar la variable "graphOption"
-                } label: {
-                    Image(systemName: "plus.circle")
+                Menu {
+                    Picker(selection: $graphOption, label: Text("")) {
+                        Label("stats-todo", systemImage: "list.bullet.rectangle").tag(0)
+                        Label("stats-movies", systemImage: "film").tag(1)
+                        Label("stats-series", systemImage: "sparkles.tv").tag(2)
+                    }
+                }
+                label: {
+                    Image(systemName: "filemenu.and.selection")
                 }
             }
         })

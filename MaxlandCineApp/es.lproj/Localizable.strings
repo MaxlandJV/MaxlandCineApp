@@ -39,3 +39,6 @@
 "stats-serie-number" = "Número de series";
 "stats-total-number" = "Número de películas y series";
 "stats-score" = "Por puntuación";
+"stats-todo" = "Todo";
+"stats-movies" = "Películas";
+"stats-series" = "Series";
