@@ -27,7 +27,7 @@
 
 "setup-title" = "Settings";
 "setup-about" = "About Maxland Cine";
-"setup-details" = "This application is designed to be able to store a movie diary, indicating its title, its viewing date, a score and a descriptive text or film review. The application uses MVVM architecture and CoreData.";
+"setup-details" = "This application is designed to be able to store a movie and TV show diary, indicating its title, its viewing date, a score and a descriptive text or film review. The application uses MVVM architecture and CoreData.";
 "setup-code" = "APP source code";
 "setup-about-me" = "About me...";
 "setup-auth" = "Require authentication";
