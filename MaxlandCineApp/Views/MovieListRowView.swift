@@ -36,10 +36,10 @@ struct MovieListRowView: View {
                     }
                     Text("-")
                         .font(.caption2)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.black)
                     Text(showDate ?? Date(), style: .date)
                         .font(.caption2)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.black)
                 }
             }
         }
