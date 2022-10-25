@@ -64,13 +64,13 @@ struct MovieListView: View {
                     .toolbar(content: {
                         ToolbarItem(placement: .navigationBarLeading) {
                             NavigationLink(destination: MovieSetupView()) {
-                                Image(systemName: "gearshape")
+                                Image(systemName: "gearshape").foregroundColor(.black)
                             }
                         }
                         ToolbarItem(placement: .navigationBarLeading) {
                             if (movieViewModel.movieList.count > 0) {
                                 NavigationLink(destination: MovieStatsView()) {
-                                    Image(systemName: "chart.bar.xaxis")
+                                    Image(systemName: "chart.bar.xaxis").foregroundColor(.black)
                                 }
                             }
                         }
@@ -78,7 +78,7 @@ struct MovieListView: View {
                             Button {
                                 isPresented.toggle()
                             } label: {
-                                Image(systemName: "plus.circle")
+                                Image(systemName: "plus.circle").foregroundColor(.black)
                             }
                         }
                     })
