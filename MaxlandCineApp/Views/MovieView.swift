@@ -110,6 +110,11 @@ struct MovieView: View {
         }
         .padding()
         .navigationBarTitle(movie?.movieName ?? "", displayMode: .inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                ShareLink(item: movieName + ": " + sinopsis)
+            }
+        })
         .onAppear {
             if let updatedMovie = movie {
                 movieName = updatedMovie.movieName ?? ""
