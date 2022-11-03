@@ -12,30 +12,34 @@ struct MovieSetupView: View {
     @EnvironmentObject var movieViewModel: MovieViewModel
     
     var body: some View {
-        Form {
-            Section(header: Text("setup-about") + Text(" - 1.2.0")) {
-                VStack(alignment: .leading) {
-                    Image("MaxlandWorld")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                    Text("setup-details")
+        VStack {
+            Form {
+                Section(header: Text("setup-about") + Text(" - 1.2.0")) {
+                    VStack(alignment: .leading) {
+                        Image("MaxlandWorld")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                        Text("setup-details")
+                    }
+                    .padding(.vertical)
+                    Link("setup-code", destination: URL(string: "https://github.com/MaxlandJV/MaxlandCineApp")!)
+                    Link("setup-about-me", destination: URL(string: "https://www.linkedin.com/in/jordivilaro")!)
                 }
-                .padding(.vertical)
-                Link("setup-code", destination: URL(string: "https://github.com/MaxlandJV/MaxlandCineApp")!)
-                Link("setup-about-me", destination: URL(string: "https://www.linkedin.com/in/jordivilaro")!)
-            }
-
-            if movieViewModel.biometricAuthUtil.biometricAuthActive() {
-                Section {
-                    Toggle("setup-auth", isOn: $movieViewModel.biometricAuth)
-                } header: {
-                    Text("setup-bioauth")
-                } footer: {
-                    Text("setup-auth-details")
+                
+                if movieViewModel.biometricAuthUtil.biometricAuthActive() {
+                    Section {
+                        Toggle("setup-auth", isOn: $movieViewModel.biometricAuth)
+                    } header: {
+                        Text("setup-bioauth")
+                    } footer: {
+                        Text("setup-auth-details")
+                    }
                 }
             }
+            .navigationBarTitle("setup-title")
+            
+            Spacer()
         }
-        .navigationBarTitle("setup-title")
     }
 }
 
