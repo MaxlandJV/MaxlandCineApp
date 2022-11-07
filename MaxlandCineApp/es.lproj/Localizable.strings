@@ -8,6 +8,7 @@
 "auth-required" = "Autenticación requerida";
 
 "navigation-list-title" = "Películas y series";
+"navigation-list-search" = "Buscar...";
 
 "empty-title" = "Todavía no se han creado películas ni series";
 "empty-add-movie-text" = "Añada su primera película o serie para poder valorarla y realizar la crítica correspondiente.";

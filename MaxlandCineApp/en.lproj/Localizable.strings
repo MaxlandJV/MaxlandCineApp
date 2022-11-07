@@ -8,6 +8,7 @@
 "auth-required" = "Authentication required";
 
 "navigation-list-title" = "Movies and series";
+"navigation-list-search" = "Search...";
 
 "empty-title" = "They haven't created movies or series yet";
 "empty-add-movie-text" = "Add your first movie or series to be able to rate it and review it accordingly.";

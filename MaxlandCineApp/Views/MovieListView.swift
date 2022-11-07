@@ -56,7 +56,7 @@ struct MovieListView: View {
                                 }
                                 .scrollContentBackground(.hidden)
                                 .listStyle(PlainListStyle())
-                                .searchable(text: $searchMovie, prompt: "Buscar películas...")
+                                .searchable(text: $searchMovie, prompt: "navigation-list-search")
                             }
                         }
                     }
