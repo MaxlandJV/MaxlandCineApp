@@ -34,6 +34,7 @@
 "setup-auth" = "Requerir autenticació";
 "setup-bioauth" = "Autenticació biomètrica";
 "setup-auth-details" = "Quan està habilitat, cal utilitzar Face ID o Touch ID per accedir al contingut.";
+"setup-links" = "Enllaços";
 
 "stats-title" = "Estadístiques";
 "stats-movie-number" = "Nombre de pel·lícules";
