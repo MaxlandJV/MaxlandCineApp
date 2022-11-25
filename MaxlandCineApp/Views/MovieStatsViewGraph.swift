@@ -6,6 +6,16 @@
 //
 
 import SwiftUI
+import Charts
+
+struct Info: Identifiable {
+    let id: String = UUID().uuidString
+    let starsNumber: Int
+    let movies: Int
+    let score: CGFloat
+}
+
+var graphInfo: [Info] = []
 
 struct MovieStatsViewGraph: View {
     
@@ -45,6 +55,27 @@ struct MovieStatsViewGraph: View {
                 }
                 .padding(.top, 20)
                 .frame(height: 280)
+                
+                
+                Chart(graphInfo) { data in
+                    BarMark(x: .value("*", data.starsNumber),
+                            y: .value("Views", data.movies))
+                    .annotation(position: .top, alignment: .center) {
+                        Text("\(data.movies)")
+                            .font(.headline)
+                    }
+                }
+                .chartXAxis {
+                    AxisMarks() { axisValue in
+                        AxisGridLine(centered: true, stroke: StrokeStyle(lineWidth: 1))
+                        if let valor = axisValue.as(Int.self) {
+                            AxisValueLabel {
+                                Text("\(valor)")
+                            }
+                        }
+                    }
+                }
+                .frame(height: 280)
             }
             .padding()
             .background(Color(UIColor.systemGray6))
@@ -57,6 +88,12 @@ struct MovieStatsViewGraph: View {
                 score[2] = getBarHeight(valor: CGFloat(movieListScore[2]))
                 score[3] = getBarHeight(valor: CGFloat(movieListScore[3]))
                 score[4] = getBarHeight(valor: CGFloat(movieListScore[4]))
+                
+                graphInfo.append(Info(starsNumber: 1, movies: movieListScore[0], score: score[0]))
+                graphInfo.append(Info(starsNumber: 2, movies: movieListScore[1], score: score[1]))
+                graphInfo.append(Info(starsNumber: 3, movies: movieListScore[2], score: score[2]))
+                graphInfo.append(Info(starsNumber: 4, movies: movieListScore[3], score: score[3]))
+                graphInfo.append(Info(starsNumber: 5, movies: movieListScore[4], score: score[4]))
             }
         }
     }
