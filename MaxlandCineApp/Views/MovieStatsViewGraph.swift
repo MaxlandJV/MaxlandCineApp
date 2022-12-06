@@ -44,7 +44,7 @@ struct MovieStatsViewGraph: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Chart(graphInfo) { data in
-                    BarMark(x: .value("stars", "\(data.starsNumber)"),
+                    BarMark(x: .value("Stars", "\(data.starsNumber)"),
                             y: .value("Views", data.movies))
                     .annotation(position: .top, alignment: .center) {
                         Text("\(data.movies)")
