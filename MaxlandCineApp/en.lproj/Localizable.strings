@@ -35,6 +35,9 @@
 "setup-bioauth" = "Biometric authentication";
 "setup-auth-details" = "When enabled, Face ID or Touch ID is required to access content.";
 "setup-links" = "Links";
+"setup-copias-seguridad" = "Backups";
+"setup-exportar-datos" = "Export data";
+"setup-importar-datos" = "Import data";
 
 "stats-title" = "Statistics";
 "stats-movie-number" = "Number of movies";

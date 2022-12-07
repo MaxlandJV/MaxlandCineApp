@@ -23,6 +23,7 @@ struct MovieSetupView: View {
                 }
                 .padding(.vertical)
             }
+            
             Section(header: Text("setup-links")) {
                 VStack(alignment: .leading) {
                     Link("setup-code", destination: URL(string: "https://github.com/MaxlandJV/MaxlandCineApp")!)
@@ -38,6 +39,25 @@ struct MovieSetupView: View {
                     Text("setup-bioauth")
                 } footer: {
                     Text("setup-auth-details")
+                }
+            }
+            
+            if !movieViewModel.movieList.isEmpty {
+                Section(header: Text("setup-copias-seguridad")) {
+                    VStack(alignment: .leading) {
+                        Button {
+                            
+                        } label: {
+                            Text("setup-exportar-datos")
+                        }
+                        Divider()
+                        Button {
+                            
+                        } label: {
+                            Text("setup-importar-datos")
+                        }
+
+                    }
                 }
             }
         }
