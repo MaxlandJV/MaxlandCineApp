@@ -45,11 +45,15 @@ struct MovieSetupView: View {
             if !movieViewModel.movieList.isEmpty {
                 Section(header: Text("setup-copias-seguridad")) {
                     VStack(alignment: .leading) {
-                        Button {
-                            
-                        } label: {
-                            Text("setup-exportar-datos")
+                        NavigationLink(destination: MovieExportDataView()) {
+                            Button {
+                                
+                            } label: {
+                                Text("setup-exportar-datos")
+                            }
                         }
+
+                        
                         Divider()
                         Button {
                             
