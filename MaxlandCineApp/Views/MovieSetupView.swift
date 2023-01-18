@@ -27,7 +27,8 @@ struct MovieSetupView: View {
             Section(header: Text("setup-links")) {
                 VStack(alignment: .leading) {
                     Link("setup-code", destination: URL(string: "https://github.com/MaxlandJV/MaxlandCineApp")!)
-                    Divider()
+                }
+                VStack(alignment: .leading) {
                     Link("setup-about-me", destination: URL(string: "https://www.linkedin.com/in/jordivilaro")!)
                 }
             }
@@ -42,28 +43,27 @@ struct MovieSetupView: View {
                 }
             }
             
-            if !movieViewModel.movieList.isEmpty {
-                Section(header: Text("setup-copias-seguridad")) {
-                    VStack(alignment: .leading) {
-                        NavigationLink(destination: MovieExportDataView()) {
-                            Button {
-                                
-                            } label: {
-                                Text("setup-exportar-datos")
-                            }
-                        }
-
-                        
-                        Divider()
-                        Button {
-                            
-                        } label: {
-                            Text("setup-importar-datos")
-                        }
-
-                    }
-                }
-            }
+//            if !movieViewModel.movieList.isEmpty {
+//                Section(header: Text("setup-copias-seguridad")) {
+//                    VStack(alignment: .leading) {
+//                        NavigationLink(destination: MovieExportDataView()) {
+//                            Button {
+//                                
+//                            } label: {
+//                                Text("setup-exportar-datos")
+//                            }
+//                        }
+//                    }
+//                    VStack(alignment: .leading) {
+//                        Button {
+//                            
+//                        } label: {
+//                            Text("setup-importar-datos")
+//                        }
+//
+//                    }
+//                }
+//            }
         }
        .navigationBarTitle("setup-title")
     }

@@ -10,7 +10,12 @@ import SwiftUI
 struct MovieExportDataView: View {   
     var body: some View {
         VStack {
-            Text("Prueba")
+            Button {
+                
+            } label: {
+                Text("Prueba")
+            }
+
         }
         .navigationBarTitle("setup-exportar-datos")
     }
