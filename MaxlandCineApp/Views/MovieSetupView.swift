@@ -43,27 +43,27 @@ struct MovieSetupView: View {
                 }
             }
             
-//            if !movieViewModel.movieList.isEmpty {
-//                Section(header: Text("setup-copias-seguridad")) {
-//                    VStack(alignment: .leading) {
-//                        NavigationLink(destination: MovieExportDataView()) {
-//                            Button {
-//                                
-//                            } label: {
-//                                Text("setup-exportar-datos")
-//                            }
-//                        }
-//                    }
-//                    VStack(alignment: .leading) {
-//                        Button {
-//                            
-//                        } label: {
-//                            Text("setup-importar-datos")
-//                        }
-//
-//                    }
-//                }
-//            }
+            if !movieViewModel.movieList.isEmpty {
+                Section(header: Text("setup-copias-seguridad")) {
+                    VStack(alignment: .leading) {
+                        NavigationLink(destination: MovieExportDataView()) {
+                            Button {
+                                
+                            } label: {
+                                Text("setup-exportar-datos")
+                            }
+                        }
+                    }
+                    VStack(alignment: .leading) {
+                        Button {
+                            
+                        } label: {
+                            Text("setup-importar-datos")
+                        }
+
+                    }
+                }
+            }
         }
        .navigationBarTitle("setup-title")
     }
