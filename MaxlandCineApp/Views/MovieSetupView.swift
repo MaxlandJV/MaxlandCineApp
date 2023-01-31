@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import QuickLook
 
 struct MovieSetupView: View {
     
@@ -13,7 +14,7 @@ struct MovieSetupView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("setup-about") + Text(" - 1.2.1")) {
+            Section(header: Text("setup-about") + Text(" - 1.2.3")) {
                 VStack(alignment: .leading) {
                     Image("MaxlandWorld")
                         .resizable()
@@ -46,21 +47,19 @@ struct MovieSetupView: View {
             if !movieViewModel.movieList.isEmpty {
                 Section(header: Text("setup-copias-seguridad")) {
                     VStack(alignment: .leading) {
-                        NavigationLink(destination: MovieExportDataView()) {
-                            Button {
-                                
-                            } label: {
-                                Text("setup-exportar-datos")
-                            }
+                        NavigationLink {
+                            MovieExportDataView()
+                        } label: {
+                            Text("setup-exportar-datos")
                         }
                     }
                     VStack(alignment: .leading) {
-                        Button {
-                            
+                        NavigationLink {
+                            MovieImportDataView()
                         } label: {
                             Text("setup-importar-datos")
                         }
-
+                        
                     }
                 }
             }

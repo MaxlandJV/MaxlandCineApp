@@ -7,14 +7,26 @@
 
 import SwiftUI
 
-struct MovieExportDataView: View {   
+struct MovieExportDataView: View {
+    
+    @State private var exportFile: Bool = false
+    
     var body: some View {
         VStack {
             Button {
-                
+                exportFile.toggle()
             } label: {
-                Text("Prueba")
+                Text("Exportar")
             }
+//            .fileExporter(isPresented: $exportFile, documents: <#T##Collection#>, contentType: .json) { result in
+//                switch result {
+//                case .success(let success):
+//                    print("Exportado correctamente")
+//                case .failure(let failure):
+//                    print(failure.localizedDescription)
+//                }
+//            }
+
 
         }
         .navigationBarTitle("setup-exportar-datos")
