@@ -124,4 +124,27 @@ class MovieViewModel: ObservableObject {
         
         return movieListScore
     }
+    
+    func getJSONData() -> String? {
+        var movieExportList: [MovieExportModel] = []
+        
+        movieList.forEach { movie in
+            let movieExportModel = MovieExportModel(isSerie: movie.isSerie, movieName: movie.movieName, score: movie.score, showDate: movie.showDate, sinopsis: movie.sinopsis)
+            movieExportList.append(movieExportModel)
+        }
+        
+        do {
+            let jsonData = try JSONEncoder().encode(movieExportList)
+            let jsonExportData = String(data: jsonData, encoding: String.Encoding.utf8)
+            return(jsonExportData)
+            // Escribe el archivo JSON
+            //let fileName = "export.json"
+            //let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+            //try json.write(to: fileURL)
+        } catch {
+            print("Error fetching data from CoreData", error)
+        }
+
+        return nil
+    }
 }

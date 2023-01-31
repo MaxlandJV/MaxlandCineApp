@@ -9,12 +9,15 @@ import SwiftUI
 
 struct MovieExportDataView: View {
     
+    @EnvironmentObject var movieViewModel: MovieViewModel
     @State private var exportFile: Bool = false
     
     var body: some View {
         VStack {
             Button {
                 exportFile.toggle()
+                let data = movieViewModel.getJSONData()
+                print(data!)
             } label: {
                 Text("Exportar")
             }
