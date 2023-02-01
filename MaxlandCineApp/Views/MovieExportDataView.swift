@@ -16,21 +16,17 @@ struct MovieExportDataView: View {
         VStack {
             Button {
                 exportFile.toggle()
-                let data = movieViewModel.getJSONData()
-                print(data!)
             } label: {
                 Text("Exportar")
             }
-//            .fileExporter(isPresented: $exportFile, documents: <#T##Collection#>, contentType: .json) { result in
-//                switch result {
-//                case .success(let success):
-//                    print("Exportado correctamente")
-//                case .failure(let failure):
-//                    print(failure.localizedDescription)
-//                }
-//            }
-
-
+            .fileExporter(isPresented: $exportFile, document: JsonFile(json: movieViewModel.getJSONData() ?? ""), contentType: .json, defaultFilename: "jsondata") { result in
+                switch result {
+                case .success(_):
+                    print("Exportado correctamente")
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+           }
         }
         .navigationBarTitle("setup-exportar-datos")
     }
