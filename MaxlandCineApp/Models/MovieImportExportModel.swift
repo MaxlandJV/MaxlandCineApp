@@ -8,7 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct MovieImportExportModel: Codable {
+struct MovieImportExportModel: Encodable, Decodable {
     public var isSerie: Bool
     public var movieName: String?
     public var score: Int16

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MovieImportDataView: View {
     
-    @EnvironmentObject var movieViewModel: MovieViewModel
     @State private var pickFile: Bool = false
     @State private var fileURL: URL?
     
@@ -21,17 +20,12 @@ struct MovieImportDataView: View {
                 Text("Importar")
             }
             .fileImporter(isPresented: $pickFile, allowedContentTypes: [.json]) { result in
-                switch result {
-                case .success(let success):
-                    fileURL = success.absoluteURL
-                    if let urlString = fileURL?.absoluteString {
-                        let datos = movieViewModel.loadJson(fileName: urlString)
-                        datos?.forEach({ data in
-                            print(data.movieName!)
-                        })
-                    }
-                case .failure(let failure):
-                    print(failure.localizedDescription)
+                do {
+                    guard let selectedFile: URL = try? result.get() else { return }
+                    guard let jsonData = String(data: try Data(contentsOf: selectedFile), encoding: .utf8)?.data(using: .utf8) else { return }
+                    guard let json = try? JSONDecoder().decode([MovieImportExportModel].self, from: jsonData) else { return }
+                } catch {
+                    print("Error de importación")
                 }
             }
             //.quickLookPreview($fileURL)

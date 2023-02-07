@@ -24,7 +24,7 @@ struct MovieExportDataView: View {
                 case .success(_):
                     print("Exportado correctamente")
                 case .failure(let failure):
-                    print(failure.localizedDescription)
+                    fatalError(failure.localizedDescription)
                 }
            }
         }
