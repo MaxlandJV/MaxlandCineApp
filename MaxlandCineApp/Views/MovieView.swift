@@ -105,7 +105,7 @@ struct MovieView: View {
                     Label("movie-button-update", systemImage: "doc.badge.gearshape.fill")
                         .padding(.horizontal)
                 })
-                    .buttonStyle(.borderedProminent)
+                .buttonStyle(.borderedProminent)
             }
         }
         .padding()
