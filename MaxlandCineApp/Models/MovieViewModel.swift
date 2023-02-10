@@ -159,9 +159,9 @@ class MovieViewModel: ObservableObject {
         do {
             guard let selectedFile: URL = try? moviesJSON.get() else { return }
             guard let jsonData = String(data: try Data(contentsOf: selectedFile), encoding: .utf8)?.data(using: .utf8) else { return }
-            guard let json = try? JSONDecoder().decode([MovieImportExportModel].self, from: jsonData) else { return }
+            guard let movieImportModel = try? JSONDecoder().decode([MovieImportExportModel].self, from: jsonData) else { return }
             deleteAllMovies()
-            json.forEach { movie in
+            movieImportModel.forEach { movie in
                 addMovie(movieName: movie.movieName!, showDate: movie.showDate!, sinopsis: movie.sinopsis!, score: movie.score, isSerie: movie.isSerie)
             }
             
