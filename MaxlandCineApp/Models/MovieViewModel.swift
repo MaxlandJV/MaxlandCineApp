@@ -81,6 +81,19 @@ class MovieViewModel: ObservableObject {
         }
     }
     
+    func deleteAllMovies()
+    {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Movie")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try dataModel.viewContext.execute(deleteRequest)
+            movieList = []
+        } catch let error {
+            fatalError("Error eliminando todos los datos: \(error.localizedDescription)")
+        }
+    }
+    
     func getNumberMovies(type: typeData) -> Int {
         switch type {
             case .All: return movieList.count
@@ -139,6 +152,21 @@ class MovieViewModel: ObservableObject {
             return(jsonExportData)
         } catch {
             fatalError("Error recuperando datos para exportar: \(error.localizedDescription)")
+        }
+    }
+    
+    func setJSONData(moviesJSON: Result<URL, Error>) {
+        do {
+            guard let selectedFile: URL = try? moviesJSON.get() else { return }
+            guard let jsonData = String(data: try Data(contentsOf: selectedFile), encoding: .utf8)?.data(using: .utf8) else { return }
+            guard let json = try? JSONDecoder().decode([MovieImportExportModel].self, from: jsonData) else { return }
+            deleteAllMovies()
+            json.forEach { movie in
+                addMovie(movieName: movie.movieName!, showDate: movie.showDate!, sinopsis: movie.sinopsis!, score: movie.score, isSerie: movie.isSerie)
+            }
+            
+        } catch {
+            fatalError("Error en la importación de datos: \(error.localizedDescription)")
         }
     }
 }

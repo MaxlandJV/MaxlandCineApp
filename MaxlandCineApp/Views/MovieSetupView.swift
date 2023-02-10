@@ -44,8 +44,9 @@ struct MovieSetupView: View {
                 }
             }
             
-            if !movieViewModel.movieList.isEmpty {
-                Section(header: Text("setup-copias-seguridad")) {
+            
+            Section(header: Text("setup-copias-seguridad")) {
+                if !movieViewModel.movieList.isEmpty {
                     VStack(alignment: .leading) {
                         NavigationLink {
                             MovieExportDataView()
@@ -53,13 +54,12 @@ struct MovieSetupView: View {
                             Text("setup-exportar-datos")
                         }
                     }
-                    VStack(alignment: .leading) {
-                        NavigationLink {
-                            MovieImportDataView()
-                        } label: {
-                            Text("setup-importar-datos")
-                        }
-                        
+                }
+                VStack(alignment: .leading) {
+                    NavigationLink {
+                        MovieImportDataView()
+                    } label: {
+                        Text("setup-importar-datos")
                     }
                 }
             }
