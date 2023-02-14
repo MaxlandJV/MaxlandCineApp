@@ -51,3 +51,8 @@
 "movie-export-data" = "Exportar";
 "movie-export-detail" = "Mitjançant aquesta opció es poden exportar totes les dades contingudes a l'aplicació a un fitxer de text en format JSON. Aquest fitxer es pot tornar a importar mitjançant l'opció d'importació ubicada a l'apartat de còpies de seguretat.";
 "movie-export-alert" = "Fitxer correctament exportat.";
+
+"movie-import-data" = "Importar";
+"movie-import-detail1" = "Mitjançant aquesta opció podeu importar a l'aplicació un fitxer de text en format JSON que contingui les dades d'una còpia de seguretat.";
+"movie-import-detail2" = "Tingueu especial atenció ja que en importar es perdran totes les dades emmagatzemades a l'aplicació.";
+"movie-import-alert" = "Fitxer correctament importat.";

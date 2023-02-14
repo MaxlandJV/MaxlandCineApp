@@ -18,7 +18,7 @@ struct MovieExportDataView: View {
         VStack {
             Text("movie-export-detail")
                 .font(.headline)
-            Image(systemName: "doc.text")
+            Image(systemName: "arrow.down.doc")
                 .resizable()
                 .frame(width: 150, height: 190)
                 .padding(.top, 50)

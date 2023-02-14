@@ -51,3 +51,8 @@
 "movie-export-data" = "Export";
 "movie-export-detail" = "Using this option you can export all the data contained in the application to a text file in JSON format. This file can be re-imported using the import option located in the backup section.";
 "movie-export-alert" = "File successfully exported.";
+
+"movie-import-data" = "Import";
+"movie-import-detail1" = "Using this option, a text file in JSON format containing the data from a backup can be imported into the application.";
+"movie-import-detail2" = "Be especially careful as importing will lose all data stored in the application.";
+"movie-import-alert" = "File successfully imported.";

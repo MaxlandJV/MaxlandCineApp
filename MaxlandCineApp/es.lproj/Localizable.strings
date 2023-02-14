@@ -51,3 +51,8 @@
 "movie-export-data" = "Exportar";
 "movie-export-detail" = "Mediante esta opción se pueden exportar todos los datos contenidos en la aplicación a un archivo de texto en formato JSON. Este archivo se puede volver a importar mediante la opción de importación ubicada en el apartado de copias de seguridad.";
 "movie-export-alert" = "Archivo correctamente exportado.";
+
+"movie-import-data" = "Importar";
+"movie-import-detail1" = "Mediante esta opción se puede importar a la aplicación un archivo de texto en formato JSON que contenga los datos de una copia de seguridad.";
+"movie-import-detail2" = "Tenga especial atención ya que al importar se perderán todos los datos almacenados en la aplicación.";
+"movie-import-alert" = "Archivo correctamente importado.";
