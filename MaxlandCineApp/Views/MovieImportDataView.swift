@@ -25,7 +25,7 @@ struct MovieImportDataView: View {
             }
             //.quickLookPreview($fileURL)
         }
-        .navigationBarTitle("setup-exportar-datos")
+        .navigationBarTitle("setup-importar-datos")
     }
 }
 

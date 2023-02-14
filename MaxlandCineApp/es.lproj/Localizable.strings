@@ -47,3 +47,5 @@
 "stats-todo" = "Todo";
 "stats-movies" = "Películas";
 "stats-series" = "Series";
+
+"movie-export-Data" = "Exportar";

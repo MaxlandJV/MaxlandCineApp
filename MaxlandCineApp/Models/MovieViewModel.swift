@@ -88,7 +88,7 @@ class MovieViewModel: ObservableObject {
 
         do {
             try dataModel.viewContext.execute(deleteRequest)
-            movieList = []
+            fetchMovies()
         } catch let error {
             fatalError("Error eliminando todos los datos: \(error.localizedDescription)")
         }
