@@ -48,4 +48,6 @@
 "stats-movies" = "Películas";
 "stats-series" = "Series";
 
-"movie-export-Data" = "Exportar";
+"movie-export-data" = "Exportar";
+"movie-export-detail" = "Mediante esta opción se pueden exportar todos los datos contenidos en la aplicación a un archivo de texto en formato JSON. Este archivo se puede volver a importar mediante la opción de importación ubicada en el apartado de copias de seguridad.";
+"movie-export-alert" = "Archivo correctamente exportado.";
