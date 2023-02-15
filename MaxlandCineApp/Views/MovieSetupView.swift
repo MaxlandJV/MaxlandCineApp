@@ -14,7 +14,7 @@ struct MovieSetupView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("setup-about") + Text(" - 1.2.5")) {
+            Section(header: Text("setup-about") + Text(" - 1.2.6")) {
                 VStack(alignment: .leading) {
                     Image("MaxlandWorld")
                         .resizable()
@@ -71,5 +71,6 @@ struct MovieSetupView: View {
 struct MovieSetup_Previews: PreviewProvider {
     static var previews: some View {
         MovieSetupView()
+            .environmentObject(MovieViewModel())
     }
 }

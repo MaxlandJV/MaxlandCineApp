@@ -15,38 +15,40 @@ struct MovieExportDataView: View {
     @State var showingAlert = false
     
     var body: some View {
-        VStack {
-            Text("movie-export-detail")
-                .font(.headline)
-            Image(systemName: "arrow.down.doc")
-                .resizable()
-                .frame(width: 150, height: 190)
-                .padding(.top, 50)
-                .foregroundColor(.accentColor)
-            Text("mxlcdata.json")
-                .font(.headline)
-            Button {
-                exportFile.toggle()
-            } label: {
-                Text("movie-export-data")
-            }
-            .padding(.top, 50)
-            .buttonStyle(.borderedProminent)
-            .font(.title2)
-            .fileExporter(isPresented: $exportFile, document: JsonFile(json: movieViewModel.getJSONData() ?? ""), contentType: .json, defaultFilename: "mxlcdata") { result in
-                switch result {
-                case .success(_):
-                    showingAlert.toggle()
-                    dismiss()
-                case .failure(let failure):
-                    fatalError(failure.localizedDescription)
+        ScrollView {
+            VStack {
+                Text("movie-export-detail")
+                    .font(.headline)
+                Image(systemName: "arrow.down.doc")
+                    .resizable()
+                    .frame(width: 150, height: 190)
+                    .padding(.top, 50)
+                    .foregroundColor(.accentColor)
+                Text("mxlcdata.json")
+                    .font(.headline)
+                Button {
+                    exportFile.toggle()
+                } label: {
+                    Text("movie-export-data")
                 }
+                .padding(.top, 50)
+                .buttonStyle(.borderedProminent)
+                .font(.title2)
+                .fileExporter(isPresented: $exportFile, document: JsonFile(json: movieViewModel.getJSONData() ?? ""), contentType: .json, defaultFilename: "mxlcdata") { result in
+                    switch result {
+                    case .success(_):
+                        showingAlert.toggle()
+                        dismiss()
+                    case .failure(let failure):
+                        fatalError(failure.localizedDescription)
+                    }
+                }
+                .alert("movie-export-alert", isPresented: $showingAlert) {}
+                Spacer()
             }
-            .alert("movie-export-alert", isPresented: $showingAlert) {}
-            Spacer()
-        }
-        .padding()
+            .padding()
         .navigationBarTitle("setup-exportar-datos")
+        }
     }
 }
 
