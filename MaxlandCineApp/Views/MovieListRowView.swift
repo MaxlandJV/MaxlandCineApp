@@ -43,6 +43,9 @@ struct MovieListRowView: View {
                 }
             }
         }
+        .padding(15)
+        .background(Color(.lightGray))
+        .cornerRadius(20)
     }
 }
 
