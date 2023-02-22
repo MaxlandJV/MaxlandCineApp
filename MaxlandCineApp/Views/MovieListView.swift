@@ -30,9 +30,9 @@ struct MovieListView: View {
     
     var body: some View {
         NavigationView {
-//           LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
-//               .ignoresSafeArea()
-//               .overlay (
+           LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
+               .ignoresSafeArea()
+               .overlay (
                     ZStack {
                         if movieViewModel.movieList.isEmpty {
                             MovieEmptyView()
@@ -52,15 +52,17 @@ struct MovieListView: View {
                                         }
                                         .tint(.red)
                                     }
-                                    //.listRowBackground(Color.white.opacity(0))
+                                    .listRowBackground(Color.white.opacity(0))
                                     .listRowSeparator(.hidden)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
                                 }
                                 .scrollContentBackground(.hidden)
-                                .listStyle(PlainListStyle())
+                                .listStyle(.plain)
                                 .searchable(text: $searchMovie, prompt: "navigation-list-search")
                             }
                         }
                     }
+                    //.background(Color.green)
                     .navigationTitle(Text("navigation-list-title"))
                     .toolbar(content: {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -86,7 +88,7 @@ struct MovieListView: View {
                     .sheet(isPresented: $isPresented) {
                         MovieView()
                     }
- //               )
+                )
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
