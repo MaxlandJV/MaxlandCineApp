@@ -17,35 +17,43 @@ struct MovieListRowView: View {
     var body: some View {
         HStack {
             if (isSerie != nil) {
-                Image(systemName: isSerie! ? "sparkles.tv" : "film").font(.title)
+                Image(systemName: isSerie! ? "sparkles.tv" : "film")
+                    .resizable()
+                    .frame(width: 40, height: 40)
                     .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
             }
             else {
-                Image(systemName: "film").font(.title)
+                Image(systemName: "film")
+                    .resizable()
+                    .frame(width: 40, height: 40)
                     .foregroundColor(Color("Movie"))
             }
-            VStack(alignment: .leading) {
-                Text(movieName ?? "").font(.subheadline).bold()
+            VStack(alignment: .leading, spacing: 10) {
+                Text(movieName ?? "")
+                    .font(.headline).bold()
                 HStack {
                     HStack(spacing: 0) {
                         ForEach(1...5, id: \.self) { number in
                             Image(systemName: "star.fill")
-                                .font(.caption2)
+                                .resizable()
+                                .frame(width: 15, height: 15)
                                 .foregroundColor(number > score ?? 0 ? Color("StarNoActive") : .yellow)
                         }
                     }
-                    Text("-")
-                        .font(.caption2)
-                        .foregroundColor(.black)
+//                    Text("-")
+//                        .font(.caption2)
+//                        .foregroundColor(.black)
+                    Spacer()
                     Text(showDate ?? Date(), style: .date)
-                        .font(.caption2)
+                        .font(.caption).bold()
                         .foregroundColor(.black)
                 }
             }
         }
-        .padding(15)
-        .background(Color(.lightGray))
-        .cornerRadius(20)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 8)
+        .background(.green)
+        .cornerRadius(10)
     }
 }
 

@@ -30,9 +30,9 @@ struct MovieListView: View {
     
     var body: some View {
         NavigationView {
-           LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
-               .ignoresSafeArea()
-               .overlay (
+//           LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
+//               .ignoresSafeArea()
+//               .overlay (
                     ZStack {
                         if movieViewModel.movieList.isEmpty {
                             MovieEmptyView()
@@ -52,7 +52,8 @@ struct MovieListView: View {
                                         }
                                         .tint(.red)
                                     }
-                                    .listRowBackground(Color.white.opacity(0))
+                                    //.listRowBackground(Color.white.opacity(0))
+                                    .listRowSeparator(.hidden)
                                 }
                                 .scrollContentBackground(.hidden)
                                 .listStyle(PlainListStyle())
@@ -85,7 +86,7 @@ struct MovieListView: View {
                     .sheet(isPresented: $isPresented) {
                         MovieView()
                     }
-                )
+ //               )
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
