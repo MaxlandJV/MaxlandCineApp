@@ -26,109 +26,133 @@ struct MovieView: View {
     var update: Bool = false
     
     var body: some View {
-        VStack(spacing: 0) {
-            if !update {
+        NavigationStack {
+            VStack(spacing: 0) {
+                if !update {
+//                    HStack {
+//                        Text("movie-new")
+//                            .padding(.vertical, 10)
+//                            .font(.title2)
+//                        Spacer()
+//                    }
+                    TextField("movie-name", text: $movieName)
+                        .focused($movieNameInfocus)
+                        .padding()
+                        .background(Color(UIColor.systemGray6))
+                        .cornerRadius(10)
+                        .disableAutocorrection(true)
+                        .padding(.bottom, 10)
+                }
+                
+                Divider()
+                
+                VStack {
+                    DatePicker("movie-date",selection: $showDate, displayedComponents: .date)
+                        .padding(.top, 8)
+                    
+                    Divider()
+                    
+                    Toggle(isSerie ? "movie-type-1" : "movie-type-2", isOn: $isSerie)
+                        .toggleStyle(CheckboxStyle())
+                    
+                    Divider()
+                }
+                
                 HStack {
-                    Text("movie-new")
-                        .padding(.vertical, 10)
-                        .font(.title2)
+                    Text("movie-score")
+                    Spacer()
+                    ForEach(1...5, id: \.self) { number in
+                        Image(systemName: "star.fill")
+                            .foregroundColor(number > score ? Color("StarNoActive") : .orange)
+                            .onTapGesture {
+                                score = Int16(number)
+                            }
+                    }
+                }.padding(.vertical, 10)
+                
+                Divider()
+                
+                HStack {
+                    Text("movie-review")
+                        .font(.headline)
+                        .padding(.top, 10)
                     Spacer()
                 }
-                TextField("movie-name", text: $movieName)
-                    .focused($movieNameInfocus)
-                    .padding()
-                    .background(Color(UIColor.systemGray6))
+                TextEditor(text: $sinopsis)
+                    .colorMultiply(.white)
                     .cornerRadius(10)
-                    .disableAutocorrection(true)
-                    .padding(.bottom, 10)
-            }
-            
-            Divider()
-            
-            VStack {
-                DatePicker("movie-date",selection: $showDate, displayedComponents: .date)
-                    .padding(.top, 8)
                 
-                Divider()
-                
-                Toggle(isSerie ? "movie-type-1" : "movie-type-2", isOn: $isSerie)
-                    .toggleStyle(CheckboxStyle())
-                
-                Divider()
+//                Divider()
+//                    .padding(.bottom, 10)
+//                
+//                if !update {
+//                    HStack {
+//                        Button(action: newMovie, label: {
+//                            Label("movie-button-save", systemImage: "doc.fill.badge.plus")
+//                                .padding(.horizontal)
+//                        })
+//                            .buttonStyle(.borderedProminent)
+//                            .alert("movie-error-01", isPresented: $showingAlert) {}
+//
+//                        Button(action: { dismiss() }) {
+//                            Label("movie-button-cancel", systemImage: "xmark")
+//                                .padding(.horizontal)
+//                        }
+//                        .buttonStyle(.bordered)
+//                    }
+//                }
+//                else {
+//                    Button(action: updateMovie, label: {
+//                        Label("movie-button-update", systemImage: "doc.badge.gearshape.fill")
+//                            .padding(.horizontal)
+//                    })
+//                    .buttonStyle(.borderedProminent)
+//                }
             }
-            
-            HStack {
-                Text("movie-score")
-                Spacer()
-                ForEach(1...5, id: \.self) { number in
-                    Image(systemName: "star.fill")
-                        .foregroundColor(number > score ? Color("StarNoActive") : .orange)
-                        .onTapGesture {
-                            score = Int16(number)
-                        }
-                }
-            }.padding(.vertical, 10)
-            
-            Divider()
-            
-            HStack {
-                Text("movie-review")
-                    .font(.headline)
-                    .padding(.top, 10)
-                Spacer()
-            }
-            TextEditor(text: $sinopsis)
-                .colorMultiply(.white)
-                .cornerRadius(10)
-            
-            Divider()
-                .padding(.bottom, 10)
-            
-            if !update {
-                HStack {
-                    Button(action: newMovie, label: {
-                        Label("movie-button-save", systemImage: "doc.fill.badge.plus")
-                            .padding(.horizontal)
-                    })
-                        .buttonStyle(.borderedProminent)
-                        .alert("movie-error-01", isPresented: $showingAlert) {}
-                    
-                    Button(action: { dismiss() }) {
-                        Label("movie-button-cancel", systemImage: "xmark")
-                            .padding(.horizontal)
+            .padding()
+            .navigationBarTitle(movie?.movieName ?? NSLocalizedString("movie-new", comment: ""), displayMode: .inline)
+            .toolbar {
+                if update {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: updateMovie, label: {
+                            Text("movie-button-update")
+                        })
                     }
-                    .buttonStyle(.bordered)
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        ShareLink(item: movieName + ": " + sinopsis)
+                    }
+                }
+                else {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("movie-button-cancel")
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: newMovie, label: {
+                            Text("movie-button-save")
+                        })
+                        .alert("movie-error-01", isPresented: $showingAlert) {}
+                    }
                 }
             }
-            else {
-                Button(action: updateMovie, label: {
-                    Label("movie-button-update", systemImage: "doc.badge.gearshape.fill")
-                        .padding(.horizontal)
-                })
-                .buttonStyle(.borderedProminent)
-            }
-        }
-        .padding()
-        .navigationBarTitle(movie?.movieName ?? "", displayMode: .inline)
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                ShareLink(item: movieName + ": " + sinopsis)
-            }
-        })
-        .onAppear {
-            if let updatedMovie = movie {
-                movieName = updatedMovie.movieName ?? ""
-                showDate = updatedMovie.showDate ?? Date()
-                sinopsis = updatedMovie.sinopsis ?? ""
-                score = updatedMovie.score
-                isSerie = updatedMovie.isSerie
-            } else {
-                // Poner el foco en el campo del nombre de la película
-                // Si se cambia el valor de "movieNameInFocus" no funciona
-                // Hay que hacerlo desde algún disparador como un botón
-                // o en este caso desde un evento asíncrono
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    movieNameInfocus = true
+            .onAppear {
+                if let updatedMovie = movie {
+                    movieName = updatedMovie.movieName ?? ""
+                    showDate = updatedMovie.showDate ?? Date()
+                    sinopsis = updatedMovie.sinopsis ?? ""
+                    score = updatedMovie.score
+                    isSerie = updatedMovie.isSerie
+                } else {
+                    // Poner el foco en el campo del nombre de la película
+                    // Si se cambia el valor de "movieNameInFocus" no funciona
+                    // Hay que hacerlo desde algún disparador como un botón
+                    // o en este caso desde un evento asíncrono
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        movieNameInfocus = true
+                    }
                 }
             }
         }
@@ -155,8 +179,6 @@ struct MovieView: View {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            MovieView()
-        }
+        MovieView(update: true)
     }
 }

@@ -32,6 +32,7 @@ struct MovieListRowView: View {
                 Text(movieName ?? "")
                     .font(.headline)
                     .bold()
+                    .multilineTextAlignment(.leading)
                 HStack {
                     HStack(spacing: 0) {
                         ForEach(1...5, id: \.self) { number in
@@ -60,7 +61,7 @@ struct MovieListRowView: View {
 
 struct MovieListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListRowView(movieName: "Prueba de película con nombre largo", showDate: Date(), sinopsis: "", score: 3, isSerie: false)
+        MovieListRowView(movieName: "Prueba de película con un nombre largo", showDate: Date(), sinopsis: "", score: 3, isSerie: false)
             .padding()
             .previewLayout(.sizeThatFits)
     }
