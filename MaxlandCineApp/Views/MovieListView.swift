@@ -37,14 +37,9 @@ struct MovieListView: View {
                         NavigationLink(destination: MovieView(movie: movie, update: true)) {
                             MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
                         }
-                        .swipeActions(edge: .leading) {
-                            Button {
-                                movieViewModel.deleteMovie(movie: movie)
-                            } label: {
-                                Label("Eliminar", systemImage: "trash.fill")
-                            }
-                            .tint(.red)
-                        }
+                        .simultaneousGesture(LongPressGesture().onEnded { _ in
+                            movieViewModel.deleteMovie(movie: movie)
+                        })
                     }
                     .searchable(text: $searchMovie, prompt: "navigation-list-search")
                     .padding(.horizontal)
