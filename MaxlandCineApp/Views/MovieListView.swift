@@ -31,51 +31,54 @@ struct MovieListView: View {
     var body: some View {
         
         NavigationStack {
-            ScrollView {
-                ForEach(searchResults) { movie in
-                    NavigationLink(destination: MovieView(movie: movie, update: true)) {
-                        MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
+            ZStack {
+                ScrollView {
+                    ForEach(searchResults) { movie in
+                        NavigationLink(destination: MovieView(movie: movie, update: true)) {
+                            MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
+                        }
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                movieViewModel.deleteMovie(movie: movie)
+                            } label: {
+                                Label("Eliminar", systemImage: "trash.fill")
+                            }
+                            .tint(.red)
+                        }
                     }
-                    .swipeActions(edge: .leading) {
+                    .searchable(text: $searchMovie, prompt: "navigation-list-search")
+                    .padding(.horizontal)
+                }
+                .navigationTitle(Text("navigation-list-title"))
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink(destination: MovieSetupView()) {
+                            Image(systemName: "gearshape").foregroundColor(.black)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if (movieViewModel.movieList.count > 0) {
+                            NavigationLink(destination: MovieStatsView()) {
+                                Image(systemName: "chart.bar.xaxis").foregroundColor(.black)
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            movieViewModel.deleteMovie(movie: movie)
+                            isPresented.toggle()
                         } label: {
-                            Label("Eliminar", systemImage: "trash.fill")
-                        }
-                        .tint(.red)
-                    }
-                }
-                .searchable(text: $searchMovie, prompt: "navigation-list-search")
-                .padding(.horizontal)
-            }
-            .navigationTitle(Text("navigation-list-title"))
-            .toolbar(content: {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink(destination: MovieSetupView()) {
-                        Image(systemName: "gearshape").foregroundColor(.black)
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    if (movieViewModel.movieList.count > 0) {
-                        NavigationLink(destination: MovieStatsView()) {
-                            Image(systemName: "chart.bar.xaxis").foregroundColor(.black)
+                            Image(systemName: "plus.circle").foregroundColor(.black)
                         }
                     }
+                })
+                .sheet(isPresented: $isPresented) {
+                    MovieView()
+                        .presentationDetents([.large])
+                        .presentationDragIndicator(.hidden)
+                        .interactiveDismissDisabled()
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isPresented.toggle()
-                    } label: {
-                        Image(systemName: "plus.circle").foregroundColor(.black)
-                    }
-                }
-            })
-            .sheet(isPresented: $isPresented) {
-                MovieView()
-                    .presentationDetents([.large])
-                    .presentationDragIndicator(.hidden)
-                    .interactiveDismissDisabled()
             }
+            .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
         }
         .navigationViewStyle(StackNavigationViewStyle())
 

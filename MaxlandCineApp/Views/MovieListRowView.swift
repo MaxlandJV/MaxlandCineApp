@@ -33,6 +33,7 @@ struct MovieListRowView: View {
                     .font(.headline)
                     .bold()
                     .multilineTextAlignment(.leading)
+                    .foregroundColor(.black)
                 HStack {
                     HStack(spacing: 0) {
                         ForEach(1...5, id: \.self) { number in
@@ -49,8 +50,12 @@ struct MovieListRowView: View {
                     Text(showDate ?? Date(), style: .date)
                         .font(.footnote)
                         .bold()
+                        .foregroundColor(.black)
                 }
             }
+            Image(systemName: "chevron.forward")
+                .padding(0)
+                .foregroundColor(.black)
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 8)
