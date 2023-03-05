@@ -119,6 +119,14 @@ struct MovieView: View {
                         })
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            movieViewModel.deleteMovie(movie: movie!)
+                            dismiss()
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         ShareLink(item: movieName + ": " + sinopsis)
                     }
                 }

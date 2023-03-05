@@ -37,9 +37,9 @@ struct MovieListView: View {
                         NavigationLink(destination: MovieView(movie: movie, update: true)) {
                             MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
                         }
-                        .simultaneousGesture(LongPressGesture().onEnded { _ in
-                            movieViewModel.deleteMovie(movie: movie)
-                        })
+//                        .simultaneousGesture(LongPressGesture().onEnded { _ in
+//                            movieViewModel.deleteMovie(movie: movie)
+//                        })
                     }
                     .searchable(text: $searchMovie, prompt: "navigation-list-search")
                     .padding(.horizontal)
