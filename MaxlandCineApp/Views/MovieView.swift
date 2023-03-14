@@ -19,6 +19,7 @@ struct MovieView: View {
     @State var isSerie: Bool = false
     @State var movie: Movie?
     @State var showingAlert = false
+    @State var showingConfirmation = false
     
     @EnvironmentObject var movieViewModel: MovieViewModel
     
@@ -120,8 +121,9 @@ struct MovieView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            movieViewModel.deleteMovie(movie: movie!)
-                            dismiss()
+                            //movieViewModel.deleteMovie(movie: movie!)
+                            //dismiss()
+                            showingConfirmation.toggle()
                         } label: {
                             Image(systemName: "trash")
                         }
@@ -163,6 +165,14 @@ struct MovieView: View {
                     }
                 }
             }
+            .confirmationDialog("¿Eliminar?", isPresented: $showingConfirmation) {
+                Button("Delete", role: .destructive) {
+                    movieViewModel.deleteMovie(movie: movie!)
+                    dismiss()
+                }
+                Button("Cancel", role: .cancel) { }
+            }
+            //.background(.thinMaterial)
         }
     }
     

@@ -68,9 +68,8 @@ struct MovieListView: View {
                 })
                 .sheet(isPresented: $isPresented) {
                     MovieView()
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.hidden)
                         .interactiveDismissDisabled()
+                    
                 }
             }
             .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
