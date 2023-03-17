@@ -43,9 +43,6 @@ struct MovieListRowView: View {
                                 .foregroundColor(number > score ?? 0 ? Color("StarNoActive") : .yellow)
                         }
                     }
-//                    Text("-")
-//                        .font(.caption2)
-//                        .foregroundColor(.black)
                     Spacer()
                     Text(showDate ?? Date(), style: .date)
                         .font(.footnote)

@@ -30,12 +30,6 @@ struct MovieView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 if !update {
-//                    HStack {
-//                        Text("movie-new")
-//                            .padding(.vertical, 10)
-//                            .font(.title2)
-//                        Spacer()
-//                    }
                     TextField("movie-name", text: $movieName)
                         .focused($movieNameInfocus)
                         .padding()
@@ -82,33 +76,6 @@ struct MovieView: View {
                 TextEditor(text: $sinopsis)
                     .colorMultiply(.white)
                     .cornerRadius(10)
-                
-//                Divider()
-//                    .padding(.bottom, 10)
-//                
-//                if !update {
-//                    HStack {
-//                        Button(action: newMovie, label: {
-//                            Label("movie-button-save", systemImage: "doc.fill.badge.plus")
-//                                .padding(.horizontal)
-//                        })
-//                            .buttonStyle(.borderedProminent)
-//                            .alert("movie-error-01", isPresented: $showingAlert) {}
-//
-//                        Button(action: { dismiss() }) {
-//                            Label("movie-button-cancel", systemImage: "xmark")
-//                                .padding(.horizontal)
-//                        }
-//                        .buttonStyle(.bordered)
-//                    }
-//                }
-//                else {
-//                    Button(action: updateMovie, label: {
-//                        Label("movie-button-update", systemImage: "doc.badge.gearshape.fill")
-//                            .padding(.horizontal)
-//                    })
-//                    .buttonStyle(.borderedProminent)
-//                }
             }
             .padding()
             .navigationBarTitle(movie?.movieName ?? NSLocalizedString("movie-new", comment: ""), displayMode: .inline)
@@ -176,7 +143,7 @@ struct MovieView: View {
         }
     }
     
-    // MARK: Crear nueva película
+    // Crear nueva película
     func newMovie() {
         if (movieName.isEmpty) {
             showingAlert = true
@@ -186,7 +153,7 @@ struct MovieView: View {
         }
     }
     
-    // MARK: Actualizar una película existente
+    // Actualizar una película existente
     func updateMovie() {
         if let updatedMovie = movie {
             movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie)
