@@ -25,6 +25,7 @@
 "movie-button-cancel" = "Cancelar";
 "movie-button-update" = "Actualizar";
 "movie-error-01" = "El nombre de la película es un dato obligatorio.";
+"movie-confirm-delete" = "Eliminar";
 
 "setup-title" = "Configuración";
 "setup-about" = "Acerca de Maxland Cine";

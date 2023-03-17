@@ -25,6 +25,7 @@
 "movie-button-cancel" = "Cancel";
 "movie-button-update" = "Update";
 "movie-error-01" = "The name of the film is a mandatory information.";
+"movie-confirm-delete" = "Delete";
 
 "setup-title" = "Settings";
 "setup-about" = "About Maxland Cine";

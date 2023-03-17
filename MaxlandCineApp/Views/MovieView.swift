@@ -165,12 +165,12 @@ struct MovieView: View {
                     }
                 }
             }
-            .confirmationDialog("¿Eliminar?", isPresented: $showingConfirmation) {
-                Button("Delete", role: .destructive) {
+            .confirmationDialog("Elimimar", isPresented: $showingConfirmation) {
+                Button("movie-confirm-delete", role: .destructive) {
                     movieViewModel.deleteMovie(movie: movie!)
                     dismiss()
                 }
-                Button("Cancel", role: .cancel) { }
+                Button("movie-button-cancel", role: .cancel) { }
             }
             //.background(.thinMaterial)
         }
