@@ -31,41 +31,49 @@ struct MovieListView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                ScrollView {
-                    ForEach(searchResults) { movie in
-                        NavigationLink(destination: MovieView(movie: movie, update: true)) {
-                            MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
-                        }
-                    }
-                    .searchable(text: $searchMovie, prompt: "navigation-list-search")
-                    .padding(.horizontal)
+                if movieViewModel.movieList.isEmpty {
+                    LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .ignoresSafeArea()
+                        .overlay (
+                            MovieEmptyView()
+                                .transition(AnyTransition.opacity.animation(.easeIn)))
                 }
-                .navigationTitle(Text("navigation-list-title"))
-                .toolbar(content: {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationLink(destination: MovieSetupView()) {
-                            Image(systemName: "gearshape").foregroundColor(.black)
+                else {
+                    ScrollView {
+                        ForEach(searchResults) { movie in
+                            NavigationLink(destination: MovieView(movie: movie, update: true)) {
+                                MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
+                            }
                         }
+                        .searchable(text: $searchMovie, prompt: "navigation-list-search")
+                        .padding(.horizontal)
                     }
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        if (movieViewModel.movieList.count > 0) {
-                            NavigationLink(destination: MovieStatsView()) {
-                                Image(systemName: "chart.bar.xaxis").foregroundColor(.black)
+                    .navigationTitle(Text("navigation-list-title"))
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            NavigationLink(destination: MovieSetupView()) {
+                                Image(systemName: "gearshape").foregroundColor(.black)
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            if (movieViewModel.movieList.count > 0) {
+                                NavigationLink(destination: MovieStatsView()) {
+                                    Image(systemName: "chart.bar.xaxis").foregroundColor(.black)
+                                }
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                isPresented.toggle()
+                            } label: {
+                                Image(systemName: "plus.circle").foregroundColor(.black)
                             }
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            isPresented.toggle()
-                        } label: {
-                            Image(systemName: "plus.circle").foregroundColor(.black)
-                        }
+                    .sheet(isPresented: $isPresented) {
+                        MovieView()
+                            .interactiveDismissDisabled()
                     }
-                })
-                .sheet(isPresented: $isPresented) {
-                    MovieView()
-                        .interactiveDismissDisabled()
-                    
                 }
             }
             .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
