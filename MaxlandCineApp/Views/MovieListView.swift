@@ -45,6 +45,7 @@ struct MovieListView: View {
                                 MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
                             }
                         }
+                        .frame(maxWidth: .infinity)
                         .searchable(text: $searchMovie, prompt: "navigation-list-search")
                         .padding(.horizontal)
                     }
