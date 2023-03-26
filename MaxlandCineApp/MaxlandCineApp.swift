@@ -17,7 +17,7 @@ struct MaxlandCineApp: App {
     
     var body: some Scene {
         WindowGroup {
-            VStack(spacing: 0) {
+            ZStack {
                 if isUnlocked {
                     MovieListView()
                         .environmentObject(movieViewModel)

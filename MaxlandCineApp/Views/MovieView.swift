@@ -63,7 +63,8 @@ struct MovieView: View {
                                 score = Int16(number)
                             }
                     }
-                }.padding(.vertical, 10)
+                }
+                .padding(.vertical, 10)
                 
                 Divider()
                 
@@ -88,11 +89,16 @@ struct MovieView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            //movieViewModel.deleteMovie(movie: movie!)
-                            //dismiss()
                             showingConfirmation.toggle()
                         } label: {
                             Image(systemName: "trash")
+                        }
+                        .confirmationDialog("", isPresented: $showingConfirmation) {
+                            Button("movie-confirm-delete", role: .destructive) {
+                                movieViewModel.deleteMovie(movie: movie!)
+                                dismiss()
+                            }
+                            Button("movie-button-cancel", role: .cancel) { }
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -132,13 +138,6 @@ struct MovieView: View {
                         movieNameInfocus = true
                     }
                 }
-            }
-            .confirmationDialog("Elimimar", isPresented: $showingConfirmation) {
-                Button("movie-confirm-delete", role: .destructive) {
-                    movieViewModel.deleteMovie(movie: movie!)
-                    dismiss()
-                }
-                Button("movie-button-cancel", role: .cancel) { }
             }
             //.background(.thinMaterial)
         }
