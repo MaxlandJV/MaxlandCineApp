@@ -20,6 +20,7 @@ struct MovieView: View {
     @State var movie: Movie?
     @State var showingAlert = false
     @State var showingConfirmation = false
+    @State private var menuOption = 0
     
     @EnvironmentObject var movieViewModel: MovieViewModel
     
@@ -82,6 +83,18 @@ struct MovieView: View {
             .navigationBarTitle(movie?.movieName ?? NSLocalizedString("movie-new", comment: ""), displayMode: .inline)
             .toolbar {
                 if update {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Picker(selection: $menuOption, label: Text("")) {
+                                Label("stats-todo", systemImage: "list.bullet.rectangle").tag(0)
+                                Label("stats-movies", systemImage: "film").tag(1)
+                                Label("stats-series", systemImage: "sparkles.tv").tag(2)
+                            }
+                        }
+                        label: {
+                            Image(systemName: "ellipsis.circle")
+                        }
+                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: updateMovie, label: {
                             Text("movie-button-update")

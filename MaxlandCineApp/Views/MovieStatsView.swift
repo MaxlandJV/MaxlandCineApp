@@ -48,6 +48,9 @@ struct MovieStatsView: View {
 
 struct MovieStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieStatsView()
+        NavigationStack {
+            MovieStatsView()
+                .environmentObject(MovieViewModel())
+        }
     }
 }

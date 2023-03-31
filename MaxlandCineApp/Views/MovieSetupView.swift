@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import QuickLook
 
 struct MovieSetupView: View {
     
@@ -14,7 +13,7 @@ struct MovieSetupView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("setup-about") + Text(" - 1.5.0")) {
+            Section(header: Text("setup-about") + Text(" - 1.5.1")) {
                 VStack(alignment: .leading) {
                     Image("MaxlandWorld")
                         .resizable()
