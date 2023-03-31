@@ -19,7 +19,7 @@ struct MovieView: View {
     @State var isSerie: Bool = false
     @State var movie: Movie?
     @State var showingAlert = false
-    @State var showingConfirmation = false
+    @State private var showingConfirmation = false
     @State private var menuOption = 0
     
     @EnvironmentObject var movieViewModel: MovieViewModel
@@ -84,27 +84,28 @@ struct MovieView: View {
             .toolbar {
                 if update {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Menu {
-                            Picker(selection: $menuOption, label: Text("")) {
-                                Label("stats-todo", systemImage: "list.bullet.rectangle").tag(0)
-                                Label("stats-movies", systemImage: "film").tag(1)
-                                Label("stats-series", systemImage: "sparkles.tv").tag(2)
-                            }
-                        }
-                        label: {
-                            Image(systemName: "ellipsis.circle")
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: updateMovie, label: {
                             Text("movie-button-update")
                         })
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            showingConfirmation.toggle()
-                        } label: {
-                            Image(systemName: "trash")
+                        Menu {
+                            Button {
+                                // MARK: Implementar selector de fotos
+                            } label: {
+                                Label("movie-upload-photo", systemImage: "photo")
+                            }
+                            
+                            ShareLink(item: movieName + ": " + sinopsis)
+                            
+                            Button {
+                                showingConfirmation.toggle()
+                            } label: {
+                                Label("movie-confirm-delete", systemImage: "trash")
+                            }
+                        }
+                        label: {
+                            Image(systemName: "ellipsis.circle")
                         }
                         .confirmationDialog("", isPresented: $showingConfirmation) {
                             Button("movie-confirm-delete", role: .destructive) {
@@ -113,9 +114,6 @@ struct MovieView: View {
                             }
                             Button("movie-button-cancel", role: .cancel) { }
                         }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        ShareLink(item: movieName + ": " + sinopsis)
                     }
                 }
                 else {
