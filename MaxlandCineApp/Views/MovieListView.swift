@@ -76,8 +76,11 @@ struct MovieListView: View {
                 }
             }
             .sheet(isPresented: $isPresented) {
-                MovieView()
-                    .interactiveDismissDisabled()
+                NavigationStack {
+                    MovieView()
+                        .interactiveDismissDisabled()
+                }
+                .presentationBackground(.ultraThinMaterial)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
