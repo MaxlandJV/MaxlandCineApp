@@ -43,6 +43,11 @@ struct MovieListView: View {
                         ForEach(searchResults) { movie in
                             NavigationLink(destination: MovieView(movie: movie, update: true)) {
                                 MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
+                                    .contextMenu {
+                                        Button("movie-confirm-delete") {
+                                            movieViewModel.deleteMovie(movie: movie)
+                                        }
+                                    }
                             }
                         }
                         .frame(maxWidth: .infinity)
