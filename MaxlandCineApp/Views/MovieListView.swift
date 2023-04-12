@@ -44,8 +44,10 @@ struct MovieListView: View {
                             NavigationLink(destination: MovieView(movie: movie, update: true)) {
                                 MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
                                     .contextMenu {
-                                        Button("movie-confirm-delete") {
+                                        Button {
                                             movieViewModel.deleteMovie(movie: movie)
+                                        } label: {
+                                            Label("movie-confirm-delete", systemImage: "trash")
                                         }
                                     }
                             }
