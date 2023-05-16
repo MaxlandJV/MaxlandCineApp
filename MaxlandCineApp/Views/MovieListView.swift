@@ -56,7 +56,6 @@ struct MovieListView: View {
                         .searchable(text: $searchMovie, prompt: "navigation-list-search")
                         .padding(.horizontal)
                     }
-                    
                 }
             }
             .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
