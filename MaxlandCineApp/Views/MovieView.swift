@@ -136,7 +136,6 @@ struct MovieView: View {
                 }
             }
             .onAppear {
-                print("Nombre")
                 if let updatedMovie = movie {
                     movieName = updatedMovie.movieName ?? ""
                     showDate = updatedMovie.showDate ?? Date()

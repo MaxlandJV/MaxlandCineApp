@@ -86,7 +86,7 @@ struct MovieListView: View {
                     MovieView()
                         .interactiveDismissDisabled()
                 }
-                .presentationBackground(.ultraThinMaterial)
+                .presentationBackground(.thinMaterial)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
