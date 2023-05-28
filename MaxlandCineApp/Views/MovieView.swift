@@ -21,6 +21,7 @@ struct MovieView: View {
     @State var showingAlert = false
     @State private var showingConfirmation = false
     @State private var menuOption = 0
+   
     
     @EnvironmentObject var movieViewModel: MovieViewModel
     
@@ -81,6 +82,8 @@ struct MovieView: View {
                     .frame(height: 300)
                 
                 Divider()
+                
+                
             }
             .padding()
             .navigationBarTitle(movie?.movieName ?? NSLocalizedString("movie-new", comment: ""), displayMode: .inline)
@@ -94,7 +97,7 @@ struct MovieView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Menu {
                             Button {
-                                // MARK: Implementar selector de fotos
+                                MovieSelectCover()
                             } label: {
                                 Label("movie-upload-photo", systemImage: "photo")
                             }
@@ -171,6 +174,11 @@ struct MovieView: View {
             movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie)
         }
         dismiss()
+    }
+    
+    // Seleccionar una carátura
+    func xxx() {
+        
     }
 }
 

@@ -55,6 +55,7 @@ class MovieViewModel: ObservableObject {
         newMovie.score = score
         newMovie.sinopsis = sinopsis
         newMovie.isSerie = isSerie
+        newMovie.caratula = nil
         saveData()
     }
     
@@ -69,6 +70,7 @@ class MovieViewModel: ObservableObject {
         movie.score = score
         movie.sinopsis = sinopsis
         movie.isSerie = isSerie
+        movie.caratula = nil
         saveData()
     }
        
