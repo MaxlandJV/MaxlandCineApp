@@ -40,21 +40,26 @@ struct MovieListView: View {
                 }
                 else {
                     ScrollView {
-                        ForEach(searchResults) { movie in
-                            NavigationLink(destination: MovieView(movie: movie, update: true)) {
-                                MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
-                                    .contextMenu {
-                                        Button {
-                                            movieViewModel.deleteMovie(movie: movie)
-                                        } label: {
-                                            Label("movie-confirm-delete", systemImage: "trash")
+                        VStack {
+                            ForEach(searchResults) { movie in
+                                NavigationLink(value: movie) {
+                                    MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
+                                        .contextMenu {
+                                            Button {
+                                                movieViewModel.deleteMovie(movie: movie)
+                                            } label: {
+                                                Label("movie-confirm-delete", systemImage: "trash")
+                                            }
                                         }
-                                    }
+                                }
                             }
+                            .frame(maxWidth: .infinity)
+                            .searchable(text: $searchMovie, prompt: "navigation-list-search")
+                            .padding(.horizontal)
                         }
-                        .frame(maxWidth: .infinity)
-                        .searchable(text: $searchMovie, prompt: "navigation-list-search")
-                        .padding(.horizontal)
+                    }
+                    .navigationDestination(for: Movie.self) { movie in
+                        MovieView(movie: movie, update: true)
                     }
                 }
             }
