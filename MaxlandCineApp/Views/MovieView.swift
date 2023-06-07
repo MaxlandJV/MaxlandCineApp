@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct MovieView: View {
     @Environment(\.dismiss) var dismiss
@@ -19,9 +20,11 @@ struct MovieView: View {
     @State var isSerie: Bool = false
     @State var movie: Movie?
     @State var showingAlert = false
+    @State var showingPhotos = false
     @State private var showingConfirmation = false
     @State private var menuOption = 0
-   
+    @State private var selectedItems = [PhotosPickerItem]()
+    @State private var selectedImages = [Image]()
     
     @EnvironmentObject var movieViewModel: MovieViewModel
     
@@ -97,11 +100,11 @@ struct MovieView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Menu {
                             Button {
-                                MovieSelectCover()
+                                showingPhotos.toggle()
                             } label: {
                                 Label("movie-upload-photo", systemImage: "photo")
                             }
-                            
+
                             ShareLink(item: movieName + ": " + sinopsis)
                             
                             Button {
@@ -120,6 +123,7 @@ struct MovieView: View {
                         }
                         Button("movie-button-cancel", role: .cancel) { }
                     }
+                    .photosPicker(isPresented: $showingPhotos, selection: $selectedItems, maxSelectionCount: 1, matching: .images)
                     }
                 }
                 else {

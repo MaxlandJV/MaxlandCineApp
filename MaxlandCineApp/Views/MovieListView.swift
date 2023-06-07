@@ -40,7 +40,7 @@ struct MovieListView: View {
                 }
                 else {
                     ScrollView {
-                        VStack {
+                        LazyVStack {
                             ForEach(searchResults) { movie in
                                 NavigationLink(value: movie) {
                                     MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
@@ -53,10 +53,10 @@ struct MovieListView: View {
                                         }
                                 }
                             }
-                            .frame(maxWidth: .infinity)
                             .searchable(text: $searchMovie, prompt: "navigation-list-search")
                             .padding(.horizontal)
                         }
+                        .frame(maxWidth: .infinity)
                     }
                     .navigationDestination(for: Movie.self) { movie in
                         MovieView(movie: movie, update: true)
