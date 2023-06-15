@@ -23,8 +23,8 @@ struct MovieView: View {
     @State var showingPhotos = false
     @State private var showingConfirmation = false
     @State private var menuOption = 0
-    @State private var selectedItems = [PhotosPickerItem]()
-    @State private var selectedImages = [Image]()
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedPhotoData: Data?
     
     @EnvironmentObject var movieViewModel: MovieViewModel
     
@@ -86,7 +86,12 @@ struct MovieView: View {
                 
                 Divider()
                 
-                
+                if let selectedPhotoData, let image = UIImage(data: selectedPhotoData) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                }
             }
             .padding()
             .navigationBarTitle(movie?.movieName ?? NSLocalizedString("movie-new", comment: ""), displayMode: .inline)
@@ -113,17 +118,17 @@ struct MovieView: View {
                                 Label("movie-confirm-delete", systemImage: "trash")
                             }
                         }
-                    label: {
-                        Image(systemName: "ellipsis.circle")
-                    }
-                    .confirmationDialog("", isPresented: $showingConfirmation) {
-                        Button("movie-confirm-delete", role: .destructive) {
-                            movieViewModel.deleteMovie(movie: movie!)
-                            dismiss()
+                        label: {
+                            Image(systemName: "ellipsis.circle")
                         }
-                        Button("movie-button-cancel", role: .cancel) { }
-                    }
-                    .photosPicker(isPresented: $showingPhotos, selection: $selectedItems, maxSelectionCount: 1, matching: .images)
+                        .confirmationDialog("", isPresented: $showingConfirmation) {
+                            Button("movie-confirm-delete", role: .destructive) {
+                                movieViewModel.deleteMovie(movie: movie!)
+                                dismiss()
+                            }
+                            Button("movie-button-cancel", role: .cancel) { }
+                        }
+                        .photosPicker(isPresented: $showingPhotos, selection: $selectedItem, matching: .images)
                     }
                 }
                 else {
@@ -139,6 +144,13 @@ struct MovieView: View {
                             Text("movie-button-save")
                         })
                         .alert("movie-error-01", isPresented: $showingAlert) {}
+                    }
+                }
+            }
+            .onChange(of: selectedItem) { newItem in
+                Task {
+                    if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                        selectedPhotoData = data
                     }
                 }
             }
