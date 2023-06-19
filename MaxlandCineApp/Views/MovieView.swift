@@ -25,6 +25,7 @@ struct MovieView: View {
     @State private var menuOption = 0
     @State private var selectedItem: PhotosPickerItem?
     @State private var selectedPhotoData: Data?
+    @State private var selectedImage: UIImage?
     
     @EnvironmentObject var movieViewModel: MovieViewModel
     
@@ -86,8 +87,8 @@ struct MovieView: View {
                 
                 Divider()
                 
-                if let selectedPhotoData, let image = UIImage(data: selectedPhotoData) {
-                    Image(uiImage: image)
+                if let selectedImage {
+                    Image(uiImage: selectedImage)
                         .resizable()
                         .scaledToFill()
                         .clipped()
@@ -151,6 +152,10 @@ struct MovieView: View {
                 Task {
                     if let data = try? await newItem?.loadTransferable(type: Data.self) {
                         selectedPhotoData = data
+                        if let selectedPhotoData, let image = UIImage(data: selectedPhotoData) {
+                            //selectedImage = movieViewModel.resizeImage(image: image, targetSize: CGSize(width: 1024, height: 768))
+                            selectedImage = image
+                        }
                     }
                 }
             }
