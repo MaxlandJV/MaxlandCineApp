@@ -175,7 +175,8 @@ class MovieViewModel: ObservableObject {
     
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
-
+        if size.width <= 1024 { return image }
+            
         let widthRatio  = targetSize.width  / size.width
         let heightRatio = targetSize.height / size.height
 
@@ -185,10 +186,11 @@ class MovieViewModel: ObservableObject {
         let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
         let renderFormat = UIGraphicsImageRendererFormat.default()
         let renderer = UIGraphicsImageRenderer(size: newSize, format: renderFormat)
-        let newImage = renderer.image { (context) in
+        let newImage = renderer.image { context in
             image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
         }
-        let imageData = newImage.jpegData(compressionQuality: 0.5)! // 0.5 es el nivel de compresión
+
+        guard let imageData = newImage.jpegData(compressionQuality: 0.8) else { return image } // 0.8 es el nivel de compresión
         return UIImage(data: imageData)!
     }
 }
