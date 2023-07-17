@@ -65,13 +65,13 @@ class MovieViewModel: ObservableObject {
         saveData()
     }
     
-    func updateMovie(movie: Movie, movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool) {
+    func updateMovie(movie: Movie, movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool, caratula: Data?) {
         movie.movieName = movieName
         movie.showDate = showDate
         movie.score = score
         movie.sinopsis = sinopsis
         movie.isSerie = isSerie
-        movie.caratula = nil
+        movie.caratula = caratula
         saveData()
     }
        

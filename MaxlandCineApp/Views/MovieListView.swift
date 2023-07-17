@@ -43,7 +43,7 @@ struct MovieListView: View {
                         LazyVStack {
                             ForEach(searchResults) { movie in
                                 NavigationLink(value: movie) {
-                                    MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie)
+                                    MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
                                         .contextMenu {
                                             Button {
                                                 movieViewModel.deleteMovie(movie: movie)

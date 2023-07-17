@@ -88,11 +88,13 @@ struct MovieView: View {
                 
                 Divider()
                 
+                
                 if let selectedImage {
                     Image(uiImage: selectedImage)
                         .resizable()
                         .scaledToFill()
                         .clipped()
+                        .padding(.vertical)
                 }
             }
             .padding()
@@ -169,6 +171,9 @@ struct MovieView: View {
                     sinopsis = updatedMovie.sinopsis ?? ""
                     score = updatedMovie.score
                     isSerie = updatedMovie.isSerie
+                    if let imageData = updatedMovie.caratula {
+                        selectedImage = UIImage(data: imageData)
+                    }
                 } else {
                     // Poner el foco en el campo del nombre de la película
                     // Si se cambia el valor de "movieNameInFocus" no funciona
@@ -195,7 +200,7 @@ struct MovieView: View {
     // Actualizar una película existente
     func updateMovie() {
         if let updatedMovie = movie {
-            movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie)
+            movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: photoDataCompressed)
         }
         dismiss()
     }

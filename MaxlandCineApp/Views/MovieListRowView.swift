@@ -13,20 +13,30 @@ struct MovieListRowView: View {
     let sinopsis: String?
     let score: Int16?
     let isSerie: Bool?
+    let caratula: Data?
     
     var body: some View {
         HStack {
-            if (isSerie != nil) {
-                Image(systemName: isSerie! ? "sparkles.tv" : "film")
+            if let imageData = caratula {
+                let selectedImage = UIImage(data: imageData)
+                Image(uiImage: selectedImage!)
                     .resizable()
                     .frame(width: 40, height: 45)
-                    .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
+                    .clipped()
             }
             else {
-                Image(systemName: "film")
-                    .resizable()
-                    .frame(width: 40, height: 45)
-                    .foregroundColor(Color("Movie"))
+                if (isSerie != nil) {
+                    Image(systemName: isSerie! ? "sparkles.tv" : "film")
+                        .resizable()
+                        .frame(width: 40, height: 45)
+                        .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
+                }
+                else {
+                    Image(systemName: "film")
+                        .resizable()
+                        .frame(width: 40, height: 45)
+                        .foregroundColor(Color("Movie"))
+                }
             }
             VStack(alignment: .leading, spacing: 10) {
                 Text(movieName ?? "")
@@ -63,7 +73,7 @@ struct MovieListRowView: View {
 
 struct MovieListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListRowView(movieName: "Prueba de película con un nombre largo", showDate: Date(), sinopsis: "", score: 3, isSerie: false)
+        MovieListRowView(movieName: "Prueba de película con un nombre largo", showDate: Date(), sinopsis: "", score: 3, isSerie: false, caratula: nil)
             .padding()
             .previewLayout(.sizeThatFits)
     }
