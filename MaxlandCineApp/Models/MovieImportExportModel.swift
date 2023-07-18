@@ -14,6 +14,7 @@ struct MovieImportExportModel: Encodable, Decodable {
     public var score: Int16
     public var showDate: Date?
     public var sinopsis: String?
+    public var caratula: String?
 }
 
 struct JsonFile: FileDocument {

@@ -143,9 +143,14 @@ class MovieViewModel: ObservableObject {
     
     func getJSONData() -> String? {
         var movieExportList: [MovieImportExportModel] = []
+        var caratulaStr = ""
         
         movieList.forEach { movie in
-            let movieExportModel = MovieImportExportModel(isSerie: movie.isSerie, movieName: movie.movieName, score: movie.score, showDate: movie.showDate, sinopsis: movie.sinopsis)
+            if let caratula = movie.caratula {
+                //caratulaStr = String(decoding: caratula, as: UTF8.self)
+                caratulaStr = caratula.base64EncodedString()
+            }
+            let movieExportModel = MovieImportExportModel(isSerie: movie.isSerie, movieName: movie.movieName, score: movie.score, showDate: movie.showDate, sinopsis: movie.sinopsis, caratula: caratulaStr)
             movieExportList.append(movieExportModel)
         }
         
