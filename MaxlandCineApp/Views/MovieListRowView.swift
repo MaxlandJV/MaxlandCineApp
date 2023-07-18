@@ -19,10 +19,13 @@ struct MovieListRowView: View {
         HStack {
             if let imageData = caratula {
                 let selectedImage = UIImage(data: imageData)
-                Image(uiImage: selectedImage!)
-                    .resizable()
-                    .frame(width: 40, height: 45)
-                    .clipped()
+                VStack {
+                    Image(uiImage: selectedImage!)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(5)
+                }
+                .frame(width: 40)
             }
             else {
                 if (isSerie != nil) {
