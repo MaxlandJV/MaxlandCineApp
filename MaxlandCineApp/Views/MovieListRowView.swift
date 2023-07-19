@@ -17,10 +17,10 @@ struct MovieListRowView: View {
     
     var body: some View {
         HStack {
-            if let imageData = caratula {
-                let selectedImage = UIImage(data: imageData)
+            if let imageData = caratula,
+               let selectedImage = UIImage(data: imageData) {
                 VStack {
-                    Image(uiImage: selectedImage!)
+                    Image(uiImage: selectedImage)
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(5)

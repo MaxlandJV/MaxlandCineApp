@@ -49,14 +49,14 @@ class MovieViewModel: ObservableObject {
         }
     }
     
-    func addMovie(movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool) {
+    func addMovie(movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool, caratula: Data?) {
         let newMovie = Movie(context: dataModel.viewContext)
         newMovie.movieName = movieName
         newMovie.showDate = showDate
         newMovie.score = score
         newMovie.sinopsis = sinopsis
         newMovie.isSerie = isSerie
-        newMovie.caratula = nil
+        newMovie.caratula = caratula
         saveData()
     }
     
@@ -146,10 +146,12 @@ class MovieViewModel: ObservableObject {
         var caratulaStr = ""
         
         movieList.forEach { movie in
+            caratulaStr = ""
+            
             if let caratula = movie.caratula {
-                //caratulaStr = String(decoding: caratula, as: UTF8.self)
                 caratulaStr = caratula.base64EncodedString()
             }
+
             let movieExportModel = MovieImportExportModel(isSerie: movie.isSerie, movieName: movie.movieName, score: movie.score, showDate: movie.showDate, sinopsis: movie.sinopsis, caratula: caratulaStr)
             movieExportList.append(movieExportModel)
         }
@@ -169,8 +171,20 @@ class MovieViewModel: ObservableObject {
             guard let jsonData = String(data: try Data(contentsOf: selectedFile), encoding: .utf8)?.data(using: .utf8) else { return }
             guard let movieImportModel = try? JSONDecoder().decode([MovieImportExportModel].self, from: jsonData) else { return }
             deleteAllMovies()
+            var caratulaData: Data? = nil
+            
             movieImportModel.forEach { movie in
-                addMovie(movieName: movie.movieName!, showDate: movie.showDate!, sinopsis: movie.sinopsis!, score: movie.score, isSerie: movie.isSerie)
+                caratulaData = nil
+                
+                if let caratula = movie.caratula {
+                    let base64EncodedData = caratula.data(using: .utf8)!
+
+                    if let data = Data(base64Encoded: base64EncodedData) {
+                        caratulaData = data
+                    }
+                }
+
+                addMovie(movieName: movie.movieName!, showDate: movie.showDate!, sinopsis: movie.sinopsis!, score: movie.score, isSerie: movie.isSerie, caratula: caratulaData)
             }
             
         } catch {

@@ -192,7 +192,7 @@ struct MovieView: View {
         if (movieName.isEmpty) {
             showingAlert = true
         } else {
-            movieViewModel.addMovie(movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie)
+            movieViewModel.addMovie(movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: nil)
             dismiss()
         }
     }
@@ -203,11 +203,6 @@ struct MovieView: View {
             movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: photoDataCompressed)
         }
         dismiss()
-    }
-    
-    // Seleccionar una carátura
-    func xxx() {
-        
     }
 }
 
