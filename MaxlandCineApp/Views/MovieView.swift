@@ -87,7 +87,15 @@ struct MovieView: View {
                     .frame(height: 300)
                 
                 Divider()
-                
+                              
+                if !update {
+                    Button {
+                        PhotosPicker(selection: $selectedItem, matching: .images) {}
+                    } label: {
+                        Text("movie-upload-photo")
+                    }
+                    .padding()
+                }
                 
                 if let selectedImage {
                     Image(uiImage: selectedImage)
@@ -173,6 +181,7 @@ struct MovieView: View {
                     isSerie = updatedMovie.isSerie
                     if let imageData = updatedMovie.caratula {
                         selectedImage = UIImage(data: imageData)
+                        photoDataCompressed = imageData
                     }
                 } else {
                     // Poner el foco en el campo del nombre de la película
