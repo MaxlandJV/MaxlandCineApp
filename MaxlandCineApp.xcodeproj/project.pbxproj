@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A02C5732A70095F00F7EE77 /* ImageManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C5722A70095F00F7EE77 /* ImageManagement.swift */; };
 		8A095ED827DFA3A60042A8E1 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A095ED727DFA3A60042A8E1 /* MovieListView.swift */; };
 		8A21FDFF27A5AB4800D115A6 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FDFE27A5AB4800D115A6 /* MovieView.swift */; };
 		8A2383B727EE371500CE4998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A2383B627EE371500CE4998 /* LaunchScreen.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A02C5722A70095F00F7EE77 /* ImageManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagement.swift; sourceTree = "<group>"; };
 		8A095ED727DFA3A60042A8E1 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		8A21FDFE27A5AB4800D115A6 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		8A2383B627EE371500CE4998 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				8AED453F281816DC0016C602 /* BiometricAuth.swift */,
 				8AD7F5DA289963D000D55EF0 /* MovieSerieToggle.swift */,
+				8A02C5722A70095F00F7EE77 /* ImageManagement.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A02C5732A70095F00F7EE77 /* ImageManagement.swift in Sources */,
 				8A21FDFF27A5AB4800D115A6 /* MovieView.swift in Sources */,
 				8A5AE31A27F7052B00AC89E4 /* MovieEmptyView.swift in Sources */,
 				8A65046127ACFD9B00D556E0 /* MovieListRowView.swift in Sources */,

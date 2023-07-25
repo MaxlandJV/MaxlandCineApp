@@ -27,7 +27,7 @@ struct MovieView: View {
     @State private var selectedPhotoData: Data?
     @State private var photoDataCompressed: Data?
     @State private var selectedImage: UIImage?
-    
+        
     @EnvironmentObject var movieViewModel: MovieViewModel
     
     // MARK: Este valor se pasa como parámetro. Si no se pasa el valor por defecto es FALSE
@@ -162,7 +162,7 @@ struct MovieView: View {
                     if let data = try? await newItem?.loadTransferable(type: Data.self) {
                         selectedPhotoData = data
                         if let selectedPhotoData, let image = UIImage(data: selectedPhotoData) {
-                            selectedImage = movieViewModel.resizeImage(image: image, targetSize: CGSize(width: 1024, height: 768))
+                            selectedImage = ImageManagement.resizeImage(image: image, targetSize: CGSize(width: 1024, height: 768))
                             if let image = selectedImage {
                                 photoDataCompressed = image.jpegData(compressionQuality: 0.8)
                             }
