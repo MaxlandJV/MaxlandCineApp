@@ -89,9 +89,7 @@ struct MovieView: View {
                 Divider()
                               
                 if !update {
-                    Button {
-                        PhotosPicker(selection: $selectedItem, matching: .images) {}
-                    } label: {
+                    PhotosPicker(selection: $selectedItem, matching: .images) {
                         Text("movie-upload-photo")
                     }
                     .padding()
@@ -201,7 +199,7 @@ struct MovieView: View {
         if (movieName.isEmpty) {
             showingAlert = true
         } else {
-            movieViewModel.addMovie(movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: nil)
+            movieViewModel.addMovie(movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: photoDataCompressed)
             dismiss()
         }
     }
