@@ -1,9 +1,10 @@
 # MaxlandCineApp
 ## Proyecto para pruebas de programación en Swift y SwiftUI
 
-Este proyecto consiste en un sencilla aplicación para crear registros de películas que hayamos visto, indicando su título, la fecha en que se vió, una puntuación mediante estrellas y un texto para realizar una crítica o explicación de lo que nos ha parecido.
+Este proyecto consiste en un sencilla aplicación para crear registros de películas y series de televisión que hayamos visto, indicando su título, la fecha en que se vió, una puntuación mediante estrellas, una imagen de portada y un texto para realizar una crítica o explicación de lo que nos ha parecido.
 
 La aplicación puede activar la autenticación biométrica, siempre que esté disponible, de este modo podemos proteger la lista de películas. 
+También es posible exportar una copia de los datos mediante un archivo JSON que se puede importar también. Esto sirve como sistema de copia de seguridad.
 
 Los datos se guardan de forma local en el dispositivo mediante **CoreData**, además de utilizar **arquitectura MVVM** para su gestión.
 
