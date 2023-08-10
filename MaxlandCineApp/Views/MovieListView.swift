@@ -28,8 +28,6 @@ struct MovieListView: View {
         }
     }
     
-    
-    
     var body: some View {
         NavigationStack {
             ZStack {
