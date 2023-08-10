@@ -16,61 +16,67 @@ struct MovieListRowView: View {
     let caratula: Data?
     
     var body: some View {
-        HStack {
-            if let imageData = caratula,
-               let selectedImage = UIImage(data: imageData) {
-                VStack {
-                    Image(uiImage: selectedImage)
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(5)
-                }
-                .frame(width: 40)
-            }
-            else {
-                if (isSerie != nil) {
-                    Image(systemName: isSerie! ? "sparkles.tv" : "film")
-                        .resizable()
-                        .frame(width: 40, height: 45)
-                        .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
+        HStack(spacing: -10) {
+            ZStack {
+                if let imageData = caratula,
+                   let selectedImage = UIImage(data: imageData) {
+                    VStack {
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(5)
+                    }
+                    .frame(width: 120)
                 }
                 else {
-                    Image(systemName: "film")
-                        .resizable()
-                        .frame(width: 40, height: 45)
-                        .foregroundColor(Color("Movie"))
-                }
-            }
-            VStack(alignment: .leading, spacing: 10) {
-                Text(movieName ?? "")
-                    .font(.headline)
-                    .bold()
-                    .multilineTextAlignment(.leading)
-                    .foregroundColor(.black)
-                HStack {
-                    HStack(spacing: 0) {
-                        ForEach(1...5, id: \.self) { number in
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(number > score ?? 0 ? Color("StarNoActive") : .yellow)
-                        }
+                    if (isSerie != nil) {
+                        Image(systemName: isSerie! ? "sparkles.tv" : "film")
+                            .resizable()
+                            .frame(width: 120, height: 125)
+                            .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
                     }
-                    Spacer()
-                    Text(showDate ?? Date(), style: .date)
-                        .font(.footnote)
-                        .bold()
-                        .foregroundColor(.black)
+                    else {
+                        Image(systemName: "film")
+                            .resizable()
+                            .frame(width: 120, height: 125)
+                            .foregroundColor(Color("Movie"))
+                    }
                 }
             }
-            Image(systemName: "chevron.forward")
-                .padding(0)
-                .foregroundColor(.black)
+
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(movieName ?? "")
+                        .font(.headline)
+                        .bold()
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.black)
+                    HStack {
+                        HStack(spacing: 0) {
+                            ForEach(1...5, id: \.self) { number in
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(number > score ?? 0 ? Color("StarNoActive") : .yellow)
+                            }
+                        }
+                        Spacer()
+                        Text(showDate ?? Date(), style: .date)
+                            .font(.footnote)
+                            .bold()
+                            .foregroundColor(.black)
+                    }
+                }
+                .frame(height: 80)
+                Image(systemName: "chevron.forward")
+                    .padding(0)
+                    .foregroundColor(.black)
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 8)
+            .background(LinearGradient(colors: [Color.clear, Color("TopColorGradient")], startPoint: .trailing, endPoint: .leading))
+            .cornerRadius(10)
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 8)
-        .background(LinearGradient(colors: [Color.clear, Color("TopColorGradient")], startPoint: .trailing, endPoint: .leading))
-        .cornerRadius(10)
     }
 }
 
