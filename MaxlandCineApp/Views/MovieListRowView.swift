@@ -25,6 +25,7 @@ struct MovieListRowView: View {
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(5)
+                            .shadow(color: .primary.opacity(0.8), radius: 10, x: 0, y: 0)
                     }
                     .frame(width: 120)
                 }
@@ -34,12 +35,14 @@ struct MovieListRowView: View {
                             .resizable()
                             .frame(width: 120, height: 125)
                             .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
+                            .shadow(color: .primary.opacity(0.8), radius: 10, x: 0, y: 0)
                     }
                     else {
                         Image(systemName: "film")
                             .resizable()
                             .frame(width: 120, height: 125)
                             .foregroundColor(Color("Movie"))
+                            .shadow(color: .primary.opacity(0.8), radius: 10, x: 0, y: 0)
                     }
                 }
             }
@@ -51,6 +54,8 @@ struct MovieListRowView: View {
                         .bold()
                         .multilineTextAlignment(.leading)
                         .foregroundColor(.black)
+                        .padding(.leading, 10)
+                    Spacer()
                     HStack {
                         HStack(spacing: 0) {
                             ForEach(1...5, id: \.self) { number in
@@ -66,8 +71,9 @@ struct MovieListRowView: View {
                             .bold()
                             .foregroundColor(.black)
                     }
+                    .padding(.leading, 10)
                 }
-                .frame(height: 80)
+                .frame(height: 100)
                 Image(systemName: "chevron.forward")
                     .padding(0)
                     .foregroundColor(.black)
@@ -76,6 +82,7 @@ struct MovieListRowView: View {
             .padding(.horizontal, 8)
             .background(LinearGradient(colors: [Color.clear, Color("TopColorGradient")], startPoint: .trailing, endPoint: .leading))
             .cornerRadius(10)
+            .zIndex(-1)
         }
     }
 }
