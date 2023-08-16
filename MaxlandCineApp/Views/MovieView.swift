@@ -36,6 +36,14 @@ struct MovieView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
+                if let selectedImage {
+                    Image(uiImage: selectedImage)
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                        .padding(.vertical)
+                }
+                
                 if !update {
                     TextField("movie-name", text: $movieName)
                         .focused($movieNameInfocus)
@@ -93,14 +101,6 @@ struct MovieView: View {
                         Text("movie-upload-photo")
                     }
                     .padding()
-                }
-                
-                if let selectedImage {
-                    Image(uiImage: selectedImage)
-                        .resizable()
-                        .scaledToFill()
-                        .clipped()
-                        .padding(.vertical)
                 }
             }
             .padding()
