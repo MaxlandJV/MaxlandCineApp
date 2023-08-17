@@ -22,23 +22,24 @@ struct MovieListRowView: View {
                 Image(uiImage: selectedImage)
                     .resizable()
                     .cornerRadius(5)
-                    .shadow(color: .primary.opacity(0.8), radius: 10, x: 0, y: 0)
                     .frame(width: 100)
             }
             else {
                 if (isSerie != nil) {
                     Image(systemName: isSerie! ? "sparkles.tv" : "film")
                         .resizable()
-                        .frame(width: 100)
+                        .frame(width: 96)
                         .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
-                        .shadow(color: .primary.opacity(0.8), radius: 10, x: 0, y: 0)
+                        .padding(.vertical, 4)
+                        .padding(.leading, 4)
                 }
                 else {
                     Image(systemName: "film")
                         .resizable()
-                        .frame(width: 100)
+                        .frame(width: 96)
                         .foregroundColor(Color("Movie"))
-                        .shadow(color: .primary.opacity(0.8), radius: 10, x: 0, y: 0)
+                        .padding(.vertical, 4)
+                        .padding(.leading, 4)
                 }
             }
             
@@ -70,12 +71,10 @@ struct MovieListRowView: View {
                 .padding(0)
                 .foregroundColor(.black)
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 8)
-        .background(LinearGradient(colors: [Color.clear, Color("TopColorGradient").opacity(0.85)], startPoint: .trailing, endPoint: .leading))
+        .background(LinearGradient(colors: [Color.clear, Color.white], startPoint: .trailing, endPoint: .leading))
         .cornerRadius(10)
-        .shadow(color: .primary.opacity(0.8), radius: 10, x: 0, y: 0)
-        .frame(maxHeight: 120)
+        .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 0)
+        .frame(height: 120)
     }
 }
 
