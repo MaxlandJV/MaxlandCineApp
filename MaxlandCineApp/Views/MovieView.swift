@@ -35,19 +35,20 @@ struct MovieView: View {
     
     var body: some View {
         VStack {
-            if let selectedImage {
-                VStack {
-                    Image(uiImage: selectedImage)
-                    //Image("Tron")
-                        .resizable()
-                        .scaledToFill()
-                        .clipped()
-                        .padding(.vertical)
-                        .overlay {
-                            LinearGradient(colors: [.clear, .clear, .clear, .white.opacity(0.1), .white.opacity(0.5), .white.opacity(0.9), .white], startPoint: .top, endPoint: .bottom)
-                        }
+            if update {
+                if let selectedImage {
+                    VStack {
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
+                            .padding(.vertical)
+                            .overlay {
+                                LinearGradient(colors: [.white, .white, .white, .white.opacity(0.9), .white.opacity(0.5), .white.opacity(0.1), .clear, .clear, .clear, .white.opacity(0.1), .white.opacity(0.5), .white.opacity(0.9), .white, .white], startPoint: .top, endPoint: .bottom)
+                            }
+                    }
+                    .frame(height:280)
                 }
-                .frame(height:280)
             }
             
             ScrollView {
@@ -89,26 +90,35 @@ struct MovieView: View {
                 
                 Divider()
                 
+                if !update {
+                    PhotosPicker(selection: $selectedItem, matching: .images) {
+                        Text("movie-upload-photo")
+                    }
+                    .padding()
+                    
+                    if let selectedImage {
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
+                            .padding(.vertical)
+                    }
+                    
+                    Divider()
+                }
+                
                 HStack {
                     Text("movie-review")
                         .font(.headline)
                         .padding(.top, 10)
                     Spacer()
                 }
+                
                 TextEditor(text: $sinopsis)
                     .cornerRadius(10)
                     .scrollContentBackground(.hidden)
                     .background(.clear)
                     .frame(height: 300)
-                
-                Divider()
-                
-                if !update {
-                    PhotosPicker(selection: $selectedItem, matching: .images) {
-                        Text("movie-upload-photo")
-                    }
-                    .padding()
-                }
             }
             .padding()
             .navigationBarTitle(movie?.movieName ?? NSLocalizedString("movie-new", comment: ""), displayMode: .inline)
