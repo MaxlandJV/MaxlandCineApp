@@ -27,6 +27,7 @@ struct MovieView: View {
     @State private var selectedPhotoData: Data?
     @State private var photoDataCompressed: Data?
     @State private var selectedImage: UIImage?
+    @State private var showImage: Bool = false
     
     @EnvironmentObject var movieViewModel: MovieViewModel
     
@@ -44,7 +45,10 @@ struct MovieView: View {
                             .clipped()
                             .padding(.vertical)
                             .overlay {
-                                LinearGradient(colors: [Color("Degradado"), Color("Degradado"), Color("Degradado"), Color("Degradado").opacity(0.9), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.1), Color("Degradado").opacity(0), Color("Degradado").opacity(0), Color("Degradado").opacity(0), Color("Degradado").opacity(0.1), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.9), Color("Degradado"), Color("Degradado")], startPoint: .top, endPoint: .bottom)
+                                LinearGradient(colors: [Color("Degradado"), Color("Degradado"), Color("Degradado"), Color("Degradado").opacity(0.9), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.1), .clear, .clear, .clear, Color("Degradado").opacity(0.1), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.9), Color("Degradado"), Color("Degradado")], startPoint: .top, endPoint: .bottom)
+                            }
+                            .onTapGesture {
+                                showImage.toggle()
                             }
                     }
                     .frame(height:280)
@@ -205,6 +209,23 @@ struct MovieView: View {
                     // o en este caso desde un evento asíncrono
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         movieNameInfocus = true
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $showImage) {
+            if update {
+                if let selectedImage {
+                    VStack {
+                        Text(movieName)
+                            .font(.title)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.black)
+                        
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .scaledToFit()
                     }
                 }
             }
