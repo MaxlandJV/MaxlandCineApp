@@ -44,7 +44,7 @@ struct MovieView: View {
                             .clipped()
                             .padding(.vertical)
                             .overlay {
-                                LinearGradient(colors: [.white, .white, .white, .white.opacity(0.9), .white.opacity(0.5), .white.opacity(0.1), .clear, .clear, .clear, .white.opacity(0.1), .white.opacity(0.5), .white.opacity(0.9), .white, .white], startPoint: .top, endPoint: .bottom)
+                                LinearGradient(colors: [Color("Degradado"), Color("Degradado"), Color("Degradado"), Color("Degradado").opacity(0.9), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.1), Color("Degradado").opacity(0), Color("Degradado").opacity(0), Color("Degradado").opacity(0), Color("Degradado").opacity(0.1), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.9), Color("Degradado"), Color("Degradado")], startPoint: .top, endPoint: .bottom)
                             }
                     }
                     .frame(height:280)
