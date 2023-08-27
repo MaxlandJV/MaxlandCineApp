@@ -217,16 +217,32 @@ struct MovieView: View {
             if update {
                 if let selectedImage {
                     VStack {
-                        Text(movieName)
-                            .font(.title)
-                            .bold()
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.black)
-                        
-                        Image(uiImage: selectedImage)
-                            .resizable()
-                            .scaledToFit()
+                        GeometryReader { geometry in
+                            let size = geometry.size
+                            
+                            Image(uiImage: selectedImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: size.width, height: size.height)
+                        }
+                        .overlay(alignment: .top) {
+                            HStack {
+                                Spacer()
+                                
+                                Button {
+                                    showImage.toggle()
+                                } label: {
+                                    Image(systemName: "xmark")
+                                        .font(.title3)
+                                        .padding(10)
+                                        .background(.black)
+                                        .cornerRadius(50)
+                                }
+                                .padding([.trailing, .top], 20)
+                            }
+                        }
                     }
+                    .ignoresSafeArea()
                 }
             }
         }
