@@ -51,7 +51,7 @@ struct MovieView: View {
                                 showImage.toggle()
                             }
                     }
-                    .frame(height:280)
+                    .frame(height: getSizeScreen())
                 }
             }
             
@@ -264,6 +264,17 @@ struct MovieView: View {
             movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: photoDataCompressed)
         }
         dismiss()
+    }
+    
+    // Obtener el tamaño según el dispositivo
+    func getSizeScreen() -> CGFloat {
+        var sizeScreen:CGFloat = 280
+        
+        if UIDevice().userInterfaceIdiom == .pad {
+            sizeScreen = 800
+        }
+        
+        return sizeScreen
     }
 }
 

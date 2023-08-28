@@ -21,7 +21,6 @@ struct MovieListRowView: View {
                let selectedImage = UIImage(data: imageData) {
                 Image(uiImage: selectedImage)
                     .resizable()
-                    .cornerRadius(5)
                     .frame(width: 100)
             }
             else {
