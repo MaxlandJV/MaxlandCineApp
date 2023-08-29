@@ -35,7 +35,7 @@ struct MovieListView: View {
                     LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
                         .ignoresSafeArea()
                         .overlay (
-                            MovieEmptyView()
+                            MovieEmptyView(isPresented: $isPresented)
                                 .transition(AnyTransition.opacity.animation(.easeIn)))
                 }
                 else {

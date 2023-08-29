@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MovieEmptyView: View {
+    @Binding var isPresented: Bool
+    
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
@@ -16,8 +18,8 @@ struct MovieEmptyView: View {
                 .fontWeight(.bold)
             Text("empty-add-movie-text")
                 .padding(.bottom, 30)
-            NavigationLink {
-                MovieView()
+            Button {
+                isPresented.toggle()
             } label: {
                 Label {
                     Text("empty-add-movie-button")
@@ -38,7 +40,8 @@ struct MovieEmptyView: View {
 }
 
 struct MovieEmptyView_Previews: PreviewProvider {
+    @State static var isPresented: Bool = false
     static var previews: some View {
-        MovieEmptyView()
+        MovieEmptyView(isPresented: $isPresented)
     }
 }
