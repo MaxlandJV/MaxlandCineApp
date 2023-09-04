@@ -10,8 +10,6 @@ import SwiftUI
 struct MovieStatsView: View {
     @EnvironmentObject var movieViewModel: MovieViewModel
     
-    @State private var movieListScore: [Int] = [0,0,0,0,0]
-    @State private var score: [CGFloat] = [0,0,0,0,0]
     @State private var graphOption = 0
     
     var body: some View {

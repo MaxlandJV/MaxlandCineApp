@@ -20,6 +20,7 @@ struct MovieStatsViewGraph: View {
     var numberOfMovies: Int
     var movieListScore: [Int] = [0,0,0,0,0]
     @State private var graphInfo: [Info] = []
+    @State var texto = "Prueba"
     
     var body: some View {
         VStack {
@@ -32,7 +33,7 @@ struct MovieStatsViewGraph: View {
                         .font(.title3)
                         .fontWeight(.bold)
                 }
-                
+                Text(texto)
                 HStack {
                     Capsule()
                         .fill(Color.blue)
@@ -68,6 +69,9 @@ struct MovieStatsViewGraph: View {
                     }
                 }
                 .frame(height: 280)
+                .onTapGesture { location in
+                    texto = "Esto es una pulsación en \(location.x)"
+                }
             }
             .padding()
             .background(Color(UIColor.systemGray6))
@@ -86,6 +90,6 @@ struct MovieStatsViewGraph: View {
 
 struct MovieStatsViewGraph_Previews: PreviewProvider {
     static var previews: some View {
-        MovieStatsViewGraph(TitleText: Text("Prueba"), numberOfMovies: 5)
+        MovieStatsViewGraph(TitleText: Text("Prueba"), numberOfMovies: 5, movieListScore: [1,3,8,4,2])
     }
 }
