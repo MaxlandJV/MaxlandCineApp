@@ -69,8 +69,17 @@ struct MovieStatsViewGraph: View {
                     }
                 }
                 .frame(height: 280)
-                .onTapGesture { location in
-                    texto = "Esto es una pulsación en \(location.x)"
+                .chartOverlay { proxy in
+                    GeometryReader { geometry in
+                        ZStack(alignment: .top) {
+                            Rectangle().fill(.clear).contentShape(Rectangle())
+                                .onTapGesture { location in
+                                    let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
+                                    guard let xbar: String = proxy.value(atX: xPos) else { return }
+                                    texto = xbar
+                                }
+                        }
+                    }
                 }
             }
             .padding()
