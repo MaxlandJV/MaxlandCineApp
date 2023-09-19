@@ -52,9 +52,7 @@ struct MovieExportDataView: View {
     }
 }
 
-struct MovieExportDataView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieExportDataView()
-            .environmentObject(MovieViewModel())
-    }
+#Preview {
+    MovieExportDataView()
+        .environmentObject(MovieViewModel())
 }

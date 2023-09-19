@@ -97,8 +97,6 @@ struct MovieStatsViewGraph: View {
     }
 }
 
-struct MovieStatsViewGraph_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieStatsViewGraph(TitleText: Text("Prueba"), numberOfMovies: 5, movieListScore: [1,3,8,4,2])
-    }
+#Preview {
+    MovieStatsViewGraph(TitleText: Text("Prueba"), numberOfMovies: 5, movieListScore: [1,3,8,4,2])
 }

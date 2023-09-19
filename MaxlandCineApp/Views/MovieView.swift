@@ -278,10 +278,8 @@ struct MovieView: View {
     }
 }
 
-struct MovieView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            MovieView(update: true)
-        }
+#Preview {
+    NavigationStack {
+        MovieView(update: true)
     }
 }

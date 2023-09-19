@@ -77,10 +77,8 @@ struct MovieListRowView: View {
     }
 }
 
-struct MovieListRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieListRowView(movieName: "Prueba de película con un nombre largo", showDate: Date(), sinopsis: "", score: 3, isSerie: false, caratula: nil)
-            .padding()
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    MovieListRowView(movieName: "Prueba de película con un nombre largo", showDate: Date(), sinopsis: "", score: 3, isSerie: false, caratula: nil)
+        .padding()
+        .previewLayout(.sizeThatFits)
 }

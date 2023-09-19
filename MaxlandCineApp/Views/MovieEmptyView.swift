@@ -39,9 +39,6 @@ struct MovieEmptyView: View {
     }
 }
 
-struct MovieEmptyView_Previews: PreviewProvider {
-    @State static var isPresented: Bool = false
-    static var previews: some View {
-        MovieEmptyView(isPresented: $isPresented)
-    }
+#Preview {
+    MovieEmptyView(isPresented: .constant(false))
 }

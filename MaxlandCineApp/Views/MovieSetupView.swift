@@ -67,9 +67,7 @@ struct MovieSetupView: View {
     }
 }
 
-struct MovieSetup_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieSetupView()
-            .environmentObject(MovieViewModel())
-    }
+#Preview {
+    MovieSetupView()
+        .environmentObject(MovieViewModel())
 }
