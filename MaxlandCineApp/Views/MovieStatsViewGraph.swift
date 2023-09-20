@@ -20,7 +20,8 @@ struct MovieStatsViewGraph: View {
     var numberOfMovies: Int
     var movieListScore: [Int] = [0,0,0,0,0]
     @State private var graphInfo: [Info] = []
-    @State var texto = "Prueba"
+    @State private var showMoviesByScore = false
+    @State private var texto = ""
     
     var body: some View {
         VStack {
@@ -33,7 +34,6 @@ struct MovieStatsViewGraph: View {
                         .font(.title3)
                         .fontWeight(.bold)
                 }
-                Text(texto)
                 HStack {
                     Capsule()
                         .fill(Color.blue)
@@ -76,7 +76,8 @@ struct MovieStatsViewGraph: View {
                                 .onTapGesture { location in
                                     let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
                                     guard let xbar: String = proxy.value(atX: xPos) else { return }
-                                    texto = xbar
+                                    showMoviesByScore = true
+                                    texto = getMoviesByScore(score: xbar)
                                 }
                         }
                     }
@@ -94,6 +95,23 @@ struct MovieStatsViewGraph: View {
                 }
             }
         }
+        if showMoviesByScore {
+            HStack {
+                ScrollView(.horizontal) {
+                    Label(
+                        title: { Text(texto) },
+                        icon: { /*@START_MENU_TOKEN@*/Image(systemName: "42.circle")/*@END_MENU_TOKEN@*/ }
+                    )
+                }
+            }
+            .padding()
+            .background(Color(UIColor.systemGray6))
+            .cornerRadius(18)
+        }
+    }
+    
+    func getMoviesByScore(score: String) -> String {
+        return score
     }
 }
 
