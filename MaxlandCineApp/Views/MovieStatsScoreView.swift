@@ -8,8 +8,47 @@
 import SwiftUI
 
 struct MovieStatsScoreView: View {
+    var selectedScoreMovieList: [Movie] = []
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(selectedScoreMovieList) { movie in
+                        if let imageData = movie.caratula,
+                           let selectedImage = UIImage(data: imageData) {
+                            Image(uiImage: selectedImage)
+                                .resizable()
+                                .frame(width: 96, height: 144)
+                                .cornerRadius(5)
+                        }
+                        else {
+                            if (movie.isSerie) {
+                                Image(systemName: movie.isSerie ? "sparkles.tv" : "film")
+                                    .resizable()
+                                    .frame(width: 96, height: 144)
+                                    .foregroundColor(movie.isSerie ? Color("Serie") : Color("Movie"))
+                                    .padding(.vertical, 4)
+                                    .padding(.leading, 4)
+                                    .cornerRadius(5)
+                            }
+                            else {
+                                Image(systemName: "film")
+                                    .resizable()
+                                    .frame(width: 96, height: 144)
+                                    .foregroundColor(Color("Movie"))
+                                    .padding(.vertical, 4)
+                                    .padding(.leading, 4)
+                                    .cornerRadius(5)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(Color(UIColor.systemGray6))
+        .cornerRadius(18)
     }
 }
 

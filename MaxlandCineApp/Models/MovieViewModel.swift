@@ -140,6 +140,17 @@ class MovieViewModel: ObservableObject {
         return movieListScore
     }
     
+    func getMoviesByScore(type: typeData, score: String) -> [Movie] {
+        switch type {
+            case .All:
+                return movieList.filter( { $0.score == Int(score) ?? 0 } )
+            case .Movies:
+                return movieList.filter( { $0.score == Int(score) ?? 0 && !$0.isSerie } )
+            case .Series:
+                return movieList.filter( { $0.score == Int(score) ?? 0 && $0.isSerie } )
+        }
+    }
+    
     func getJSONData() -> String? {
         var movieExportList: [MovieImportExportModel] = []
         var caratulaStr = ""

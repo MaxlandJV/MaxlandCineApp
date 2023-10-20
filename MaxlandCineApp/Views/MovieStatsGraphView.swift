@@ -1,5 +1,5 @@
 //
-//  MovieStatsViewGraph.swift
+//  MovieStatsGraphView.swift
 //  MaxlandCineApp
 //
 //  Created by Jordi Villaró on 20/9/22.
@@ -99,44 +99,7 @@ struct MovieStatsGraphView: View {
         }
         
         if showMoviesByScore {
-            HStack {
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(selectedScoreMovieList) { movie in
-                            if let imageData = movie.caratula,
-                               let selectedImage = UIImage(data: imageData) {
-                                Image(uiImage: selectedImage)
-                                    .resizable()
-                                    .frame(width: 96, height: 144)
-                                    .cornerRadius(5)
-                            }
-                            else {
-                                if (movie.isSerie) {
-                                    Image(systemName: movie.isSerie ? "sparkles.tv" : "film")
-                                        .resizable()
-                                        .frame(width: 96, height: 144)
-                                        .foregroundColor(movie.isSerie ? Color("Serie") : Color("Movie"))
-                                        .padding(.vertical, 4)
-                                        .padding(.leading, 4)
-                                        .cornerRadius(5)
-                                }
-                                else {
-                                    Image(systemName: "film")
-                                        .resizable()
-                                        .frame(width: 96, height: 144)
-                                        .foregroundColor(Color("Movie"))
-                                        .padding(.vertical, 4)
-                                        .padding(.leading, 4)
-                                        .cornerRadius(5)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            .padding()
-            .background(Color(UIColor.systemGray6))
-            .cornerRadius(18)
+            MovieStatsScoreView(selectedScoreMovieList: selectedScoreMovieList)
         }
     }
 }

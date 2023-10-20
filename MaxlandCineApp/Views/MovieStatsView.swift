@@ -16,10 +16,10 @@ struct MovieStatsView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 switch graphOption {
-                case 1:MovieStatsViewGraph(TitleText: Text("stats-movie-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.Movies), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.Movies))
-                case 2:MovieStatsViewGraph(TitleText: Text("stats-serie-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.Series), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.Series))
+                case 1:MovieStatsGraphView(titleText: Text("stats-movie-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.Movies), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.Movies), type: MovieViewModel.typeData.Movies)
+                case 2:MovieStatsGraphView(titleText: Text("stats-serie-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.Series), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.Series), type: MovieViewModel.typeData.Series)
                 default:
-                    MovieStatsViewGraph(TitleText: Text("stats-total-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.All), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.All))
+                    MovieStatsGraphView(titleText: Text("stats-total-number"), numberOfMovies: movieViewModel.getNumberMovies(type: MovieViewModel.typeData.All), movieListScore: movieViewModel.getNumberMoviesByScore(type: MovieViewModel.typeData.All), type: MovieViewModel.typeData.All)
                 }
             }
         }
