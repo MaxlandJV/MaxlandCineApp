@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A02C5732A70095F00F7EE77 /* ImageManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C5722A70095F00F7EE77 /* ImageManagement.swift */; };
+		8A05F9372AE2E292008CFF57 /* MovieInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A05F9362AE2E292008CFF57 /* MovieInfoModel.swift */; };
 		8A095ED827DFA3A60042A8E1 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A095ED727DFA3A60042A8E1 /* MovieListView.swift */; };
 		8A21FDFF27A5AB4800D115A6 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FDFE27A5AB4800D115A6 /* MovieView.swift */; };
 		8A2383B727EE371500CE4998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A2383B627EE371500CE4998 /* LaunchScreen.storyboard */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		8A02C5722A70095F00F7EE77 /* ImageManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagement.swift; sourceTree = "<group>"; };
+		8A05F9362AE2E292008CFF57 /* MovieInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoModel.swift; sourceTree = "<group>"; };
 		8A095ED727DFA3A60042A8E1 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		8A21FDFE27A5AB4800D115A6 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		8A2383B627EE371500CE4998 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				8AE847EC27D87E6700C2BC8F /* MovieViewModel.swift */,
+				8A05F9362AE2E292008CFF57 /* MovieInfoModel.swift */,
 				8A61457127CBBD590042A5FE /* MovieDataModel.xcdatamodeld */,
 				8AA57B4429896C9800A70AF9 /* MovieImportExportModel.swift */,
 			);
@@ -224,6 +227,7 @@
 				8AED4540281816DC0016C602 /* BiometricAuth.swift in Sources */,
 				8A24289627DF8117004977DB /* MovieSetupView.swift in Sources */,
 				8A2B642728D9BF7F005C9165 /* MovieStatsGraphView.swift in Sources */,
+				8A05F9372AE2E292008CFF57 /* MovieInfoModel.swift in Sources */,
 				8AA57B4529896C9800A70AF9 /* MovieImportExportModel.swift in Sources */,
 				8A46CAD127A54BBC000DC7C4 /* MaxlandCineApp.swift in Sources */,
 				8ADDCDC3294C9542006A5277 /* MovieExportDataView.swift in Sources */,

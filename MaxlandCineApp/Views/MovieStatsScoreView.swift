@@ -46,6 +46,7 @@ struct MovieStatsScoreView: View {
                             
                             Text(movie.movieName ?? "")
                                 .lineLimit(1)
+                                .font(.footnote)
                         }
                         .frame(width: 100)
                     }

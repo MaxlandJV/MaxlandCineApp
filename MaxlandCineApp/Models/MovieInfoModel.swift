@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Info: Identifiable {
+    let id: String = UUID().uuidString
+    let starsNumber: Int
+    let movies: Int
+}

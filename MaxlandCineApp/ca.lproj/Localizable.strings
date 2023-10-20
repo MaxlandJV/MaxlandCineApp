@@ -49,6 +49,7 @@
 "stats-todo" = "Tot";
 "stats-movies" = "Pel·lícules";
 "stats-series" = "Sèries";
+"stats-stars" = "Estrelles";
 
 "movie-export-data" = "Exportar";
 "movie-export-detail" = "Mitjançant aquesta opció es poden exportar totes les dades contingudes a l'aplicació a un fitxer de text en format JSON. Aquest fitxer es pot tornar a importar mitjançant l'opció d'importació ubicada a l'apartat de còpies de seguretat.";

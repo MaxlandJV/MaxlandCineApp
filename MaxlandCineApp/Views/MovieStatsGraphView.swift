@@ -8,12 +8,6 @@
 import SwiftUI
 import Charts
 
-struct Info: Identifiable {
-    let id: String = UUID().uuidString
-    let starsNumber: Int
-    let movies: Int
-}
-
 struct MovieStatsGraphView: View {
     @EnvironmentObject var movieViewModel: MovieViewModel
     
@@ -24,7 +18,7 @@ struct MovieStatsGraphView: View {
     @State private var graphInfo: [Info] = []
     @State private var showMoviesByScore = false
     @State private var selectedScoreMovieList: [Movie] = []
-    @State private var numberStar: Int = 0
+    @State private var starsNumber: Int = 0
     
     var body: some View {
         VStack {
@@ -71,7 +65,7 @@ struct MovieStatsGraphView: View {
                         }
                     }
                 }
-                .frame(height: 280)
+                .frame(height: 260)
                 .chartOverlay { proxy in
                     GeometryReader { geometry in
                         ZStack(alignment: .top) {
@@ -79,8 +73,8 @@ struct MovieStatsGraphView: View {
                                 .onTapGesture { location in
                                     let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
                                     guard let xbar: String = proxy.value(atX: xPos) else { return }
-                                    numberStar = Int(xbar) ?? 0
-                                    selectedScoreMovieList = movieViewModel.getMoviesByScore(type: type, score: numberStar)
+                                    starsNumber = Int(xbar) ?? 0
+                                    selectedScoreMovieList = movieViewModel.getMoviesByScore(type: type, score: starsNumber)
                                     showMoviesByScore = selectedScoreMovieList.count > 0
                                 }
                         }
@@ -103,8 +97,8 @@ struct MovieStatsGraphView: View {
         if showMoviesByScore {
             VStack {
                 Label(
-                    title: { Text("Estrellas") },
-                    icon: { Image(systemName: "\(numberStar).circle") }
+                    title: { Text("stats-stars") },
+                    icon: { Image(systemName: "\(starsNumber).circle") }
                 )
                 MovieStatsScoreView(selectedScoreMovieList: selectedScoreMovieList)
             }
