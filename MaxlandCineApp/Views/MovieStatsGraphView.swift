@@ -14,20 +14,22 @@ struct Info: Identifiable {
     let movies: Int
 }
 
-struct MovieStatsViewGraph: View {
+struct MovieStatsGraphView: View {
+    @EnvironmentObject var movieViewModel: MovieViewModel
     
-    var TitleText: Text
+    var titleText: Text
     var numberOfMovies: Int
     var movieListScore: [Int] = [0,0,0,0,0]
+    var type: MovieViewModel.typeData
     @State private var graphInfo: [Info] = []
     @State private var showMoviesByScore = false
-    @State private var texto = ""
+    @State private var selectedScoreMovieList: [Movie] = []
     
     var body: some View {
         VStack {
             VStack(spacing: 20) {
                 HStack {
-                    TitleText
+                    titleText
                         .font(.headline)
                     Spacer()
                     Text("\(numberOfMovies)")
@@ -76,8 +78,8 @@ struct MovieStatsViewGraph: View {
                                 .onTapGesture { location in
                                     let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
                                     guard let xbar: String = proxy.value(atX: xPos) else { return }
-                                    showMoviesByScore = true
-                                    texto = getMoviesByScore(score: xbar)
+                                    selectedScoreMovieList = movieViewModel.getMoviesByScore(type: type, score: xbar)
+                                    showMoviesByScore = selectedScoreMovieList.count > 0
                                 }
                         }
                     }
@@ -95,13 +97,41 @@ struct MovieStatsViewGraph: View {
                 }
             }
         }
+        
         if showMoviesByScore {
             HStack {
                 ScrollView(.horizontal) {
-                    Label(
-                        title: { Text(texto) },
-                        icon: { /*@START_MENU_TOKEN@*/Image(systemName: "42.circle")/*@END_MENU_TOKEN@*/ }
-                    )
+                    HStack {
+                        ForEach(selectedScoreMovieList) { movie in
+                            if let imageData = movie.caratula,
+                               let selectedImage = UIImage(data: imageData) {
+                                Image(uiImage: selectedImage)
+                                    .resizable()
+                                    .frame(width: 96, height: 144)
+                                    .cornerRadius(5)
+                            }
+                            else {
+                                if (movie.isSerie) {
+                                    Image(systemName: movie.isSerie ? "sparkles.tv" : "film")
+                                        .resizable()
+                                        .frame(width: 96, height: 144)
+                                        .foregroundColor(movie.isSerie ? Color("Serie") : Color("Movie"))
+                                        .padding(.vertical, 4)
+                                        .padding(.leading, 4)
+                                        .cornerRadius(5)
+                                }
+                                else {
+                                    Image(systemName: "film")
+                                        .resizable()
+                                        .frame(width: 96, height: 144)
+                                        .foregroundColor(Color("Movie"))
+                                        .padding(.vertical, 4)
+                                        .padding(.leading, 4)
+                                        .cornerRadius(5)
+                                }
+                            }
+                        }
+                    }
                 }
             }
             .padding()
@@ -109,12 +139,9 @@ struct MovieStatsViewGraph: View {
             .cornerRadius(18)
         }
     }
-    
-    func getMoviesByScore(score: String) -> String {
-        return score
-    }
 }
 
 #Preview {
-    MovieStatsViewGraph(TitleText: Text("Prueba"), numberOfMovies: 5, movieListScore: [1,3,8,4,2])
+    MovieStatsGraphView(titleText: Text("Prueba"), numberOfMovies: 5, movieListScore: [1,3,8,4,2], type: MovieViewModel.typeData.All)
+        .environmentObject(MovieViewModel())
 }
