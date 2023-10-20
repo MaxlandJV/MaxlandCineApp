@@ -140,14 +140,14 @@ class MovieViewModel: ObservableObject {
         return movieListScore
     }
     
-    func getMoviesByScore(type: typeData, score: String) -> [Movie] {
+    func getMoviesByScore(type: typeData, score: Int) -> [Movie] {
         switch type {
             case .All:
-                return movieList.filter( { $0.score == Int(score) ?? 0 } )
+                return movieList.filter( { $0.score == score } )
             case .Movies:
-                return movieList.filter( { $0.score == Int(score) ?? 0 && !$0.isSerie } )
+                return movieList.filter( { $0.score == score && !$0.isSerie } )
             case .Series:
-                return movieList.filter( { $0.score == Int(score) ?? 0 && $0.isSerie } )
+                return movieList.filter( { $0.score == score && $0.isSerie } )
         }
     }
     

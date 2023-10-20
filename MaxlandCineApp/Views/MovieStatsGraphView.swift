@@ -24,6 +24,7 @@ struct MovieStatsGraphView: View {
     @State private var graphInfo: [Info] = []
     @State private var showMoviesByScore = false
     @State private var selectedScoreMovieList: [Movie] = []
+    @State private var numberStar: Int = 0
     
     var body: some View {
         VStack {
@@ -78,7 +79,8 @@ struct MovieStatsGraphView: View {
                                 .onTapGesture { location in
                                     let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
                                     guard let xbar: String = proxy.value(atX: xPos) else { return }
-                                    selectedScoreMovieList = movieViewModel.getMoviesByScore(type: type, score: xbar)
+                                    numberStar = Int(xbar) ?? 0
+                                    selectedScoreMovieList = movieViewModel.getMoviesByScore(type: type, score: numberStar)
                                     showMoviesByScore = selectedScoreMovieList.count > 0
                                 }
                         }
@@ -99,7 +101,13 @@ struct MovieStatsGraphView: View {
         }
         
         if showMoviesByScore {
-            MovieStatsScoreView(selectedScoreMovieList: selectedScoreMovieList)
+            VStack {
+                Label(
+                    title: { Text("Estrellas") },
+                    icon: { Image(systemName: "\(numberStar).circle") }
+                )
+                MovieStatsScoreView(selectedScoreMovieList: selectedScoreMovieList)
+            }
         }
     }
 }
