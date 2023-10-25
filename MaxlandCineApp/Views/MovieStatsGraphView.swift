@@ -19,6 +19,7 @@ struct MovieStatsGraphView: View {
     @State private var showMoviesByScore = false
     @State private var selectedScoreMovieList: [Movie] = []
     @State private var starsNumber: Int = 0
+    @State private var barSelected: [Bool] = [false, false, false, false, false]
     
     var body: some View {
         VStack {
@@ -33,7 +34,7 @@ struct MovieStatsGraphView: View {
                 }
                 HStack {
                     Capsule()
-                        .fill(Color.blue)
+                        .fill(Color.blue.gradient)
                         .frame(width: 20, height: 8)
                     Text("stats-score")
                         .font(.subheadline)
@@ -48,7 +49,7 @@ struct MovieStatsGraphView: View {
                         Text("\(data.movies)")
                             .font(.headline)
                     }
-                    .foregroundStyle(Color.blue.gradient)
+                    .foregroundStyle((barSelected[data.starsNumber - 1]) ? Color.green.gradient : Color.blue.gradient)
                 }
                 .chartXAxis {
                     AxisMarks() { axisValue in
@@ -74,6 +75,8 @@ struct MovieStatsGraphView: View {
                                     let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
                                     guard let xbar: String = proxy.value(atX: xPos) else { return }
                                     starsNumber = Int(xbar) ?? 0
+                                    barSelected = [false, false, false, false, false]
+                                    barSelected[starsNumber - 1] = true
                                     selectedScoreMovieList = movieViewModel.getMoviesByScore(type: type, score: starsNumber)
                                     withAnimation(.default) {
                                         showMoviesByScore = selectedScoreMovieList.count > 0
