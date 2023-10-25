@@ -75,7 +75,9 @@ struct MovieStatsGraphView: View {
                                     guard let xbar: String = proxy.value(atX: xPos) else { return }
                                     starsNumber = Int(xbar) ?? 0
                                     selectedScoreMovieList = movieViewModel.getMoviesByScore(type: type, score: starsNumber)
-                                    showMoviesByScore = selectedScoreMovieList.count > 0
+                                    withAnimation(.default) {
+                                        showMoviesByScore = selectedScoreMovieList.count > 0
+                                    }
                                 }
                         }
                     }
@@ -99,7 +101,8 @@ struct MovieStatsGraphView: View {
                 Label(
                     title: { Text("stats-stars") },
                     icon: { Image(systemName: "\(starsNumber).circle") }
-                )
+                ).font(.headline)
+                    
                 MovieStatsScoreView(selectedScoreMovieList: selectedScoreMovieList)
             }
         }

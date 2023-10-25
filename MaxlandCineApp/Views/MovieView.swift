@@ -36,26 +36,26 @@ struct MovieView: View {
     
     var body: some View {
         VStack {
-            if update {
-                if let selectedImage {
-                    VStack {
-                        Image(uiImage: selectedImage)
-                            .resizable()
-                            .scaledToFill()
-                            .clipped()
-                            .padding(.vertical)
-                            .overlay {
-                                LinearGradient(colors: [Color("Degradado"), Color("Degradado"), Color("Degradado"), Color("Degradado").opacity(0.9), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.1), .clear, .clear, .clear, Color("Degradado").opacity(0.1), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.9), Color("Degradado"), Color("Degradado")], startPoint: .top, endPoint: .bottom)
-                            }
-                            .onTapGesture {
-                                showImage.toggle()
-                            }
-                    }
-                    .frame(height: getSizeScreen())
-                }
-            }
-            
             ScrollView {
+                if update {
+                    if let selectedImage {
+                        VStack {
+                            Image(uiImage: selectedImage)
+                                .resizable()
+                                .scaledToFill()
+                                .clipped()
+                                .padding(.vertical)
+                                .overlay {
+                                    LinearGradient(colors: [Color("Degradado"), Color("Degradado"), Color("Degradado"), Color("Degradado").opacity(0.9), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.1), .clear, .clear, .clear, Color("Degradado").opacity(0.1), Color("Degradado").opacity(0.5), Color("Degradado").opacity(0.9), Color("Degradado"), Color("Degradado")], startPoint: .top, endPoint: .bottom)
+                                }
+                                .onTapGesture {
+                                    showImage.toggle()
+                                }
+                        }
+                        .frame(height: getSizeScreen())
+                    }
+                }
+                        
                 if !update {
                     TextField("movie-name", text: $movieName)
                         .focused($movieNameInfocus)
