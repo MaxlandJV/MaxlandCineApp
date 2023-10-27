@@ -55,76 +55,77 @@ struct MovieView: View {
                         .frame(height: getSizeScreen())
                     }
                 }
-                        
-                if !update {
-                    TextField("movie-name", text: $movieName)
-                        .focused($movieNameInfocus)
-                        .padding()
-                        .cornerRadius(10)
-                        .disableAutocorrection(true)
-                        .padding(.bottom, 10)
-                }
-                
-                Divider()
-                
                 VStack {
-                    DatePicker("movie-date",selection: $showDate, displayedComponents: .date)
-                        .padding(.top, 8)
-                    
-                    Divider()
-                    
-                    Toggle(isSerie ? "movie-type-1" : "movie-type-2", isOn: $isSerie)
-                        .toggleStyle(CheckboxStyle())
-                    
-                    Divider()
-                }
-                
-                HStack {
-                    Text("movie-score")
-                    Spacer()
-                    ForEach(1...5, id: \.self) { number in
-                        Image(systemName: "star.fill")
-                            .foregroundColor(number > score ? Color("StarNoActive") : .orange)
-                            .onTapGesture {
-                                score = Int16(number)
-                            }
-                    }
-                }
-                .padding(.vertical, 10)
-                
-                Divider()
-                
-                if !update {
-                    PhotosPicker(selection: $selectedItem, matching: .images) {
-                        Text("movie-upload-photo")
-                    }
-                    .padding()
-                    
-                    if let selectedImage {
-                        Image(uiImage: selectedImage)
-                            .resizable()
-                            .scaledToFill()
-                            .clipped()
-                            .padding(.vertical)
+                    if !update {
+                        TextField("movie-name", text: $movieName)
+                            .focused($movieNameInfocus)
+                            .padding()
+                            .cornerRadius(10)
+                            .disableAutocorrection(true)
+                            .padding(.bottom, 10)
                     }
                     
                     Divider()
+                    
+                    VStack {
+                        DatePicker("movie-date",selection: $showDate, displayedComponents: .date)
+                            .padding(.top, 8)
+                        
+                        Divider()
+                        
+                        Toggle(isSerie ? "movie-type-1" : "movie-type-2", isOn: $isSerie)
+                            .toggleStyle(CheckboxStyle())
+                        
+                        Divider()
+                    }
+                    
+                    HStack {
+                        Text("movie-score")
+                        Spacer()
+                        ForEach(1...5, id: \.self) { number in
+                            Image(systemName: "star.fill")
+                                .foregroundColor(number > score ? Color("StarNoActive") : .orange)
+                                .onTapGesture {
+                                    score = Int16(number)
+                                }
+                        }
+                    }
+                    .padding(.vertical, 10)
+                    
+                    Divider()
+                    
+                    if !update {
+                        PhotosPicker(selection: $selectedItem, matching: .images) {
+                            Text("movie-upload-photo")
+                        }
+                        .padding()
+                        
+                        if let selectedImage {
+                            Image(uiImage: selectedImage)
+                                .resizable()
+                                .scaledToFill()
+                                .clipped()
+                                .padding(.vertical)
+                        }
+                        
+                        Divider()
+                    }
+                    
+                    HStack {
+                        Text("movie-review")
+                            .font(.headline)
+                            .padding(.top, 10)
+                        Spacer()
+                    }
+                    
+                    TextEditor(text: $sinopsis)
+                        .cornerRadius(10)
+                        .scrollContentBackground(.hidden)
+                        .background(.clear)
+                        .frame(height: 300)
                 }
-                
-                HStack {
-                    Text("movie-review")
-                        .font(.headline)
-                        .padding(.top, 10)
-                    Spacer()
-                }
-                
-                TextEditor(text: $sinopsis)
-                    .cornerRadius(10)
-                    .scrollContentBackground(.hidden)
-                    .background(.clear)
-                    .frame(height: 300)
+                .padding()
             }
-            .padding()
             .navigationBarTitle(movie?.movieName ?? NSLocalizedString("movie-new", comment: ""), displayMode: .inline)
             .toolbar {
                 if update {
