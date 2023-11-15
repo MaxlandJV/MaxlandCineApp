@@ -13,7 +13,7 @@ struct MovieSetupView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("setup-about") + Text(" - 1.7.2")) {
+            Section(header: Text("setup-about") + Text(" - 1.7.3")) {
                 VStack(alignment: .leading) {
                     Image("MaxlandWorld")
                         .resizable()

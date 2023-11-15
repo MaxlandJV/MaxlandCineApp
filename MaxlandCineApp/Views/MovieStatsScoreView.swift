@@ -13,7 +13,7 @@ struct MovieStatsScoreView: View {
     var body: some View {
         HStack {
             ScrollView(.horizontal) {
-                HStack {
+                LazyHStack {
                     ForEach(selectedScoreMovieList) { movie in
                         VStack {
                             if let imageData = movie.caratula,
