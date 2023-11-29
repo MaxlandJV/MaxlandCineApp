@@ -118,11 +118,12 @@ struct MovieView: View {
                         Spacer()
                     }
                     
-                    TextEditor(text: $sinopsis)
-                        .cornerRadius(10)
-                        .scrollContentBackground(.hidden)
-                        .background(.clear)
-                        .frame(height: 300)
+                    TextField("", text: $sinopsis, axis: .vertical)
+//                    TextEditor(text: $sinopsis)
+//                        .cornerRadius(10)
+//                        .scrollContentBackground(.hidden)
+//                        .background(.clear)
+//                        .frame(height: 300)
                 }
                 .padding()
             }
