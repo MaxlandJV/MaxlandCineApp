@@ -53,11 +53,11 @@ struct MovieListView: View {
                                         }
                                 }
                             }
-                            .searchable(text: $searchMovie, prompt: "navigation-list-search")
                             .padding(.horizontal)
                         }
                         .frame(maxWidth: .infinity)
                     }
+                    .searchable(text: $searchMovie, prompt: "navigation-list-search")
                     .navigationDestination(for: Movie.self) { movie in
                         MovieView(movie: movie, update: true)
                     }
