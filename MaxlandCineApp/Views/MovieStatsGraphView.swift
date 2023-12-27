@@ -72,7 +72,8 @@ struct MovieStatsGraphView: View {
                         ZStack(alignment: .top) {
                             Rectangle().fill(.clear).contentShape(Rectangle())
                                 .onTapGesture { location in
-                                    let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
+                                    guard let plot = proxy.plotFrame else { return }
+                                    let xPos = location.x - geometry[plot].origin.x
                                     guard let xbar: String = proxy.value(atX: xPos) else { return }
                                     starsNumber = Int(xbar) ?? 0
                                     barSelected = [false, false, false, false, false]

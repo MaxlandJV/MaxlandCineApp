@@ -180,9 +180,9 @@ struct MovieView: View {
                     }
                 }
             }
-            .onChange(of: selectedItem) { newItem in
+            .onChange(of: selectedItem) {
                 Task {
-                    if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                    if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
                         selectedPhotoData = data
                         if let selectedPhotoData, let image = UIImage(data: selectedPhotoData) {
                             selectedImage = ImageManagement.resizeImage(image: image, targetSize: CGSize(width: 1024, height: 768))
