@@ -12,7 +12,7 @@ struct MovieListView: View {
     @State var isPresented: Bool = false
     @State var searchMovie: String = ""
     
-    @EnvironmentObject var movieViewModel: MovieViewModel
+    @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
     
     var searchResults: [Movie] {
         if searchMovie.isEmpty {
@@ -67,7 +67,7 @@ struct MovieListView: View {
             .navigationTitle(Text("navigation-list-title"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink(destination: MovieSetupView()) {
+                    NavigationLink(destination: MovieSetupView(movieViewModel: movieViewModel)) {
                         Image(systemName: "gearshape").foregroundColor(.black)
                     }
                 }
@@ -100,5 +100,5 @@ struct MovieListView: View {
 
 #Preview {
     MovieListView()
-        .environmentObject(MovieViewModel())
+        .environment(MovieViewModel())
 }

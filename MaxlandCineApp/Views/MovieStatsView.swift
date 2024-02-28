@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieStatsView: View {
-    @EnvironmentObject var movieViewModel: MovieViewModel
+    @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
     
     @State private var graphOption = 0
     
@@ -47,6 +47,6 @@ struct MovieStatsView: View {
 #Preview {
     NavigationStack {
         MovieStatsView()
-            .environmentObject(MovieViewModel())
+            .environment(MovieViewModel())
     }
 }

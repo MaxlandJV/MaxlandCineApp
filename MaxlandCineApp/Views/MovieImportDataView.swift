@@ -10,7 +10,7 @@ import SwiftUI
 struct MovieImportDataView: View {
     @Environment(\.dismiss) var dismiss
     
-    @EnvironmentObject var movieViewModel: MovieViewModel
+    @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
     @State private var pickFile: Bool = false
     @State private var fileURL: URL?
     @State var showingAlert = false
@@ -54,5 +54,5 @@ struct MovieImportDataView: View {
 
 #Preview {
     MovieImportDataView()
-        .environmentObject(MovieViewModel())
+        .environment(MovieViewModel())
 }

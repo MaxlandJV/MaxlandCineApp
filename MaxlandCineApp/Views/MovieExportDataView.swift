@@ -10,7 +10,7 @@ import SwiftUI
 struct MovieExportDataView: View {
     @Environment(\.dismiss) var dismiss
     
-    @EnvironmentObject var movieViewModel: MovieViewModel
+    @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
     @State private var exportFile: Bool = false
     @State var showingAlert = false
     
@@ -54,5 +54,5 @@ struct MovieExportDataView: View {
 
 #Preview {
     MovieExportDataView()
-        .environmentObject(MovieViewModel())
+        .environment(MovieViewModel())
 }

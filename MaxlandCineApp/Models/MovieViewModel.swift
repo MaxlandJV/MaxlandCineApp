@@ -7,7 +7,7 @@
 
 import CoreData
 
-class MovieViewModel: ObservableObject {
+@Observable class MovieViewModel {
     let dataModel: NSPersistentContainer
     let biometricAuthUtil: BiometricAuth
     
@@ -15,8 +15,8 @@ class MovieViewModel: ObservableObject {
         case All, Movies, Series
     }
     
-    @Published var movieList: [Movie] = []
-    @Published var biometricAuth: Bool = false {
+    var movieList: [Movie] = []
+    var biometricAuth: Bool = false {
         didSet {
             // MARK: Guardar en el UserDefaults el valor del parámetro de autenticación biométrica
             UserDefaults.standard.set(self.biometricAuth, forKey: "BiometricAuth")

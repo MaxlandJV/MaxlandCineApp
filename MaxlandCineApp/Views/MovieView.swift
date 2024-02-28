@@ -29,7 +29,7 @@ struct MovieView: View {
     @State private var selectedImage: UIImage?
     @State private var showImage: Bool = false
     
-    @EnvironmentObject var movieViewModel: MovieViewModel
+    @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
     
     // MARK: Este valor se pasa como parámetro. Si no se pasa el valor por defecto es FALSE
     var update: Bool = false

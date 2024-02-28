@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieSetupView: View {
     
-    @EnvironmentObject var movieViewModel: MovieViewModel
+    @Bindable var movieViewModel: MovieViewModel
     
     var body: some View {
         Form {
@@ -68,6 +68,5 @@ struct MovieSetupView: View {
 }
 
 #Preview {
-    MovieSetupView()
-        .environmentObject(MovieViewModel())
+    MovieSetupView(movieViewModel: MovieViewModel())
 }

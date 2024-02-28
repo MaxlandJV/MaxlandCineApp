@@ -11,7 +11,7 @@ import LocalAuthentication
 @main
 struct MaxlandCineApp: App {
     
-    @StateObject var movieViewModel = MovieViewModel()
+    @State var movieViewModel = MovieViewModel()
     @State var isUnlocked = false
     @State var showAuthButton = false
     
@@ -20,7 +20,7 @@ struct MaxlandCineApp: App {
             ZStack {
                 if isUnlocked {
                     MovieListView()
-                        .environmentObject(movieViewModel)
+                        .environment(movieViewModel)
                 }
                 else {
                     Spacer()

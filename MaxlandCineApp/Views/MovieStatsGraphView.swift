@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct MovieStatsGraphView: View {
-    @EnvironmentObject var movieViewModel: MovieViewModel
+    @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
     
     var titleText: Text
     var numberOfMovies: Int
@@ -115,5 +115,5 @@ struct MovieStatsGraphView: View {
 
 #Preview {
     MovieStatsGraphView(titleText: Text("Prueba"), numberOfMovies: 5, movieListScore: [1,3,8,4,2], type: MovieViewModel.typeData.All)
-        .environmentObject(MovieViewModel())
+        .environment(MovieViewModel())
 }
