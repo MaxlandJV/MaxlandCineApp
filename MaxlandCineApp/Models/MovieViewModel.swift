@@ -8,8 +8,8 @@
 import CoreData
 
 @Observable class MovieViewModel {
-    let dataModel: NSPersistentContainer
-    let biometricAuthUtil: BiometricAuth
+    @ObservationIgnored let dataModel: NSPersistentContainer
+    @ObservationIgnored let biometricAuthUtil: BiometricAuth
     
     enum typeData {
         case All, Movies, Series
