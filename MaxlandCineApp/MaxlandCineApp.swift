@@ -23,27 +23,28 @@ struct MaxlandCineApp: App {
                         .environment(movieViewModel)
                 }
                 else {
-                    Spacer()
-                    HStack {
+                    VStack {
                         Spacer()
-                        if (showAuthButton) {
-                            Button {
-                                authenticate()
-                            } label: {
-                                Text("auth-required")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
+                        HStack {
+                            Spacer()
+                            if (showAuthButton) {
+                                Button {
+                                    authenticate()
+                                } label: {
+                                    Text("auth-required")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                }
                             }
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Spacer()
+                    .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
                 }
             }
             .onAppear(perform: authenticate)
-            .background(
-                LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
-            )
+            .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
         }
     }
     
