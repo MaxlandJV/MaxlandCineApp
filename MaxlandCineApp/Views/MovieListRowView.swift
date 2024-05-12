@@ -47,8 +47,10 @@ struct MovieListRowView: View {
                     .font(.title3)
                     .bold()
                     .multilineTextAlignment(.leading)
+                    .lineLimit(2)
                     .foregroundColor(.black)
                 Spacer()
+
                 HStack {
                     HStack(spacing: 0) {
                         ForEach(1...5, id: \.self) { number in
@@ -59,13 +61,29 @@ struct MovieListRowView: View {
                         }
                     }
                     Spacer()
+                }
+                HStack {
+                    if (isSerie != nil) {
+                        Image(systemName: isSerie! ? "sparkles.tv" : "film")
+                            .resizable()
+                            .frame(width: 15, height: 18)
+                            .foregroundColor(isSerie! ? Color("Serie") : Color("Movie"))
+                            .padding(.vertical, 4)
+                    }
+                    else {
+                        Image(systemName: "film")
+                            .resizable()
+                            .frame(width: 15, height: 18)
+                            .foregroundColor(Color("Movie"))
+                            .padding(.vertical, 4)
+                    }
                     Text(showDate ?? Date(), style: .date)
                         .font(.footnote)
                         .bold()
                         .foregroundColor(.black)
                 }
             }
-            .frame(height: 100)
+            .frame(height: 130)
             Image(systemName: "chevron.forward")
                 .padding(0)
                 .foregroundColor(.black)
@@ -73,7 +91,7 @@ struct MovieListRowView: View {
         .background(LinearGradient(colors: [Color.clear, Color.white], startPoint: .trailing, endPoint: .leading))
         .cornerRadius(10)
         .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 0)
-        .frame(height: 120)
+        .frame(height: 135)
     }
 }
 
