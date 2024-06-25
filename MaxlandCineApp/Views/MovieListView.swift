@@ -92,6 +92,9 @@ struct MovieListView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+            movieViewModel.fetchMovies()
+        }
     }
 }
 

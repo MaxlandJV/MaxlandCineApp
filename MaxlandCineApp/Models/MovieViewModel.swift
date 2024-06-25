@@ -29,11 +29,10 @@ import SwiftData
         }
     }
     
+    
     init() {
         biometricAuthUtil = BiometricAuth()
         biometricAuth = UserDefaults.standard.bool(forKey: "BiometricAuth")
-
-        //fetchMovies()
     }
     
     @MainActor
