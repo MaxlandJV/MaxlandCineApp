@@ -20,10 +20,7 @@ struct MovieListView: View {
         } else {
             let lowercaseSearchMovie = searchMovie.lowercased()
             return movieViewModel.movieList.filter { movie -> Bool in
-                if let movieName = movie.movieName {
-                    return movieName.lowercased().contains(lowercaseSearchMovie)
-                }
-                return false
+                return movie.movieName.lowercased().contains(lowercaseSearchMovie)
             }
         }
     }

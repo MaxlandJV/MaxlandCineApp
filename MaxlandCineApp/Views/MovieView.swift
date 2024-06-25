@@ -29,7 +29,7 @@ struct MovieView: View {
     @State private var selectedImage: UIImage?
     @State private var showImage: Bool = false
     
-    @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
+    @Environment(MovieViewModel.self) var movieViewModel
     
     // MARK: Este valor se pasa como parámetro. Si no se pasa el valor por defecto es FALSE
     var update: Bool = false
@@ -251,6 +251,7 @@ struct MovieView: View {
     }
     
     // Crear nueva película
+    @MainActor 
     func newMovie() {
         if (movieName.isEmpty) {
             showingAlert = true
@@ -261,6 +262,7 @@ struct MovieView: View {
     }
     
     // Actualizar una película existente
+    @MainActor 
     func updateMovie() {
         if let updatedMovie = movie {
             movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: photoDataCompressed)
