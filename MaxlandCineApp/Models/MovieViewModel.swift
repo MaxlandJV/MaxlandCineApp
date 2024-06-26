@@ -51,6 +51,7 @@ import SwiftData
         
         do {
             movieOldList = try dataModel.viewContext.fetch(request)
+            fetchMovies()
             deleteAllMovies()
             movieOldList.forEach { movie in
                 addMovie(movieName: movie.movieName ?? "", showDate: movie.showDate ?? Date(), sinopsis: movie.sinopsis ?? "", score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
@@ -62,7 +63,7 @@ import SwiftData
     
     @MainActor
     func fetchMovies() {
-        let fetchDescriptor = FetchDescriptor<MovieItem>(predicate: nil, sortBy: [SortDescriptor<MovieItem>(\.showDate)])
+        let fetchDescriptor = FetchDescriptor<MovieItem>(predicate: nil, sortBy: [SortDescriptor<MovieItem>(\.showDate, order: .reverse)])
         
         do {
             movieList = try modelContext.fetch(fetchDescriptor)
@@ -112,7 +113,7 @@ import SwiftData
             modelContext.delete($0)
         }
         
-        fetchMovies()
+        saveData()
     }
     
     func deleteAllOldMovies()

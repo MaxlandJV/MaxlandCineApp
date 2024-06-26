@@ -93,6 +93,7 @@ struct MovieListView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
+            movieViewModel.fetchOldMovies()
             movieViewModel.fetchMovies()
         }
     }
