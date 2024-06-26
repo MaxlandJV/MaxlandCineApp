@@ -29,6 +29,7 @@
 		8AE847ED27D87E6700C2BC8F /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE847EC27D87E6700C2BC8F /* MovieViewModel.swift */; };
 		8AED4540281816DC0016C602 /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AED453F281816DC0016C602 /* BiometricAuth.swift */; };
 		8AFB89BB2A852935000663B9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8AFB89BA2A852935000663B9 /* README.md */; };
+		8AFBE0BE2C2BE8AC00C5A805 /* MovieItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BD2C2BE8AC00C5A805 /* MovieItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		8AE847EC27D87E6700C2BC8F /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		8AED453F281816DC0016C602 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
 		8AFB89BA2A852935000663B9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		8AFBE0BD2C2BE8AC00C5A805 /* MovieItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				8A05F9362AE2E292008CFF57 /* MovieInfoModel.swift */,
 				8A61457127CBBD590042A5FE /* MovieDataModel.xcdatamodeld */,
 				8AA57B4429896C9800A70AF9 /* MovieImportExportModel.swift */,
+				8AFBE0BD2C2BE8AC00C5A805 /* MovieItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			files = (
 				8A02C5732A70095F00F7EE77 /* ImageManagement.swift in Sources */,
 				8A21FDFF27A5AB4800D115A6 /* MovieView.swift in Sources */,
+				8AFBE0BE2C2BE8AC00C5A805 /* MovieItem.swift in Sources */,
 				8A5AE31A27F7052B00AC89E4 /* MovieEmptyView.swift in Sources */,
 				8A65046127ACFD9B00D556E0 /* MovieListRowView.swift in Sources */,
 				8AA73441283CFF8C004D195A /* MovieStatsView.swift in Sources */,

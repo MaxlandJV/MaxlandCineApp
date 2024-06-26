@@ -18,7 +18,7 @@ struct MovieView: View {
     @State var sinopsis = ""
     @State var score: Int16 = 0
     @State var isSerie: Bool = false
-    @State var movie: Movie?
+    @State var movie: MovieItem?
     @State var showingAlert = false
     @State var showingPhotos = false
     @State private var showingConfirmation = false
@@ -251,6 +251,7 @@ struct MovieView: View {
     }
     
     // Crear nueva película
+    @MainActor
     func newMovie() {
         if (movieName.isEmpty) {
             showingAlert = true
@@ -261,6 +262,7 @@ struct MovieView: View {
     }
     
     // Actualizar una película existente
+    @MainActor
     func updateMovie() {
         if let updatedMovie = movie {
             movieViewModel.updateMovie(movie: updatedMovie, movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: photoDataCompressed)

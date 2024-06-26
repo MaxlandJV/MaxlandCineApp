@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieStatsScoreView: View {
-    var selectedScoreMovieList: [Movie] = []
+    var selectedScoreMovieList: [MovieItem] = []
     
     var body: some View {
         HStack {

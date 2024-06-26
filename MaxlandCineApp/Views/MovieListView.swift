@@ -14,16 +14,13 @@ struct MovieListView: View {
     
     @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
     
-    var searchResults: [Movie] {
+    var searchResults: [MovieItem] {
         if searchMovie.isEmpty {
             return movieViewModel.movieList
         } else {
             let lowercaseSearchMovie = searchMovie.lowercased()
             return movieViewModel.movieList.filter { movie -> Bool in
-                if let movieName = movie.movieName {
-                    return movieName.lowercased().contains(lowercaseSearchMovie)
-                }
-                return false
+                return movie.movieName.lowercased().contains(lowercaseSearchMovie)
             }
         }
     }
@@ -58,7 +55,7 @@ struct MovieListView: View {
                         .frame(maxWidth: .infinity)
                     }
                     .searchable(text: $searchMovie, prompt: "navigation-list-search")
-                    .navigationDestination(for: Movie.self) { movie in
+                    .navigationDestination(for: MovieItem.self) { movie in
                         MovieView(movie: movie, update: true)
                     }
                 }
@@ -95,6 +92,9 @@ struct MovieListView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+            movieViewModel.fetchMovies()
+        }
     }
 }
 

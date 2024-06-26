@@ -6,16 +6,24 @@
 //
 
 import CoreData
+import SwiftData
 
 @Observable class MovieViewModel {
+    @ObservationIgnored let container = try! ModelContainer(for: MovieItem.self)
     @ObservationIgnored let dataModel: NSPersistentContainer
     @ObservationIgnored let biometricAuthUtil: BiometricAuth
+    
+    @MainActor
+    var modelContext: ModelContext {
+        container.mainContext
+    }
     
     enum typeData {
         case All, Movies, Series
     }
     
-    var movieList: [Movie] = []
+    var movieOldList: [Movie] = []
+    var movieList: [MovieItem] = []
     var biometricAuth: Bool = false {
         didSet {
             // MARK: Guardar en el UserDefaults el valor del parámetro de autenticación biométrica
@@ -32,39 +40,52 @@ import CoreData
                 fatalError("Error cargando CoreData: \(error.localizedDescription)")
             }
         }
-        fetchMovies()
     }
     
-    func fetchMovies() {
+    @MainActor
+    func fetchOldMovies() {
         let request = NSFetchRequest<Movie>(entityName: "Movie")
         let sort = NSSortDescriptor(keyPath: \Movie.showDate, ascending: false)
         
         request.sortDescriptors = [sort]
         
         do {
-            movieList = try dataModel.viewContext.fetch(request)
+            movieOldList = try dataModel.viewContext.fetch(request)
+            deleteAllMovies()
+            movieOldList.forEach { movie in
+                addMovie(movieName: movie.movieName ?? "", showDate: movie.showDate ?? Date(), sinopsis: movie.sinopsis ?? "", score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
+            }
         } catch let error {
             fatalError("Error recuperando datos: \(error.localizedDescription)")
         }
     }
     
+    @MainActor
+    func fetchMovies() {
+        let fetchDescriptor = FetchDescriptor<MovieItem>(predicate: nil, sortBy: [SortDescriptor<MovieItem>(\.showDate)])
+        
+        do {
+            movieList = try modelContext.fetch(fetchDescriptor)
+        } catch let error {
+            fatalError("Error recuperando datos: \(error.localizedDescription)")
+        }
+    }
+    
+    @MainActor
     func addMovie(movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool, caratula: Data?) {
-        let newMovie = Movie(context: dataModel.viewContext)
-        newMovie.movieName = movieName
-        newMovie.showDate = showDate
-        newMovie.score = score
-        newMovie.sinopsis = sinopsis
-        newMovie.isSerie = isSerie
-        newMovie.caratula = caratula
+        let newMovie = MovieItem(movieName: movieName, showDate: showDate, sinopsis: sinopsis, score: score, isSerie: isSerie, caratula: caratula)
+        modelContext.insert(newMovie)
         saveData()
     }
     
-    func deleteMovie(movie: Movie) {
-        dataModel.viewContext.delete(movie)
+    @MainActor
+    func deleteMovie(movie: MovieItem) {
+        modelContext.delete(movie)
         saveData()
     }
     
-    func updateMovie(movie: Movie, movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool, caratula: Data?) {
+    @MainActor
+    func updateMovie(movie: MovieItem, movieName: String, showDate: Date, sinopsis: String, score: Int16, isSerie: Bool, caratula: Data?) {
         movie.movieName = movieName
         movie.showDate = showDate
         movie.score = score
@@ -74,23 +95,33 @@ import CoreData
         saveData()
     }
        
+    @MainActor
     func saveData() {
         do {
-            try dataModel.viewContext.save()
+            try modelContext.save()
             fetchMovies()
         } catch let error {
             fatalError("Error actualizando datos: \(error.localizedDescription)")
         }
     }
     
+    @MainActor
     func deleteAllMovies()
+    {
+        movieList.forEach {
+            modelContext.delete($0)
+        }
+        
+        fetchMovies()
+    }
+    
+    func deleteAllOldMovies()
     {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Movie")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
         do {
             try dataModel.viewContext.execute(deleteRequest)
-            fetchMovies()
         } catch let error {
             fatalError("Error eliminando todos los datos: \(error.localizedDescription)")
         }
@@ -140,7 +171,7 @@ import CoreData
         return movieListScore
     }
     
-    func getMoviesByScore(type: typeData, score: Int) -> [Movie] {
+    func getMoviesByScore(type: typeData, score: Int) -> [MovieItem] {
         switch type {
             case .All:
                 return movieList.filter( { $0.score == score } )
@@ -175,6 +206,7 @@ import CoreData
         }
     }
     
+    @MainActor
     func setJSONData(moviesJSON: Result<URL, Error>) {
         do {
             guard let selectedFile: URL = try? moviesJSON.get() else { return }

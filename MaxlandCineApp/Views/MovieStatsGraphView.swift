@@ -17,7 +17,7 @@ struct MovieStatsGraphView: View {
     var type: MovieViewModel.typeData
     @State private var graphInfo: [Info] = []
     @State private var showMoviesByScore = false
-    @State private var selectedScoreMovieList: [Movie] = []
+    @State private var selectedScoreMovieList: [MovieItem] = []
     @State private var starsNumber: Int = 0
     @State private var barSelected: [Bool] = [false, false, false, false, false]
     
