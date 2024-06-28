@@ -47,7 +47,7 @@ struct MovieExportDataView: View {
                 Spacer()
             }
             .padding()
-        .navigationBarTitle("setup-exportar-datos")
+            .navigationBarTitle("setup-exportar-datos")
         }
     }
 }

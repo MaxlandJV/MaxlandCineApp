@@ -8,7 +8,8 @@
 import CoreData
 import SwiftData
 
-@Observable class MovieViewModel {
+@Observable 
+class MovieViewModel {
     @ObservationIgnored let container = try! ModelContainer(for: MovieItem.self)
     @ObservationIgnored let dataModel: NSPersistentContainer
     @ObservationIgnored let biometricAuthUtil: BiometricAuth
@@ -51,11 +52,15 @@ import SwiftData
         
         do {
             movieOldList = try dataModel.viewContext.fetch(request)
+            if movieOldList.count > 0 {
+                showMigrationMessage = true
+            }
             fetchMovies()
             deleteAllMovies()
             movieOldList.forEach { movie in
                 addMovie(movieName: movie.movieName ?? "", showDate: movie.showDate ?? Date(), sinopsis: movie.sinopsis ?? "", score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
             }
+            showMigrationMessage = false
         } catch let error {
             fatalError("Error recuperando datos: \(error.localizedDescription)")
         }

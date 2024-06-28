@@ -43,7 +43,10 @@ struct MaxlandCineApp: App {
                     .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
                 }
             }
-            .onAppear(perform: authenticate)
+            .onAppear {
+                movieViewModel.fetchOldMovies()
+                authenticate()
+            }
             .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
         }
     }

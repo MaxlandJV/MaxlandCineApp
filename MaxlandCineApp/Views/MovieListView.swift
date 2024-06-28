@@ -25,7 +25,7 @@ struct MovieListView: View {
         }
     }
     
-    var body: some View {
+    var body: some View {      
         NavigationStack {
             ZStack {
                 if movieViewModel.movieList.isEmpty {
@@ -93,7 +93,6 @@ struct MovieListView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
-            movieViewModel.fetchOldMovies()
             movieViewModel.fetchMovies()
         }
     }
