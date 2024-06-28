@@ -52,15 +52,11 @@ class MovieViewModel {
         
         do {
             movieOldList = try dataModel.viewContext.fetch(request)
-            if movieOldList.count > 0 {
-                showMigrationMessage = true
-            }
             fetchMovies()
             deleteAllMovies()
             movieOldList.forEach { movie in
                 addMovie(movieName: movie.movieName ?? "", showDate: movie.showDate ?? Date(), sinopsis: movie.sinopsis ?? "", score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
             }
-            showMigrationMessage = false
         } catch let error {
             fatalError("Error recuperando datos: \(error.localizedDescription)")
         }
