@@ -30,7 +30,7 @@
 
 "setup-title" = "Configuració";
 "setup-about" = "Sobre Maxland Cine";
-"setup-details" = "Aquesta aplicació està concebuda per poder emmagatzemar un diari de pel·lícules i sèries de televisió, indicant-ne el títol, la data de visualització, una puntuació i un text descriptiu o crítica cinematrogràfica. L'aplicació utilitza arquitectura MVVM i CoreData.";
+"setup-details" = "Aquesta aplicació està concebuda per poder emmagatzemar un diari de pel·lícules i sèries de televisió, indicant-ne el títol, la data de visualització, una puntuació i un text descriptiu o crítica cinematrogràfica. L'aplicació utilitza arquitectura MVVM i CoreData. A partir de la versió 1.7.9 es migraran les dades de CoreData a SwiftData.";
 "setup-code" = "Codi font de l'APP";
 "setup-about-me" = "Sobre mi...";
 "setup-auth" = "Requerir autenticació";

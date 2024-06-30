@@ -52,10 +52,14 @@ class MovieViewModel {
         
         do {
             movieOldList = try dataModel.viewContext.fetch(request)
-            fetchMovies()
-            deleteAllMovies()
-            movieOldList.forEach { movie in
-                addMovie(movieName: movie.movieName ?? "", showDate: movie.showDate ?? Date(), sinopsis: movie.sinopsis ?? "", score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
+            if movieOldList.count > 0 {
+                fetchMovies()
+                
+                movieOldList.forEach { movie in
+                    addMovie(movieName: movie.movieName ?? "", showDate: movie.showDate ?? Date(), sinopsis: movie.sinopsis ?? "", score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
+                }
+                
+                deleteAllOldMovies()
             }
         } catch let error {
             fatalError("Error recuperando datos: \(error.localizedDescription)")
@@ -184,6 +188,7 @@ class MovieViewModel {
         }
     }
     
+    @MainActor
     func getJSONData() -> String? {
         var movieExportList: [MovieImportExportModel] = []
         var caratulaStr = ""

@@ -195,9 +195,9 @@ struct MovieView: View {
             }
             .onAppear {
                 if let updatedMovie = movie {
-                    movieName = updatedMovie.movieName ?? ""
-                    showDate = updatedMovie.showDate ?? Date()
-                    sinopsis = updatedMovie.sinopsis ?? ""
+                    movieName = updatedMovie.movieName
+                    showDate = updatedMovie.showDate
+                    sinopsis = updatedMovie.sinopsis
                     score = updatedMovie.score
                     isSerie = updatedMovie.isSerie
                     if let imageData = updatedMovie.caratula {
