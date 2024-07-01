@@ -12,7 +12,7 @@ struct MovieStatsScoreView: View {
     
     var body: some View {
         HStack {
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack {
                     ForEach(selectedScoreMovieList) { movie in
                         VStack {
@@ -49,7 +49,7 @@ struct MovieStatsScoreView: View {
                                 .lineLimit(1)
                                 .font(.footnote)
                         }
-                        .frame(width: 100)
+                        .frame(width: 104)
                     }
                 }
             }
