@@ -5,7 +5,7 @@
 //  Created by Jordi Villaró on 9/3/22.
 //
 
-import CoreData
+import Foundation
 import SwiftData
 
 @Observable 
