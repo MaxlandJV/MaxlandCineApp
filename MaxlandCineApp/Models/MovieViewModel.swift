@@ -11,7 +11,6 @@ import SwiftData
 @Observable 
 class MovieViewModel {
     @ObservationIgnored let container = try! ModelContainer(for: MovieItem.self)
-    @ObservationIgnored let dataModel: NSPersistentContainer
     @ObservationIgnored let biometricAuthUtil: BiometricAuth
     
     @MainActor
@@ -23,7 +22,6 @@ class MovieViewModel {
         case All, Movies, Series
     }
     
-    var movieOldList: [Movie] = []
     var movieList: [MovieItem] = []
     var biometricAuth: Bool = false {
         didSet {
@@ -35,37 +33,8 @@ class MovieViewModel {
     init() {
         biometricAuthUtil = BiometricAuth()
         biometricAuth = UserDefaults.standard.bool(forKey: "BiometricAuth")
-        dataModel = NSPersistentContainer(name: "MovieDataModel")
-        dataModel.loadPersistentStores { description, error in
-            if let error = error {
-                fatalError("Error cargando CoreData: \(error.localizedDescription)")
-            }
-        }
     }
-    
-    @MainActor
-    func fetchOldMovies() {
-        let request = NSFetchRequest<Movie>(entityName: "Movie")
-        let sort = NSSortDescriptor(keyPath: \Movie.showDate, ascending: false)
-        
-        request.sortDescriptors = [sort]
-        
-        do {
-            movieOldList = try dataModel.viewContext.fetch(request)
-            if movieOldList.count > 0 {
-                fetchMovies()
-                
-                movieOldList.forEach { movie in
-                    addMovie(movieName: movie.movieName ?? "", showDate: movie.showDate ?? Date(), sinopsis: movie.sinopsis ?? "", score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
-                }
-                
-                deleteAllOldMovies()
-            }
-        } catch let error {
-            fatalError("Error recuperando datos: \(error.localizedDescription)")
-        }
-    }
-    
+       
     @MainActor
     func fetchMovies() {
         let fetchDescriptor = FetchDescriptor<MovieItem>(predicate: nil, sortBy: [SortDescriptor<MovieItem>(\.showDate, order: .reverse)])
@@ -119,18 +88,6 @@ class MovieViewModel {
         }
         
         saveData()
-    }
-    
-    func deleteAllOldMovies()
-    {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Movie")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
-        do {
-            try dataModel.viewContext.execute(deleteRequest)
-        } catch let error {
-            fatalError("Error eliminando todos los datos: \(error.localizedDescription)")
-        }
     }
     
     func getNumberMovies(type: typeData) -> Int {
