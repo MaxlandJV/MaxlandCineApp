@@ -11,6 +11,8 @@ struct MovieListView: View {
     
     @State var isPresented: Bool = false
     @State var searchMovie: String = ""
+    @State private var selectedMovie: MovieItem?
+    @State private var columnVisibility = NavigationSplitViewVisibility.all
     
     @Environment(MovieViewModel.self) var movieViewModel: MovieViewModel
     
@@ -26,7 +28,7 @@ struct MovieListView: View {
     }
     
     var body: some View {      
-        NavigationStack {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
             ZStack {
                 if movieViewModel.movieList.isEmpty {
                     LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -36,28 +38,43 @@ struct MovieListView: View {
                                 .transition(AnyTransition.opacity.animation(.easeIn)))
                 }
                 else {
-                    ScrollView {
-                        LazyVStack {
-                            ForEach(searchResults) { movie in
-                                NavigationLink(value: movie) {
-                                    MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
-                                        .contextMenu {
-                                            Button {
-                                                movieViewModel.deleteMovie(movie: movie)
-                                            } label: {
-                                                Label("movie-confirm-delete", systemImage: "trash")
-                                            }
-                                        }
+                    List(searchResults, selection: $selectedMovie) {movie in
+                        NavigationLink(value: movie) {
+                            MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
+                                .contextMenu {
+                                    Button {
+                                        movieViewModel.deleteMovie(movie: movie)
+                                    } label: {
+                                        Label("movie-confirm-delete", systemImage: "trash")
+                                    }
                                 }
-                            }
-                            .padding(.horizontal)
                         }
-                        .frame(maxWidth: .infinity)
                     }
                     .searchable(text: $searchMovie, prompt: "navigation-list-search")
-                    .navigationDestination(for: MovieItem.self) { movie in
-                        MovieView(movie: movie, update: true)
-                    }
+                    .listStyle(.plain)
+                    
+//                    ScrollView {
+//                        LazyVStack {
+//                            ForEach(searchResults) { movie in
+//                                NavigationLink(value: movie) {
+//                                    MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
+//                                        .contextMenu {
+//                                            Button {
+//                                                movieViewModel.deleteMovie(movie: movie)
+//                                            } label: {
+//                                                Label("movie-confirm-delete", systemImage: "trash")
+//                                            }
+//                                        }
+//                                }
+//                            }
+//                            .padding(.horizontal)
+//                        }
+//                        .frame(maxWidth: .infinity)
+//                    }
+//                    .searchable(text: $searchMovie, prompt: "navigation-list-search")
+//                    .navigationDestination(for: MovieItem.self) { movie in
+//                        MovieView(movie: movie, update: true)
+//                    }
                 }
             }
             .background(LinearGradient(colors: [Color("TopColorGradient"), Color("BottomColorGradient")], startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -89,6 +106,10 @@ struct MovieListView: View {
                         .interactiveDismissDisabled()
                 }
                 .presentationBackground(.thinMaterial)
+            }
+        } detail: {
+            if let movie = selectedMovie {
+                MovieView(movie: movie, update: true)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
