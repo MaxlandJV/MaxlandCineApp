@@ -145,7 +145,7 @@ struct MovieView: View {
                             
                             ShareLink(item: movieName + ": " + sinopsis)
                             
-                            Button {
+                            Button(role: .destructive) {
                                 showingConfirmation.toggle()
                             } label: {
                                 Label("movie-confirm-delete", systemImage: "trash")
@@ -279,11 +279,5 @@ struct MovieView: View {
         }
         
         return sizeScreen
-    }
-}
-
-#Preview {
-    NavigationStack {
-        MovieView(update: true)
     }
 }

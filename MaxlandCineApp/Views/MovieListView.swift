@@ -42,7 +42,7 @@ struct MovieListView: View {
                                 NavigationLink(value: movie) {
                                     MovieListRowView(movieName: movie.movieName, showDate: movie.showDate, sinopsis: movie.sinopsis, score: movie.score, isSerie: movie.isSerie, caratula: movie.caratula)
                                         .contextMenu {
-                                            Button {
+                                            Button(role: .destructive) {
                                                 movieViewModel.deleteMovie(movie: movie)
                                             } label: {
                                                 Label("movie-confirm-delete", systemImage: "trash")
