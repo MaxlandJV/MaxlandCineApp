@@ -95,8 +95,7 @@ struct MovieListRowView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     MovieListRowView(movieName: "Prueba de película con un nombre largo", showDate: Date(), sinopsis: "", score: 3, isSerie: false, caratula: nil)
         .padding()
-        .previewLayout(.sizeThatFits)
 }
