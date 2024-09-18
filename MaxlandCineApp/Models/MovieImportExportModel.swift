@@ -18,7 +18,7 @@ struct MovieImportExportModel: Encodable, Decodable {
 }
 
 struct JsonFile: FileDocument {
-    static var readableContentTypes = [UTType.json]
+    static let readableContentTypes = [UTType.json]
     var json = ""
     
     init(json: String = "") {
