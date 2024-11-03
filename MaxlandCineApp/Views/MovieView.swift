@@ -215,7 +215,7 @@ struct MovieView: View {
                 }
             }
         }
-        .sheet(isPresented: $showImage) {
+        .fullScreenCover(isPresented: $showImage) {
             if update {
                 if let selectedImage {
                     VStack {
@@ -240,7 +240,8 @@ struct MovieView: View {
                                         .background(.black)
                                         .cornerRadius(50)
                                 }
-                                .padding([.trailing, .top], 20)
+                                .padding(.trailing, 20)
+                                .padding(.top, 60)
                             }
                         }
                     }

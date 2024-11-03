@@ -30,7 +30,7 @@
 
 "setup-title" = "Configuración";
 "setup-about" = "Acerca de Maxland Cine";
-"setup-details" = "Esta aplicación está concebida para poder almacenar un diario de películas y series de televisión, indicando su título, su fecha de visualización, una puntuación y un texto descriptivo o crítica cinematrográfica. La aplicación usa arquitectura MVVM y SwiftData.";
+"setup-details" = "Esta aplicación está concebida para poder almacenar un diario de películas y series de televisión, indicando su título, su fecha de visualización, una puntuación y un texto descriptivo o crítica cinematrográfica. La aplicación usa arquitectura MVVM con Swift 6, Swift UI y SwiftData.";
 "setup-code" = "Código fuente de la APP";
 "setup-about-me" = "Acerca de mi...";
 "setup-auth" = "Requerir autenticación";
