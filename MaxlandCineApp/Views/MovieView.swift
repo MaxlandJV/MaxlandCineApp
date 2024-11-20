@@ -226,6 +226,12 @@ struct MovieView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: size.width, height: size.height)
+                                .blur(radius: 15)
+                                .overlay {
+                                    Image(uiImage: selectedImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
                         }
                         .overlay(alignment: .top) {
                             HStack {

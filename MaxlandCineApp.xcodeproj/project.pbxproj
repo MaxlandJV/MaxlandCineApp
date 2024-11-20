@@ -78,7 +78,6 @@
 				8A5AE31927F7052B00AC89E4 /* MovieEmptyView.swift */,
 				8A65046027ACFD9B00D556E0 /* MovieListRowView.swift */,
 				8A21FDFE27A5AB4800D115A6 /* MovieView.swift */,
-				8A02C5722A70095F00F7EE77 /* ImageManagement.swift */,
 				8A24289527DF8117004977DB /* MovieSetupView.swift */,
 				8ADDCDC2294C9542006A5277 /* MovieExportDataView.swift */,
 				8A437B8D29894DE200D5CD09 /* MovieImportDataView.swift */,
@@ -137,6 +136,7 @@
 			children = (
 				8AED453F281816DC0016C602 /* BiometricAuth.swift */,
 				8AD7F5DA289963D000D55EF0 /* MovieSerieToggle.swift */,
+				8A02C5722A70095F00F7EE77 /* ImageManagement.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
