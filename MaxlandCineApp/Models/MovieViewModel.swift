@@ -146,7 +146,9 @@ class MovieViewModel {
     }
     
     @MainActor
-    func getJSONData() -> String? {
+    func getJSONData(run: Bool) -> String? {
+        if (!run) { return "" }
+        
         var movieExportList: [MovieImportExportModel] = []
         var caratulaStr = ""
         

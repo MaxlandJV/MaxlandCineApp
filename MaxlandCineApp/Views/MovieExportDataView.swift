@@ -34,7 +34,7 @@ struct MovieExportDataView: View {
                 .padding(.top, 50)
                 .buttonStyle(.borderedProminent)
                 .font(.title2)
-                .fileExporter(isPresented: $exportFile, document: JsonFile(json: movieViewModel.getJSONData() ?? ""), contentType: .json, defaultFilename: "mxlcdata") { result in
+                .fileExporter(isPresented: $exportFile, document: JsonFile(json: movieViewModel.getJSONData(run: exportFile) ?? ""), contentType: .json, defaultFilename: "mxlcdata") { result in
                     switch result {
                     case .success(_):
                         showingAlert.toggle()
