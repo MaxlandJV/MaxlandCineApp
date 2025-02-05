@@ -55,6 +55,11 @@ struct MovieListView: View {
                         .frame(maxWidth: .infinity)
                     }
                     .searchable(text: $searchMovie, prompt: "navigation-list-search")
+                    .overlay {
+                        if searchResults.isEmpty {
+                            ContentUnavailableView.search
+                        }
+                    }
                     .navigationDestination(for: MovieItem.self) { movie in
                         MovieView(movie: movie, update: true)
                     }
