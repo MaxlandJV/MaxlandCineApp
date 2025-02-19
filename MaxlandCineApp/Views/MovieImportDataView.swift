@@ -43,7 +43,6 @@ struct MovieImportDataView: View {
                     dismiss()
                 }
                 .alert("movie-import-alert", isPresented: $showingAlert) {}
-                //.quickLookPreview($fileURL)
                 Spacer()
             }
             .padding()

@@ -176,11 +176,18 @@ class MovieViewModel {
     func setJSONData(moviesJSON: Result<URL, Error>) {
         do {
             guard let selectedFile: URL = try? moviesJSON.get() else { return }
+            guard selectedFile.startAccessingSecurityScopedResource() else {
+                print("No se pudo acceder al recurso con seguridad")
+                return
+            }
+            defer {
+                selectedFile.stopAccessingSecurityScopedResource()
+            }
             guard let jsonData = String(data: try Data(contentsOf: selectedFile), encoding: .utf8)?.data(using: .utf8) else { return }
             guard let movieImportModel = try? JSONDecoder().decode([MovieImportExportModel].self, from: jsonData) else { return }
             deleteAllMovies()
             var caratulaData: Data? = nil
-            
+
             movieImportModel.forEach { movie in
                 caratulaData = nil
                 
