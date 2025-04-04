@@ -176,10 +176,7 @@ class MovieViewModel {
     func setJSONData(moviesJSON: Result<URL, Error>) {
         do {
             guard let selectedFile: URL = try? moviesJSON.get() else { return }
-            guard selectedFile.startAccessingSecurityScopedResource() else {
-                print("No se pudo acceder al recurso con seguridad")
-                return
-            }
+            guard selectedFile.startAccessingSecurityScopedResource() else { return }
             defer {
                 selectedFile.stopAccessingSecurityScopedResource()
             }

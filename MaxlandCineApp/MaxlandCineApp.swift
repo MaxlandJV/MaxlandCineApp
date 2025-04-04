@@ -60,15 +60,17 @@ struct MaxlandCineApp: App {
 
             // Autentificar
             laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                // Autenticación realizada
-                if success {
-                    // Autenticación correcta
-                    isUnlocked = true
-                } else {
-                    // Problema en la autenticación
-                    isUnlocked = false
-                    showAuthButton = true
-                }
+                // Ejecutar en el main actor
+               Task { @MainActor in
+                   // Autenticación correcta
+                   if success {
+                       self.isUnlocked = true
+                   } else {
+                       // Problemas de autenticación
+                       self.isUnlocked = false
+                       self.showAuthButton = true
+                   }
+               }
             }
         }
         else {
