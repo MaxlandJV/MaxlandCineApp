@@ -13,15 +13,18 @@ struct MovieSetupView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("setup-about") + Text(" - 1.8.5")) {
+            Section {
                 VStack(alignment: .leading) {
                     Image("MaxlandWorld")
                         .resizable()
                         .frame(width: 100, height: 100)
+                    Text("Maxland Cine - 1.9.0")
+                        .font(.system(size: 22))
+                        .fontWeight(.bold)
                     Text("setup-details")
-
+                        .foregroundColor(.gray)
+                        .padding(.vertical, 0)
                 }
-                .padding(.vertical)
             }
             
             Section(header: Text("setup-links")) {
