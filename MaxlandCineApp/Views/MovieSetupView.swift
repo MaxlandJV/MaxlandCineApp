@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieSetupView: View {
-    
+    @Environment(\.openURL) var openURL
     @Bindable var movieViewModel: MovieViewModel
     
     var body: some View {
@@ -29,10 +29,14 @@ struct MovieSetupView: View {
             
             Section(header: Text("setup-links")) {
                 VStack(alignment: .leading) {
-                    Link("setup-code", destination: URL(string: "https://github.com/MaxlandJV/MaxlandCineApp")!)
+                    Button("setup-code") {
+                        openURL(URL(string: "https://github.com/MaxlandJV/MaxlandCineApp")!, prefersInApp: true)
+                    }
                 }
                 VStack(alignment: .leading) {
-                    Link("setup-about-me", destination: URL(string: "https://www.linkedin.com/in/jordivilaro")!)
+                    Button("setup-about-me") {
+                        openURL(URL(string: "https://www.linkedin.com/in/jordivilaro")!, prefersInApp: true)
+                    }
                 }
             }
             
