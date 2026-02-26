@@ -18,7 +18,7 @@ struct MovieSetupView: View {
                     Image("MaxlandWorld")
                         .resizable()
                         .frame(width: 100, height: 100)
-                    Text("Maxland Cine - 1.9.0")
+                    Text("Maxland Cine - 1.9.1")
                         .font(.system(size: 22))
                         .fontWeight(.bold)
                     Text("setup-details")
