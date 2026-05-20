@@ -35,7 +35,7 @@ struct MovieSetupView: View {
                 }
                 VStack(alignment: .leading) {
                     Button("setup-about-me") {
-                        openURL(URL(string: "https://www.linkedin.com/in/jordivilaro")!, prefersInApp: true)
+                        openURL(URL(string: "https://github.com/MaxlandJV")!, prefersInApp: true)
                     }
                 }
             }
